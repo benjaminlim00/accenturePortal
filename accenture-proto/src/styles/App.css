@@ -1,0 +1,181 @@
+/* -----------------------------------------------*/
+/*  GLOBAL TERMS:
+    SMALL WORDS: color: #414141;
+    BACKGROUND COLOR: background-color: #fcfcfc; #e5e5e5; #f0f0f0; #ecf0f1
+
+*/
+/* -----------------------------------------------*/
+
+/* -----------------------------------------------*/
+/* BASIC SETUP */
+/* -----------------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", "Arial", sans-serif;
+}
+
+html {
+  background-color: #fff;
+  color: #414141;
+  font-family: "Lato", "Arial", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+}
+
+/* -----------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/* -----------------------------------------------*/
+.row {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  margin-bottom: 30px;
+  padding: 0 10%;
+}
+
+.small-heading {
+  font-size: 100%;
+  color: #000000;
+  margin-left: 2%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+}
+
+/* -----------------------------------------------*/
+/* TICKET SECTION COLUMN */
+/* -----------------------------------------------*/
+
+.ticketing-section {
+  border-left-color: #f1c40f;
+  border-left-width: 50px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  background-size: ;
+}
+
+/* -----------------------------------------------*/
+/* TICKET HEADING */
+/* -----------------------------------------------*/
+
+.edit-tickets-image {
+  width: 25px;
+  height: 25px;
+  margin-right: 88%;
+}
+
+/* -----------------------------------------------*/
+/* FILTER BOX */
+/* -----------------------------------------------*/
+
+.current-tickets {
+  background-color: #ecf0f1;
+  background-size: cover;
+}
+
+.filter-text,
+.sort-by-text {
+  background-color: #fff;
+  display: inline-block;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 1%;
+  padding: 0.5% 1%;
+}
+
+.arrow-down {
+  width: 25px;
+  height: 25px;
+  vertical-align: top;
+}
+
+.sort-by-text {
+  float: right;
+}
+
+.filter-box {
+  background-color: #fff;
+  background-size: cover;
+  display: flex;
+  margin: 0 3%;
+}
+
+.filter-box-2 {
+  background-color: #fff;
+  background-size: cover;
+  display: flex;
+  margin: 0 3%;
+}
+/* -----------------------------------------------*/
+/* TICKET REQUEST DETAILS */
+/* -----------------------------------------------*/
+
+.request-details {
+  font-size: 80%;
+  padding: 3% 8%;
+  font-weight: 400;
+}
+
+.input-for-filter-details {
+  display: block;
+  margin: 0 10%;
+}
+
+/* -----------------------------------------------*/
+/* TICKET REQUEST LIST */
+/* -----------------------------------------------*/
+
+.checkboxAll {
+  display: block;
+  margin: 0 auto;
+  width: 17px;
+  height: 17px;
+}
+
+.detail {
+  margin: 1%;
+  font-size: 80%;
+  color: #000000;
+  font-weight: 300;
+  margin-left: 2%;
+  text-align: left;
+}
+
+.request-list-header {
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 2%;
+  background-color: #e8e8e8;
+}
+
+.grid-row {
+  display: grid;
+}
+
+.request-row {
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e5e5e5;
+  content: " ";
+  padding: 0.5% 0;
+}
+
+.indiv-checkbox {
+  margin: 0.5% 2%;
+  width: 17px;
+  height: 17px;
+}
+
+.rows {
+  display: block;
+  margin: 0 auto;
+}
+
+.requester-button {
+  padding: 2%;
+}
