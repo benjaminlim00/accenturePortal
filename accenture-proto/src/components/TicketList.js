@@ -220,19 +220,19 @@ class TicketList extends React.Component {
                 <div className="col span-1-of-7">
                   <p>{textShow}</p>
                 </div>
-                <div className="col span-2-of-7">
+                <div className="col span-1-of-7">
                   <p>{textShow2}</p>
                 </div>
-                <div className="col span-3-of-7">
+                <div className="col span-1-of-7">
                   <p>{textShow3}</p>
                 </div>
-                <div className="col span-4-of-7">
+                <div className="col span-1-of-7">
                   <p>{textShow4}</p>
                 </div>
-                <div className="col span-5-of-7">
+                <div className="col span-1-of-7">
                   <p>{textShow5}</p>
                 </div>
-                <div className="col span-6-of-7">
+                <div className="col span-1-of-7">
                   <p>{textShow6}</p>
                 </div>
               </div>
