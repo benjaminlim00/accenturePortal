@@ -7,6 +7,9 @@ import editIcon from "../Resources/Icons/iconfinder_compose_3671747.svg";
 
 import FilterForm from "./FilterForm";
 
+import { graphql, compose } from "react-apollo";
+import { getRequestsQuery } from "../queries/queries";
+
 class TicketList extends React.Component {
   constructor() {
     super();
