@@ -50,10 +50,13 @@ class TicketList extends React.Component {
   componentDidMount() {}
 
   handleDropdown1 = selectedOption => {
-    console.log(selectedOption[0].label);
-    //this.setState({ dropdownRequester: selectedOption[0].label });
+    // console.log(selectedOption[0].label);
+    // this.setState({ dropdownRequester: selectedOption[0].label });
+    //
+    this.setState({ selectedOption });
   };
   handleDropdown2 = selectedOption => {
+    console.log(selectedOption);
     this.setState({ selectedOption });
   };
   handleDropdown3 = selectedOption => {
@@ -78,7 +81,7 @@ class TicketList extends React.Component {
   };
 
   handleClick = () => {
-    console.log("clicked edit button");
+    console.log("clicked edit button, go to next webpage");
     this.setState({
       data: true
     });

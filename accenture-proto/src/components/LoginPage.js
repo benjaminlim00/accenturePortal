@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/LoginPage.css";
+import aLogo from "../Resources/Icons/aLogo.svg";
 
 import { Redirect } from "react-router-dom";
 
@@ -53,6 +54,9 @@ class LoginPage extends React.Component {
     return (
       <div className="login-page">
         <div className="form">
+          <img src={aLogo} alt="accenture icon" className="accenture-logo" />
+          <p className="accenture-text">Accenture Requests Assistant</p>
+
           <form className="register-form">
             <input type="text" placeholder="name" />
             <input type="password" placeholder="password" />
@@ -65,14 +69,14 @@ class LoginPage extends React.Component {
           <form className="login-form" onSubmit={this.onSubmit}>
             <input
               type="text"
-              placeholder="username"
+              placeholder="Username"
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
             />
             <input
               type="password"
-              placeholder="password"
+              placeholder="Password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
