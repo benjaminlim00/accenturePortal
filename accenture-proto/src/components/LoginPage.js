@@ -52,42 +52,48 @@ class LoginPage extends React.Component {
       ? (errorText = "Username or password is wrong, please try again")
       : (errorText = "");
     return (
-      <div className="login-page">
-        <div className="form">
-          <img src={aLogo} alt="accenture icon" className="accenture-logo" />
-          <p className="accenture-text">Accenture Requests Assistant</p>
-
-          <form className="register-form">
-            <input type="text" placeholder="name" />
-            <input type="password" placeholder="password" />
-            <input type="text" placeholder="email address" />
-            <button>create</button>
-            <p className="message">
-              Already registered? <a href="#">Sign In</a>
-            </p>
-          </form>
-          <form className="login-form" onSubmit={this.onSubmit}>
-            <input
-              type="text"
-              placeholder="Username"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChange}
+      <div className="loginbody">
+        <div className="login-page">
+          <div className="form">
+            <img
+              src={aLogo}
+              alt="accenture icon"
+              className="accenture-logo-login"
             />
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
+            <p className="accenture-text-login">Accenture Requests Assistant</p>
 
-            <p className="error-text">{errorText}</p>
-            <button>login</button>
-            <p className="message">
-              Not registered? <a href="#">Create an account</a>
-            </p>
-          </form>
+            <form className="register-form">
+              <input type="text" placeholder="name" />
+              <input type="password" placeholder="password" />
+              <input type="text" placeholder="email address" />
+              <button>create</button>
+              <p className="message">
+                Already registered? <a href="#">Sign In</a>
+              </p>
+            </form>
+            <form className="login-form" onSubmit={this.onSubmit}>
+              <input
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+
+              <p className="error-text">{errorText}</p>
+              <button>login</button>
+              <p className="message">
+                Not registered? <a href="#">Create an account</a>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     );

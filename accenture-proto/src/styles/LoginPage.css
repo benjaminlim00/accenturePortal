@@ -91,7 +91,7 @@
 .container .info span .fa {
   color: #ef3b3a;
 }
-body {
+.loginbody {
   background: #76b852; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8dc26f);
   background: -moz-linear-gradient(right, #76b852, #8dc26f);
@@ -107,7 +107,7 @@ body {
   color: #d63301;
 }
 
-.accenture-logo {
+.accenture-logo-login {
   width: 80px;
   height: 80px;
   padding-bottom: 15px;
@@ -115,7 +115,7 @@ body {
   margin: 0 35%;
 }
 
-.accenture-text {
+.accenture-text-login {
   margin-bottom: 20px;
   font-family: "Lato", sans-serif;
   font-weight: 700;

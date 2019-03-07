@@ -34,85 +34,39 @@ html {
   position: relative;
 }
 
+.header {
+  margin-bottom: 30px;
+  padding: 0 10%;
+}
+
 .small-heading {
   font-size: 100%;
   color: #000000;
   margin-left: 2%;
-  margin: 1.5%;
-  display: inline-block;
+  padding-bottom: 2%;
+  padding-top: 2%;
 }
 
 /* -----------------------------------------------*/
-/* NAVIGATION BAR */
+/* TICKET SECTION COLUMN */
 /* -----------------------------------------------*/
 
-.nav-bar {
-  vertical-align: top;
-  text-align: center;
-  font-weight: 400;
-  border-bottom: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #ecf0f1;
-}
-
-.accenture-head {
-  float: left;
-  margin-top: 1%;
-  margin-left: 2%;
-  margin-right: 0.5%;
-}
-
-.accenture-text {
-  padding: 1.2% 0;
-  float: left;
-}
-
-.accenture-logo {
-  height: 30px;
-  width: auto;
-}
-
-.main-nav {
-  float: right;
-  list-style: none;
-  margin-top: 1%;
-  position: relative;
-  display: inline-block;
-  margin-right: 5%;
-  vertical-align: top;
-}
-
-.main-nav li {
-  display: inline-block;
-  margin-left: 40px;
-  font-size: 80%;
-}
-
-.main-nav li a:link,
-.main-nav li a:visited {
-  padding: 8px 0;
-  color: #414141;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 0.2s;
-}
-
-.main-nav li a:hover,
-.main-nav li a:active {
-  border-bottom: 2px solid #909090;
+.ticketing-section {
+  border-left-color: #f1c40f;
+  border-left-width: 50px;
+  border-left-style: solid;
+  background-color: #f8f8f8;
+  background-size: ;
 }
 
 /* -----------------------------------------------*/
 /* TICKET HEADING */
 /* -----------------------------------------------*/
 
-.user-icon {
-  width: 40px;
-  height: 40px;
-  float: right;
-  margin-top: 1%;
-  margin-right: 2%;
+.edit-tickets-image {
+  width: 25px;
+  height: 25px;
+  margin-right: 88%;
 }
 
 /* -----------------------------------------------*/
@@ -128,23 +82,16 @@ html {
 .sort-by-text {
   background-color: #fff;
   display: inline-block;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 3%;
+  margin-right: 3%;
   margin-top: 1%;
   padding: 0.5% 1%;
-  padding-left: 1.5%;
-  font-size: 90%;
 }
 
-.arrow-right,
 .arrow-down {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   vertical-align: top;
-}
-
-.arrow-right {
-  transform: rotate(270deg);
 }
 
 .sort-by-text {
@@ -155,18 +102,14 @@ html {
   background-color: #fff;
   background-size: cover;
   display: flex;
-  margin: 0 2%;
+  margin: 0 3%;
 }
 
 .filter-box-2 {
   background-color: #fff;
   background-size: cover;
   display: flex;
-  margin: 0 2%;
-  border-bottom: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #e5e5e5;
-  font-size: 90%;
+  margin: 0 3%;
 }
 /* -----------------------------------------------*/
 /* TICKET REQUEST DETAILS */
@@ -178,50 +121,14 @@ html {
   font-weight: 400;
 }
 
-.request-details:after {
+.input-for-filter-details {
   display: block;
-  height: 1px;
-  background-color: #000000;
-  content: " ";
-  width: inherit;
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 0 10%;
 }
 
 /* -----------------------------------------------*/
 /* TICKET REQUEST LIST */
 /* -----------------------------------------------*/
-
-.checkboxIMG {
-  display: block;
-  margin: 0 auto;
-  width: 17px;
-  height: 17px;
-}
-
-.detail {
-  font-size: 80%;
-  color: #000000;
-  font-weight: 300;
-  text-align: left;
-}
-
-.request-list-header {
-  margin-top: 2%;
-  background-color: #e8e8e8;
-}
-
-.arrow-down-2 {
-  width: 20px;
-  height: 20px;
-  vertical-align: top;
-}
-
-.indiv-checkbox {
-  margin: 0.5% 2%;
-  width: 17px;
-  height: 17px;
-}
 
 .checkboxAll {
   display: block;
@@ -230,7 +137,45 @@ html {
   height: 17px;
 }
 
-.rows-checkboxNeed {
+.detail {
+  margin: 1%;
+  font-size: 80%;
+  color: #000000;
+  font-weight: 300;
+  margin-left: 2%;
+  text-align: left;
+}
+
+.request-list-header {
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 2%;
+  background-color: #e8e8e8;
+}
+
+.grid-row {
+  display: grid;
+}
+
+.request-row {
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e5e5e5;
+  content: " ";
+  padding: 0.5% 0;
+}
+
+.indiv-checkbox {
+  margin: 0.5% 2%;
+  width: 17px;
+  height: 17px;
+}
+
+.rows {
   display: block;
   margin: 0 auto;
+}
+
+.requester-button {
+  padding: 2%;
 }
