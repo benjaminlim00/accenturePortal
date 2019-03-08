@@ -42,6 +42,19 @@ html {
   display: inline-block;
 }
 
+.all-tickets {
+  font-size: 100%;
+  margin-left: 2%;
+  color: #000000;
+  margin: 1.5%;
+  display: inline-block;
+}
+
+.text-boxes {
+  background-color: #ffff;
+  border: 1px solid #7e7e7e;
+}
+
 /* -----------------------------------------------*/
 /* NAVIGATION BAR */
 /* -----------------------------------------------*/
@@ -113,6 +126,12 @@ html {
   float: right;
   margin-top: 1%;
   margin-right: 2%;
+}
+
+.ticket-enquiry-section {
+  background-color: #e8e8e8;
+  background-color: cover;
+  padding: 1.5%;
 }
 
 /* -----------------------------------------------*/

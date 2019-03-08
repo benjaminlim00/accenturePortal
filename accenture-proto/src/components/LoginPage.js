@@ -27,11 +27,16 @@ class LoginPage extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
+
     // {name,value} = e.target;
     if (
       this.state.username === "benjamin" &&
       this.state.password === "password"
     ) {
+      //here i will change the isAuth state
+      this.props.handleAuth();
+
+      //redirect page
       this.setState({
         redirect: true
       });

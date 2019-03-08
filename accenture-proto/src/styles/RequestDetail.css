@@ -1,0 +1,334 @@
+/* -----------------------------------------------*/
+/* BACK TO TICKETS HEADING */
+/* -----------------------------------------------*/
+
+.back-to-tickets-section {
+  background-color: #ffff;
+  border: 1px solid #b1b1b1;
+}
+
+.back-to-tickets-text,
+.page-no {
+  display: inline-block;
+  padding: 0.5%;
+  font-size: 85%;
+  color: #7e7e7e;
+  font-weight: 300;
+}
+
+.page-no {
+  float: right;
+}
+/*.page-no {
+    display: inline-block;
+    float: right;
+    margin: 0.5%;
+}*/
+
+.arrow-left-new-2,
+.arrow-left-new,
+.arrow-right-new,
+.trash {
+  width: 25px;
+  height: 25px;
+  margin: 0.2% 0.5%;
+  vertical-align: middle;
+  padding: 0.2%;
+}
+
+.arrow-left-new-2,
+.arrow-right-new,
+.trash {
+  float: right;
+}
+
+.arrow-left-new,
+.arrow-left-new-2 {
+  transform: rotate(90deg);
+}
+
+.arrow-right-new {
+  transform: rotate(270deg);
+}
+
+/* -----------------------------------------------*/
+/* ENQUIRIES */
+/* -----------------------------------------------*/
+
+.enquiry-section {
+  background-color: inherit;
+  display: flex;
+}
+
+.enquiry-head {
+  background-color: #ecf0f1;
+  display: block;
+}
+
+.enquiry-title {
+  display: inline-block;
+  margin: 2%;
+  margin-bottom: 0;
+}
+
+.author {
+  padding: 1% 3%;
+  padding-bottom: 1%;
+  font-size: 70%;
+}
+
+.recipient {
+  margin-bottom: 3%;
+}
+
+.timing {
+  display: inline-block;
+  font-size: 70%;
+  color: #7e7e7e;
+  float: right;
+  vertical-align: top;
+  margin: 3% 2%;
+}
+
+.enquiry-body {
+  padding: 3% 6%;
+  font-size: 80%;
+}
+
+.reply-button {
+  background-color: #ecf0f1;
+  padding: 1%;
+  border-radius: 8px;
+  width: 15%;
+  height: auto;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.reply-arrow {
+  margin: 0 5%;
+  width: 25px;
+  height: 25px;
+  vertical-align: top;
+}
+
+.file-logo {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: 1%;
+  margin-top: 2.2%;
+  margin-right: 0;
+  vertical-align: top;
+}
+
+.attach-file {
+  display: inline-block;
+  margin: 1.5%;
+  margin-bottom: 0;
+  margin-left: 0;
+  border-right: 1px solid #969696;
+  padding: 0.5% 0;
+  padding-right: 15px;
+  font-size: 80%;
+}
+
+.cancel-button {
+  display: inline-block;
+  margin: 2%;
+  font-size: 80%;
+  margin-left: 50%;
+}
+
+.send-button {
+  display: inline-block;
+  font-size: 80%;
+}
+
+.cancel {
+  padding: 6% 18px;
+  margin-left: -1%;
+  background-color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 7px;
+  border: 1px solid #969696;
+}
+
+.send {
+  padding: 7.2% 23px;
+  margin-left: -1%;
+  text-align: center;
+  background-color: #249d3b;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 7px;
+}
+/* -----------------------------------------------*/
+/* PROPERTIES */
+/* -----------------------------------------------*/
+
+.properties {
+  background-color: #ffff;
+  padding: 5%;
+}
+
+.property {
+  margin: 4%;
+  padding: 1%;
+  font-size: 80%;
+}
+
+/* THIS PART: this line of code below is the ticket properties section (just need to take out this code to get rid of the lines) */
+
+.property:after {
+  display: block;
+  height: 1px;
+  background-color: #000000;
+  content: " ";
+  width: inherit;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.special-property {
+  margin: 4%;
+  padding: 1%;
+  font-size: 80%;
+}
+
+.arrow-down {
+  width: 20px;
+  height: 20px;
+  vertical-align: top;
+  margin-top: 2%;
+  margin-left: 30px;
+}
+
+/* -----------------------------------------------*/
+/* CONTACT DETAILS */
+/* -----------------------------------------------*/
+
+.combined-contact-past-ticket-details {
+  background-color: #ffff;
+}
+
+.contact-details {
+  padding: 5%;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #a3a3a3;
+}
+
+.type-of-details {
+  padding: 3%;
+  display: inline-block;
+}
+
+.detail {
+  padding: 3%;
+  font-weight: 300;
+  font-size: 90%;
+}
+
+/* -----------------------------------------------*/
+/* REPLY/ATTACH BOX */
+/* -----------------------------------------------*/
+.enquiry-head-reply {
+  background-color: #ecf0f1;
+}
+
+.reply-attach {
+  padding: 1.5% 1%;
+  margin-left: 2%;
+  display: inline-block;
+}
+
+.reply-arrow-2 {
+  width: 25px;
+  height: 25px;
+}
+
+.from-to {
+  font-size: 70%;
+  display: inline-block;
+  padding: 1.5% 1%;
+}
+
+.border-from-to {
+  border-left: 1px solid #969696;
+  padding: 2% 0;
+  padding-bottom: 1.5%;
+  padding-left: 25px;
+}
+
+/* -----------------------------------------------*/
+/* PAST TICKETS/CONVERSATIONS HEADING */
+/* -----------------------------------------------*/
+
+.past-ticket-head {
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #c9c9c9;
+  padding: 2%;
+}
+.first-past-enquiry {
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #e5e5e5;
+  content: " ";
+}
+
+/* -----------------------------------------------*/
+/* PAST TICKETS/CONVERSATIONS (INDIVIDUAL TICKET) */
+/* -----------------------------------------------*/
+
+.ticket-id {
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.smaller-head {
+  font-size: 65%;
+  margin: 0 5%;
+}
+
+.past-ticket-body {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 65%;
+}
+
+.date {
+  display: inline-block;
+  font-size: 60%;
+  margin: 4%;
+  width: 73%;
+}
+
+.status {
+  display: inline-block;
+  font-size: 60%;
+}
+
+/* -----------------------------------------------*/
+/* SECTION THAT APPEARS ONCE ADMINISTRATOR REPLIES */
+/* -----------------------------------------------*/
+
+.replied-who {
+  display: inline-block;
+}
+
+.timing-2 {
+  display: inline-block;
+  margin-left: 300px;
+  font-size: 100%;
+  color: #7e7e7e;
+}
+
+.reply-arrow-3 {
+  width: 25px;
+  height: 25px;
+  vertical-align: top;
+}

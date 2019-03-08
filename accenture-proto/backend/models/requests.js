@@ -9,7 +9,9 @@ const requestSchema = new Schema({
   dateRequested: String,
   priority: String,
   status: String,
-  assigned: String
+  assigned: String,
+  dateResolved: String,
+  dateClosed: String
 }); //id not needed. Mongo auto add.
 
 module.exports = mongoose.model("Request", requestSchema);

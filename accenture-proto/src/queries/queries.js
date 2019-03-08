@@ -3,6 +3,7 @@ import { gql } from "apollo-boost";
 const getRequestsQuery = gql`
   {
     requests {
+      id
       requester
       asset
       type
@@ -11,6 +12,8 @@ const getRequestsQuery = gql`
       priority
       status
       assigned
+      dateResolved
+      dateClosed
     }
   }
 `;
@@ -25,6 +28,8 @@ const addRequestMutation = gql`
     $priority: String!
     $status: String!
     $assigned: String!
+    $dateResolved: String!
+    $dateClosed: String!
   ) {
     addRequest(
       requester: $requester
@@ -35,6 +40,8 @@ const addRequestMutation = gql`
       priority: $priority
       status: $status
       assigned: $assigned
+      dateResolved: $dateResolved
+      dateClosed: $dateClosed
     ) {
       requester
       asset

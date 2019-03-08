@@ -5,7 +5,7 @@ import "../styles/normalize.css";
 
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
-class RequestRow extends React.Component {
+class TicketRow extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -58,12 +58,13 @@ class RequestRow extends React.Component {
         </div>
         <div className="col span-1-of-9">
           <h4 className="detail">
+            {this.props.status}
             <img src={arrow} className="arrow-down-2" />
           </h4>
         </div>
         <div className="col span-1-of-9">
           <h4 className="detail">
-            --
+            {this.props.assigned}
             <img src={arrow} className="arrow-down-2" />
           </h4>
         </div>
@@ -72,4 +73,4 @@ class RequestRow extends React.Component {
   }
 }
 
-export default RequestRow;
+export default TicketRow;

@@ -15,6 +15,7 @@ const {
 const RequestType = new GraphQLObjectType({
   name: "Request",
   fields: () => ({
+    id: { type: GraphQLID },
     requester: { type: GraphQLString },
     asset: { type: GraphQLString },
     type: { type: GraphQLString },
@@ -22,7 +23,9 @@ const RequestType = new GraphQLObjectType({
     dateRequested: { type: GraphQLString },
     priority: { type: GraphQLString },
     status: { type: GraphQLString },
-    assigned: { type: GraphQLString }
+    assigned: { type: GraphQLString },
+    dateResolved: { type: GraphQLString },
+    dateClosed: { type: GraphQLString }
     // author: {
     //   type: AuthorType,
     //   resolve(parent, args) {
@@ -67,7 +70,9 @@ const Mutation = new GraphQLObjectType({
         dateRequested: { type: new GraphQLNonNull(GraphQLString) },
         priority: { type: new GraphQLNonNull(GraphQLString) },
         status: { type: new GraphQLNonNull(GraphQLString) },
-        assigned: { type: new GraphQLNonNull(GraphQLString) }
+        assigned: { type: new GraphQLNonNull(GraphQLString) },
+        dateResolved: { type: new GraphQLNonNull(GraphQLString) },
+        dateClosed: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
         let request = new Request({
@@ -78,7 +83,9 @@ const Mutation = new GraphQLObjectType({
           dateRequested: args.dateRequested,
           priority: args.priority,
           status: args.status,
-          assigned: args.assigned
+          assigned: args.assigned,
+          dateResolved: args.dateResolved,
+          dateClosed: args.dateClosed
         });
         return request.save();
       }

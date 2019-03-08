@@ -7,9 +7,7 @@ import editIcon from "../Resources/Icons/iconfinder_compose_3671747.svg";
 import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
-import FilterForm from "./FilterForm";
-import NavBar from "./NavBar";
-import RequestRow from "./RequestRow";
+import TicketRow from "./TicketRow";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../queries/queries";
@@ -41,13 +39,15 @@ class TicketList extends React.Component {
       console.log(data.requests);
       return data.requests.map(request => {
         return (
-          <RequestRow
+          <TicketRow
             requester={request.requester}
             asset={request.asset}
             type={request.type}
             subject={request.subject}
             dateRequested={request.dateRequested}
             priority={request.priority}
+            status={request.status}
+            assigned={request.assigned}
           />
         );
       });
@@ -109,7 +109,6 @@ class TicketList extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
         <div className="row">
           <h2 className="small-heading">All Tickets</h2>
           <img src={profileIcon} className="user-icon" />
