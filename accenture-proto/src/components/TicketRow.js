@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/App.css";
 import "../styles/grid.css";
 import "../styles/normalize.css";
+import DropdownCard from "./DropdownCard";
 
 import { Link } from "react-router-dom";
 
@@ -72,7 +73,7 @@ class TicketRow extends React.Component {
         <div className="col span-1-of-9">
           <h4 className="detail">
             {this.props.status}
-            <img src={arrow} className="arrow-down-2" />
+            <DropdownCard className="arrow-button" />
           </h4>
         </div>
         <div className="col span-1-of-9">

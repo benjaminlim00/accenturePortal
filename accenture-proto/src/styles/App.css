@@ -253,3 +253,12 @@ html {
   display: block;
   margin: 0 auto;
 }
+
+.arrow-button {
+  float: left;
+}
+
+#transparentButton {
+  border: none;
+  background: rgba(0, 0, 0, 0);
+}

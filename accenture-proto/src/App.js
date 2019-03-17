@@ -56,7 +56,7 @@ class App extends Component {
               )}
             />
             <Route exact path="/add" component={AddRequest} />
-            <Route path="/requestDetail/:id" exact component={RequestDetail} />
+            <Route path="/requestDetail/:id" component={RequestDetail} />
           </Switch>
         </Router>
       </ApolloProvider>

@@ -4,12 +4,15 @@ import "../styles/grid.css";
 import "../styles/normalize.css";
 import "../styles/RequestDetail.css";
 import TicketProperties from "./TicketProperties";
+import TrashModal from "./TrashModal";
 
 import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 import trash from "../Resources/Icons/iconfinder_25_2135797.svg";
 import replyArrow from "../Resources/Icons/iconfinder_reply_226602.svg";
 import fileLogo from "../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
+
+import { Link } from "react-router-dom";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../queries/queries";
@@ -18,7 +21,8 @@ class RequestDetail extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: null
+      id: null,
+      show: false
       //
       // asset: null,
       // type: null,
@@ -32,6 +36,19 @@ class RequestDetail extends React.Component {
       // dataArr: null
     };
   }
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
+  deleteData = () => {
+    console.log("data deleted");
+    this.setState({ show: false });
+  };
 
   displayData() {
     var data = this.props.getRequestsQuery;
@@ -85,10 +102,32 @@ class RequestDetail extends React.Component {
 
         <section className="ticket-enquiry-section">
           <div className="back-to-tickets-section">
-            <img src={arrow} className="arrow-left-new" />
+            <button type="button" id="transparentButton">
+              <Link to="/requests">
+                <img src={arrow} className="arrow-left-new" />
+              </Link>
+            </button>
+
             <h3 className="back-to-tickets-text">Back to Tickets</h3>
             <img src="" className="settings" />
-            <img src={trash} className="trash" />
+
+            <TrashModal
+              show={this.state.show}
+              handleBack={this.hideModal}
+              handleDelete={this.deleteData}
+            >
+              <p>Modal</p>
+              <p>Data</p>
+            </TrashModal>
+
+            <button
+              type="button"
+              id="transparentButton"
+              onClick={this.showModal}
+              className="trash"
+            >
+              <img src={trash} className="trash" />
+            </button>
             <img src={arrow} className="arrow-right-new" />
             <img src={arrow} className="arrow-left-new-2" />
             <p className="page-no">1 out of 100</p>
