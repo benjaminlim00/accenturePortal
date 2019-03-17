@@ -3,7 +3,6 @@ import "../styles/App.css";
 import "../styles/grid.css";
 import "../styles/normalize.css";
 import "../styles/RequestDetail.css";
-import TicketProperties from "./TicketProperties";
 
 import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
@@ -15,66 +14,6 @@ import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../queries/queries";
 
 class RequestDetail extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      id: null
-      //
-      // asset: null,
-      // type: null,
-      // priority: null,
-      // assigned: null,
-      // status: null,
-      // dateClosed: null,
-      // dateRequested: null,
-      // dateResolved: null,
-      // subject: null,
-      // dataArr: null
-    };
-  }
-
-  displayData() {
-    var data = this.props.getRequestsQuery;
-    var dataArr;
-    if (!data.loading) {
-      // console.log(data.requests);  all the different data with diff ids
-      // console.log(this.state.id); the current id
-
-      dataArr = data.requests.filter(request => {
-        return request.id === this.state.id;
-      });
-
-      dataArr = dataArr[0];
-      console.log(dataArr); // here is data of the request.
-
-      return (
-        <TicketProperties
-          id={dataArr.id}
-          assets={dataArr.assets}
-          type={dataArr.type}
-          priority={dataArr.priority}
-          assigned={dataArr.assigned}
-          status={dataArr.status}
-          dateRequested={dataArr.dateRequested}
-          dateResolved={dataArr.dateResolved}
-          dateClosed={dataArr.dateClosed}
-        />
-      );
-    } else {
-      console.log("still retreiving data from mongoDB");
-    }
-  }
-
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    // let ID = id; // no need to substring here
-    //handle the data from graphql here.Here we save ID to state. So that we can retreive from graphql later.
-    // console.log(id);
-    this.setState({
-      id: id
-    });
-  }
-
   render() {
     return (
       <div>
@@ -120,7 +59,29 @@ class RequestDetail extends React.Component {
               </div>
             </div>
 
-            {this.displayData()}
+            <div className="col span-1-of-4 text-boxes">
+              <div className="properties">
+                <h2 className="small-heading">Ticket Properties</h2>
+                <div className="grid-row">
+                  <p className="property">Ticket ID</p>
+                  <p className="property">Asset(s)</p>
+                  <p className="property">Type</p>
+                  <p className="property">Priority</p>
+
+                  <div className="special-property">
+                    <p>Assigned</p>
+                    <img src={arrow} className="arrow-down" />
+                  </div>
+                  <div className="special-property">
+                    <p>Status</p>
+                    <img src={arrow} className="arrow-down" />
+                  </div>
+                  <p className="property">Date/Time Requested</p>
+                  <p className="property">Date/Time Resolved</p>
+                  <p className="property">Date/Time Closed</p>
+                </div>
+              </div>
+            </div>
 
             <div className="col span-1-of-4 text-boxes">
               <div className="combined-contact-past-ticket-details">
@@ -204,6 +165,4 @@ class RequestDetail extends React.Component {
   }
 }
 
-export default compose(graphql(getRequestsQuery, { name: "getRequestsQuery" }))(
-  RequestDetail
-);
+export default RequestDetail;

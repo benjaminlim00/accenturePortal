@@ -3,16 +3,25 @@ import "../styles/App.css";
 import "../styles/grid.css";
 import "../styles/normalize.css";
 
+import { Link } from "react-router-dom";
+
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 class TicketRow extends React.Component {
   constructor() {
     super();
     this.state = {
-      checkbox: false
+      checkbox: false,
+      id: null
     };
 
     this.handleCheckbox = this.handleCheckbox.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      id: this.props.id
+    });
   }
 
   handleCheckbox = event => {
@@ -25,6 +34,8 @@ class TicketRow extends React.Component {
   };
 
   render() {
+    let linkStr = "requestDetail/" + this.props.id;
+
     return (
       <div className="filter-box-2">
         <div className="col span-1-of-12">
@@ -46,8 +57,10 @@ class TicketRow extends React.Component {
           <h4 className="detail">{this.props.type}</h4> {/*Purchase Enquiry*/}
         </div>
         <div className="col span-1-of-4">
-          <h4 className="detail">{this.props.subject}</h4>
-          {/*Enquiry about API*/}
+          <Link to={linkStr}>
+            <h4 className="detail">{this.props.subject}</h4>
+          </Link>
+          {/*Enquiry about API => we make this one a link*/}
         </div>
         <div className="col span-1-of-6">
           <h4 className="detail">{this.props.dateRequested}</h4>

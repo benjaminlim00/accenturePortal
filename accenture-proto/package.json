@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.3.1",
+    "concurrently": "^4.1.0",
     "graphql": "^14.1.1",
     "nodemon": "^1.18.10",
     "react": "^16.8.3",
@@ -20,7 +21,7 @@
     "semantic-ui-react": "^0.85.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"node ./backend/server.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

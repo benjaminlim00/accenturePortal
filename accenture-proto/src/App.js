@@ -5,6 +5,7 @@ import AddRequest from "./components/AddRequest";
 import RequestDetail from "./components/RequestDetail";
 import NavBar from "./components/NavBar";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
@@ -41,7 +42,12 @@ class App extends Component {
         {navHeader}
         <Router>
           <Switch>
-            <Route exact path="/requests/" component={TicketList} />
+            <PrivateRoute
+              authed={this.state.isAuth}
+              path="/requests"
+              component={TicketList}
+            />
+
             <Route
               exact
               path="/"
@@ -50,7 +56,7 @@ class App extends Component {
               )}
             />
             <Route exact path="/add" component={AddRequest} />
-            <Route path="/requestDetail:id" component={RequestDetail} />
+            <Route path="/requestDetail/:id" exact component={RequestDetail} />
           </Switch>
         </Router>
       </ApolloProvider>

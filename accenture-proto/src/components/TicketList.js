@@ -40,6 +40,7 @@ class TicketList extends React.Component {
       return data.requests.map(request => {
         return (
           <TicketRow
+            id={request.id}
             requester={request.requester}
             asset={request.asset}
             type={request.type}
@@ -48,6 +49,7 @@ class TicketList extends React.Component {
             priority={request.priority}
             status={request.status}
             assigned={request.assigned}
+            key={request.id}
           />
         );
       });
