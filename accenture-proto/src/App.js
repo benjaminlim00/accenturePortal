@@ -42,12 +42,7 @@ class App extends Component {
         {navHeader}
         <Router>
           <Switch>
-            <PrivateRoute
-              authed={this.state.isAuth}
-              path="/requests"
-              component={TicketList}
-            />
-
+            <Route exact path="/requests" component={TicketList} />
             <Route
               exact
               path="/"
@@ -56,7 +51,7 @@ class App extends Component {
               )}
             />
             <Route exact path="/add" component={AddRequest} />
-            <Route path="/requestDetail/:id" component={RequestDetail} />
+            <Route exact path="/requestDetail/:id" component={RequestDetail} />
           </Switch>
         </Router>
       </ApolloProvider>

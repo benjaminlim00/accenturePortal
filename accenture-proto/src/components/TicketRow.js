@@ -71,10 +71,8 @@ class TicketRow extends React.Component {
           <h4 className="detail">{this.props.priority}</h4> {/*High*/}
         </div>
         <div className="col span-1-of-9">
-          <h4 className="detail">
-            {this.props.status}
-            <DropdownCard className="arrow-button" />
-          </h4>
+          <h4 className="detail">{this.props.status}</h4>
+          <DropdownCard className="arrow-button" />
         </div>
         <div className="col span-1-of-9">
           <h4 className="detail">

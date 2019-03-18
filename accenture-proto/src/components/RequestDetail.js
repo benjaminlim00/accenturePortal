@@ -21,7 +21,6 @@ class RequestDetail extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: null,
       show: false
       //
       // asset: null,
@@ -54,11 +53,13 @@ class RequestDetail extends React.Component {
     var data = this.props.getRequestsQuery;
     var dataArr;
     if (!data.loading) {
+      let pageId = window.location.pathname.substring(15);
+
       // console.log(data.requests);  all the different data with diff ids
       // console.log(this.state.id); the current id
 
       dataArr = data.requests.filter(request => {
-        return request.id === this.state.id;
+        return request.id === pageId;
       });
 
       dataArr = dataArr[0];
@@ -80,16 +81,6 @@ class RequestDetail extends React.Component {
     } else {
       console.log("still retreiving data from mongoDB");
     }
-  }
-
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    // let ID = id; // no need to substring here
-    //handle the data from graphql here.Here we save ID to state. So that we can retreive from graphql later.
-    // console.log(id);
-    this.setState({
-      id: id
-    });
   }
 
   render() {

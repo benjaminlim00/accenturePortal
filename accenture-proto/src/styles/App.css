@@ -223,6 +223,7 @@ html {
   color: #000000;
   font-weight: 300;
   text-align: left;
+  display: inline-block;
 }
 
 .request-list-header {
@@ -255,7 +256,7 @@ html {
 }
 
 .arrow-button {
-  float: left;
+  display: inline-block;
 }
 
 #transparentButton {
