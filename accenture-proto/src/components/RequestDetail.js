@@ -5,6 +5,7 @@ import "../styles/normalize.css";
 import "../styles/RequestDetail.css";
 import TicketProperties from "./TicketProperties";
 import TrashModal from "./TrashModal";
+import NavBar from "./NavBar";
 
 import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
@@ -84,8 +85,14 @@ class RequestDetail extends React.Component {
   }
 
   render() {
+    const modalTextMargin = {
+      marginTop: "10px",
+      marginLeft: "20px"
+    };
+
     return (
       <div>
+        <NavBar />
         <div className="row">
           <h2 className="all-tickets">All Tickets</h2>
           <img src={profileIcon} className="user-icon" />
@@ -107,8 +114,14 @@ class RequestDetail extends React.Component {
               handleBack={this.hideModal}
               handleDelete={this.deleteData}
             >
-              <p>Modal</p>
-              <p>Data</p>
+              <h3 style={modalTextMargin}>
+                Are you sure you would like to delete this request?
+              </h3>
+              <br />
+              <br />
+              <p className="error-textVerModal">
+                This action cannot be reversed
+              </p>
             </TrashModal>
 
             <button

@@ -106,6 +106,12 @@
   font-size: 13px;
   color: #d63301;
 }
+.error-textVerModal {
+  font-size: 20px;
+  color: #d63301;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
 
 .accenture-logo-login {
   width: 80px;

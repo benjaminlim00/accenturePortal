@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import TicketList from "./components/TicketList";
 import LoginPage from "./components/LoginPage";
-import AddRequest from "./components/AddRequest";
+import AddRequestNew from "./components/AddRequestNew";
+import AddRequestOld from "./components/AddRequestOld";
 import RequestDetail from "./components/RequestDetail";
 import NavBar from "./components/NavBar";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
@@ -36,10 +37,9 @@ class App extends Component {
   }
 
   render() {
-    let navHeader = this.state.isAuth ? <NavBar /> : "";
+    // let navHeader = this.state.isAuth ? <NavBar /> : "";
     return (
       <ApolloProvider client={client}>
-        {navHeader}
         <Router>
           <Switch>
             <Route exact path="/requests" component={TicketList} />
@@ -50,7 +50,8 @@ class App extends Component {
                 <LoginPage {...props} handleAuth={this.handleAuth} />
               )}
             />
-            <Route exact path="/add" component={AddRequest} />
+            <Route exact path="/addnew" component={AddRequestNew} />
+            <Route exact path="/addold" component={AddRequestOld} />
             <Route exact path="/requestDetail/:id" component={RequestDetail} />
           </Switch>
         </Router>

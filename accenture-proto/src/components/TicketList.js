@@ -8,6 +8,7 @@ import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 import TicketRow from "./TicketRow";
+import NavBar from "./NavBar";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../queries/queries";
@@ -111,6 +112,7 @@ class TicketList extends React.Component {
   render() {
     return (
       <div>
+        <NavBar />
         <div className="row">
           <h2 className="small-heading">All Tickets</h2>
           <img src={profileIcon} className="user-icon" />

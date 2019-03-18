@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/App.css";
 
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
@@ -44,8 +45,9 @@ class DropdownCard extends Component {
               this.dropdownMenu = element;
             }}
           >
-            <button> Open </button>
-            <button> Resolved </button>
+            <button id="transparentButtonVer2"> Open </button>
+            <br />
+            <button id="transparentButtonVer2"> Resolved </button>
           </div>
         ) : null}
       </div>

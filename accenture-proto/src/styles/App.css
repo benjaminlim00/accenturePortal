@@ -223,7 +223,6 @@ html {
   color: #000000;
   font-weight: 300;
   text-align: left;
-  display: inline-block;
 }
 
 .request-list-header {
@@ -262,4 +261,9 @@ html {
 #transparentButton {
   border: none;
   background: rgba(0, 0, 0, 0);
+}
+
+#transparentButtonVer2 {
+  background: rgba(0, 0, 0, 0);
+  border-style: "solid";
 }
