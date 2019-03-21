@@ -43,7 +43,7 @@ class TrashModal extends React.Component {
     return (
       <div className={showHideClassName}>
         <section className="modal-main">
-          {/* {children} */}
+          {children}
           <button style={backStyle} onClick={handleBack}>
             Back
           </button>

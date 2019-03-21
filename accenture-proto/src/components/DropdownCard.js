@@ -34,7 +34,11 @@ class DropdownCard extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.showMenu} id="transparentButton">
+        <button
+          onClick={this.showMenu}
+          id="transparentButton"
+          className="transparentButton-status"
+        >
           <img src={arrow} className="arrow-down-2" />
         </button>
 
