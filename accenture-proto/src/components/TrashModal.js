@@ -1,8 +1,12 @@
 import React from "react";
 import "../styles/TrashModal.css";
+import { withRouter } from "react-router-dom";
+
+import DeleteButton from "./deleteButton";
 
 class TrashModal extends React.Component {
   render() {
+    let pageId = window.location.pathname.substring(15);
     var { handleBack, handleDelete, show, children } = this.props;
 
     let showHideClassName = show
@@ -50,6 +54,8 @@ class TrashModal extends React.Component {
           <button style={deleteStyle} onClick={handleDelete}>
             Delete
           </button>
+
+          <DeleteButton id={pageId} />
         </section>
       </div>
     );

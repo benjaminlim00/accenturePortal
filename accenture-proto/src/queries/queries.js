@@ -55,4 +55,12 @@ const addRequestMutation = gql`
   }
 `;
 
-export { getRequestsQuery, addRequestMutation };
+const deleteRequestMutation = gql`
+  mutation deleteRequestMutation($id: ID!) {
+    deleteRequest(id: $id) {
+      id
+    }
+  }
+`;
+
+export { getRequestsQuery, addRequestMutation, deleteRequestMutation };
