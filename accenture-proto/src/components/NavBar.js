@@ -21,10 +21,10 @@ class NavBar extends React.Component {
             <p className="accenture-text">Accenture</p>
             <ul className="main-nav">
               <li className="home-page">
-                <a href="#">Home</a>
+                <a href="/requests">Home</a>
               </li>
               <li className="create-ticket-page">
-                <a href="#">Create Ticket</a>
+                <a href="/createTicket">Create Ticket</a>
               </li>
               <li className="settings-page">
                 <a href="#">Settings</a>

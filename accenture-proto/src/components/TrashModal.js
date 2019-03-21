@@ -7,7 +7,7 @@ import DeleteButton from "./deleteButton";
 class TrashModal extends React.Component {
   render() {
     let pageId = window.location.pathname.substring(15);
-    var { handleBack, handleDelete, show, children } = this.props;
+    var { handleBack, show, children } = this.props;
 
     let showHideClassName = show
       ? "modal trash-display-block"
@@ -51,11 +51,8 @@ class TrashModal extends React.Component {
           <button style={backStyle} onClick={handleBack}>
             Back
           </button>
-          <button style={deleteStyle} onClick={handleDelete}>
-            Delete
-          </button>
 
-          <DeleteButton id={pageId} />
+          <DeleteButton id={pageId} style={deleteStyle} />
         </section>
       </div>
     );

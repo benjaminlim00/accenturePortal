@@ -38,6 +38,7 @@ class deleteButton extends React.Component {
       >
         {(deleteRequest, { data }) => (
           <button
+            style={this.props.style}
             onClick={e => {
               deleteRequest({
                 variables: {

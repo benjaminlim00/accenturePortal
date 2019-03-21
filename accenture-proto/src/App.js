@@ -5,6 +5,7 @@ import AddRequestNew from "./components/AddRequestNew";
 import AddRequestOld from "./components/AddRequestOld";
 import RequestDetail from "./components/RequestDetail";
 import NavBar from "./components/NavBar";
+import CreateTicket from "./components/CreateTicket";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -52,6 +53,7 @@ class App extends Component {
             />
             <Route exact path="/addnew" component={AddRequestNew} />
             <Route exact path="/addold" component={AddRequestOld} />
+            <Route exact path="/createTicket" component={CreateTicket} />
             <Route exact path="/requestDetail/:id" component={RequestDetail} />
           </Switch>
         </Router>

@@ -45,11 +45,6 @@ class RequestDetail extends React.Component {
     this.setState({ show: false });
   };
 
-  deleteData = () => {
-    console.log("data deleted, redirect to requests");
-    this.setState({ show: false });
-  };
-
   displayData() {
     var data = this.props.getRequestsQuery;
     var dataArr;
@@ -109,11 +104,7 @@ class RequestDetail extends React.Component {
             <h3 className="back-to-tickets-text">Back to Tickets</h3>
             <img src="" className="settings" />
 
-            <TrashModal
-              show={this.state.show}
-              handleBack={this.hideModal}
-              handleDelete={this.deleteData}
-            >
+            <TrashModal show={this.state.show} handleBack={this.hideModal}>
               <h3 style={modalTextMargin}>
                 Are you sure you would like to delete this request?
               </h3>

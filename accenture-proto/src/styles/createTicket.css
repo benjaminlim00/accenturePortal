@@ -6,7 +6,7 @@
 */
 /* -----------------------------------------------*/
 
-/* -----------------------------------------------*/
+/* ----------------------------------------------*/
 /* BASIC SETUP */
 /* -----------------------------------------------*/
 * {
@@ -40,19 +40,6 @@ html {
   margin-left: 2%;
   margin: 1.5%;
   display: inline-block;
-}
-
-.all-tickets {
-  font-size: 100%;
-  margin-left: 2%;
-  color: #000000;
-  margin: 1.5%;
-  display: inline-block;
-}
-
-.text-boxes {
-  background-color: #ffff;
-  border: 1px solid #7e7e7e;
 }
 
 /* -----------------------------------------------*/
@@ -128,152 +115,109 @@ html {
   margin-right: 2%;
 }
 
-.ticket-enquiry-section {
-  background-color: #e8e8e8;
-  background-color: cover;
-  padding: 1.5%;
-}
-
-/* -----------------------------------------------*/
-/* FILTER BOX */
-/* -----------------------------------------------*/
-
-.current-tickets {
-  background-color: #ecf0f1;
+.ticket-page-header {
+  background-color: #ffffff;
   background-size: cover;
 }
+/* -----------------------------------------------*/
+/* MAIN BODY */
+/* -----------------------------------------------*/
 
-.filter-text,
-.sort-by-text {
-  background-color: #fff;
-  display: inline-block;
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-top: 1%;
-  padding: 0.5% 1%;
-  padding-left: 1.5%;
-  font-size: 90%;
+.create-new-tix-main-body {
+  background-color: #ecf0f1;
+  display: flex;
 }
 
-.arrow-right,
+.heading-box {
+  padding-left: 1.5%;
+}
+
+.create-new-tix-heading {
+  font-size: 85%;
+  color: #000000;
+  margin: 30% 0;
+  margin-left: 30%;
+}
+
+.top-heading {
+  margin-top: 15%;
+}
+
+.small-input-field {
+  background-color: #ffffff;
+  border: 1px solid #808080;
+  padding: 1%;
+  margin: 2.7% 0;
+  font-weight: 300;
+  font-size: 80%;
+  color: #414141;
+  width: 110%;
+}
+
+.line-space {
+  margin: 5% 0;
+  display: inline-block;
+  width: 600px;
+}
+
 .arrow-down {
   width: 20px;
   height: 20px;
   vertical-align: top;
-}
-
-.arrow-right {
-  transform: rotate(270deg);
-}
-
-.sort-by-text {
+  margin-top: 4%;
   float: right;
 }
 
-.filter-box {
-  background-color: #fff;
-  background-size: cover;
-  display: flex;
-  margin: 0 2%;
-}
-
-.filter-box-2 {
-  background-color: #fff;
-  background-size: cover;
-  display: flex;
-  margin: 0 2%;
-  border-bottom: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #e5e5e5;
-  font-size: 90%;
-}
-/* -----------------------------------------------*/
-/* TICKET REQUEST DETAILS */
-/* -----------------------------------------------*/
-
-.request-details {
-  font-size: 80%;
-  padding: 3% 8%;
-  font-weight: 400;
-}
-
-.request-details:after {
-  display: block;
-  height: 1px;
-  background-color: #000000;
-  content: " ";
-  width: inherit;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-
-/* -----------------------------------------------*/
-/* TICKET REQUEST LIST */
-/* -----------------------------------------------*/
-
-.checkboxIMG {
-  display: block;
-  margin: 0 auto;
-  width: 17px;
-  height: 17px;
-}
-
-.detail {
-  font-size: 80%;
-  color: #000000;
-  font-weight: 300;
-  text-align: left;
-}
-
-.request-list-header {
-  margin-top: 2%;
-  background-color: #e8e8e8;
-}
-
-.arrow-down-2 {
-  width: 20px;
-  height: 20px;
+.file-logo {
+  width: 23px;
+  height: 23px;
+  display: inline-block;
+  margin: 1%;
+  margin-right: 0;
   vertical-align: top;
 }
 
-.indiv-checkbox {
-  margin: 0.5% 2%;
-  width: 17px;
-  height: 17px;
+.top-field {
+  margin-top: 3%;
 }
 
-.checkboxAll {
+.input-fields {
+  padding-left: 5%;
+}
+
+.last-field {
+  margin-bottom: -1%;
+}
+
+.attach-send-bar {
+  background-color: #d0d0d0;
   display: block;
-  margin: 0 auto;
-  width: 17px;
-  height: 17px;
+  width: 730px;
+  height: 40px;
+  margin-top: 15px;
 }
 
-.rows-checkboxNeed {
-  display: block;
-  margin: 0 auto;
-  margin-top: 7px;
-}
-
-.arrow-button {
+.attach-file {
   display: inline-block;
+  margin: 1.5% 0;
+  font-size: 80%;
 }
 
-#transparentButton {
+.send {
+  text-align: center;
+  background-color: #249d3b;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 7px;
+}
+
+.send-button {
+  display: inline-block;
+  font-size: 75%;
+  width: 70px;
+  float: right;
+  margin: 1%;
+
   border: none;
   background: rgba(0, 0, 0, 0);
-}
-
-#rowC {
-  display: flex;
-  flex-direction: row;
-}
-
-#transparentButtonVer2 {
-  background: rgba(0, 0, 0, 0);
-  border-style: double;
-}
-
-.transparentButton-status {
-  margin-top: 4px;
 }
