@@ -46,7 +46,7 @@ class RequestDetail extends React.Component {
   };
 
   deleteData = () => {
-    console.log("data deleted");
+    console.log("data deleted, redirect to requests");
     this.setState({ show: false });
   };
 
