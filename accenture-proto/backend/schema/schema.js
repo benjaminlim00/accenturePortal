@@ -89,6 +89,15 @@ const Mutation = new GraphQLObjectType({
         });
         return request.save();
       }
+    },
+    deleteRequest: {
+      type: RequestType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parent, args) {
+        return Request.findByIdAndDelete(args.id);
+      }
     }
   }
 });
