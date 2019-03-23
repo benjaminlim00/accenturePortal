@@ -112,7 +112,7 @@
   vertical-align: top;
 }
 
-.file-logo {
+.file-logo-reqdetail {
   width: 25px;
   height: 25px;
   display: inline-block;
@@ -122,7 +122,7 @@
   vertical-align: top;
 }
 
-.attach-file {
+.attach-file-words {
   display: inline-block;
   margin: 1.5%;
   margin-bottom: 0;
@@ -143,6 +143,21 @@
 .send-button {
   display: inline-block;
   font-size: 80%;
+}
+
+.send-button-detailspage {
+  display: inline-block;
+  font-size: 80%;
+}
+
+.send-detailspage {
+  padding: 7.2% 23px;
+  margin-left: -1%;
+  text-align: center;
+  background-color: #249d3b;
+  color: #ffffff;
+  text-transform: uppercase;
+  border-radius: 7px;
 }
 
 .cancel {

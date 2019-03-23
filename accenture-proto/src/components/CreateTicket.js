@@ -1,9 +1,10 @@
 import React from "react";
 import "../styles/createTicket.css";
 import { graphql, compose } from "react-apollo";
+import { Redirect } from "react-router-dom";
 import { addRequestMutation } from "../queries/queries";
 import NavBar from "./NavBar";
-import { Redirect } from "react-router-dom";
+import AssignedOptions from "../Resources/Data/AssignedOptions";
 
 import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
@@ -48,11 +49,9 @@ class CreateTicket extends React.Component {
   }
 
   displayAssigned() {
-    let datals = [
-      { name: "Ben", id: 0 },
-      { name: "Bertha", id: 1 },
-      { name: "Hangwee", id: 2 }
-    ];
+    let datals = { AssignedOptions };
+    datals = datals.AssignedOptions;
+    console.log(datals);
 
     return datals.map(data => {
       return (

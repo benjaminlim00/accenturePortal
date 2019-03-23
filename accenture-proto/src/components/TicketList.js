@@ -127,7 +127,7 @@ class TicketList extends React.Component {
           <div className="sort-by-text">
             <span>
               Sort by: Date Requested
-              <img src={arrow} className="arrow-down" />
+              <img src={arrow} className="arrow-down-datereq" />
             </span>
           </div>
           <div className="filter-box request-list-header">

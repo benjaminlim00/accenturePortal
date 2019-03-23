@@ -221,13 +221,13 @@ class RequestDetail extends React.Component {
               </div>
               <p className="enquiry-body"> hi</p>
               <div className="enquiry-head">
-                <img src={fileLogo} className="file-logo" />
-                <p className="attach-file">Attach</p>
+                <img src={fileLogo} className="file-logo-reqdetail" />
+                <p className="attach-file-words">Attach</p>
                 <div className="cancel-button">
                   <p className="cancel">Cancel</p>
                 </div>
-                <div className="send-button">
-                  <p className="send">Send</p>
+                <div className="send-button-detailspage">
+                  <p className="send-detailspage">Send</p>
                 </div>
               </div>
             </div>

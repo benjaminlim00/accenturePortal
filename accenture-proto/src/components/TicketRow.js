@@ -3,6 +3,7 @@ import "../styles/App.css";
 import "../styles/grid.css";
 import "../styles/normalize.css";
 import DropdownCard from "./DropdownCard";
+import DropdownCardAssigned from "./DropdownCardAssigned";
 
 import { Link } from "react-router-dom";
 
@@ -76,11 +77,9 @@ class TicketRow extends React.Component {
           <h4 className="detail">{this.props.status}</h4>
           <DropdownCard />
         </div>
-        <div className="col span-1-of-9">
-          <h4 className="detail">
-            {this.props.assigned}
-            <img src={arrow} className="arrow-down-2" />
-          </h4>
+        <div className="col span-1-of-9" id="rowC">
+          <h4 className="detail">{this.props.assigned}</h4>
+          <DropdownCardAssigned />
         </div>
       </div>
     );

@@ -161,6 +161,11 @@ html {
   height: 20px;
   vertical-align: top;
 }
+.arrow-down-datereq {
+  width: 20px;
+  height: 20px;
+  margin-left: 6px;
+}
 
 .arrow-right {
   transform: rotate(270deg);
