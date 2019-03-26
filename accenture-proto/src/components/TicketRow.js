@@ -59,10 +59,8 @@ class TicketRow extends React.Component {
           <h4 className="detail">{this.props.type}</h4> {/*Purchase Enquiry*/}
         </div>
         <div className="col span-1-of-4">
-          <Link to={linkStr}>
-            <h4 className="detail">
-              <u>{this.props.subject}</u>
-            </h4>
+          <Link to={linkStr} className="subjectLink">
+            <h4 className="detail subjectLinkHover">{this.props.subject}</h4>
           </Link>
           {/*Enquiry about API => we make this one a link*/}
         </div>

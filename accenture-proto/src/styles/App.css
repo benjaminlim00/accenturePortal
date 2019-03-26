@@ -216,6 +216,30 @@ html {
 /* TICKET REQUEST LIST */
 /* -----------------------------------------------*/
 
+.subjectLink {
+  text-decoration: none;
+}
+
+.subjectLinkHover:link,
+.subjectLinkHover:visited {
+  padding: 8px 0;
+  color: #414141;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.subjectLinkHover:hover,
+.subjectLinkHover:active {
+  font-weight: bold;
+  color: #000000;
+}
+
+.subjectLinkHover {
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #e5e5e5;
+}
+
 .checkboxIMG {
   display: block;
   margin: 0 auto;
@@ -252,6 +276,7 @@ html {
   margin: 0 auto;
   width: 17px;
   height: 17px;
+  margin-top: 10%;
 }
 
 .rows-checkboxNeed {
