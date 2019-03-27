@@ -141,28 +141,44 @@ class TicketList extends React.Component {
               />
             </div>
             <div className="col span-1-of-9">
-              <h4 className="detail">Requester</h4>
+              <h4 className="detail" id="detailHeading">
+                <b>Requester</b>
+              </h4>
             </div>
             <div className="col span-1-of-9">
-              <h4 className="detail">Asset(s)</h4>
+              <h4 className="detail" id="detailHeading">
+                <b>Asset(s)</b>
+              </h4>
             </div>
             <div className="col span-1-of-9">
-              <h4 className="detail">Type</h4>
-            </div>
-            <div className="col span-1-of-4">
-              <h4 className="detail">Subject</h4>
-            </div>
-            <div className="col span-1-of-6">
-              <h4 className="detail">Date/Time Requested</h4>
+              <h4 className="detail" id="detailHeading">
+                <b>Type</b>
+              </h4>
             </div>
             <div className="col span-1-of-9">
-              <h4 className="detail">Priority</h4>
+              <h4 className="detail" id="detailHeading">
+                <b>Subject</b>
+              </h4>
+            </div>
+            <div className="col span-1-of-7">
+              <h4 className="detail" id="detailHeading">
+                <b>Date/Time Requested</b>
+              </h4>
             </div>
             <div className="col span-1-of-9">
-              <h4 className="detail">Status</h4>
+              <h4 className="detail" id="detailHeading">
+                <b>Priority</b>
+              </h4>
             </div>
             <div className="col span-1-of-9">
-              <h4 className="detail">Assigned To</h4>
+              <h4 className="detail" id="detailHeading">
+                <b>Status</b>
+              </h4>
+            </div>
+            <div className="col span-1-of-9">
+              <h4 className="detail" id="detailHeading">
+                <b>Assigned To</b>
+              </h4>
             </div>
           </div>
           {/*end of bar, here we start displaying the data*/}

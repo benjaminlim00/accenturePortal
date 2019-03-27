@@ -58,13 +58,13 @@ class TicketRow extends React.Component {
         <div className="col span-1-of-9">
           <h4 className="detail">{this.props.type}</h4> {/*Purchase Enquiry*/}
         </div>
-        <div className="col span-1-of-4">
+        <div className="col span-1-of-9">
           <Link to={linkStr} className="subjectLink">
             <h4 className="detail subjectLinkHover">{this.props.subject}</h4>
           </Link>
           {/*Enquiry about API => we make this one a link*/}
         </div>
-        <div className="col span-1-of-6">
+        <div className="col span-1-of-7">
           <h4 className="detail">{this.props.dateRequested}</h4>
           {/*12 January 2019 12:00:00*/}
         </div>

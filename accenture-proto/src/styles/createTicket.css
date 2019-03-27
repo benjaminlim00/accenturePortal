@@ -190,11 +190,11 @@ html {
 }
 
 .attach-send-bar {
-  background-color: #d0d0d0;
+  background-color: #f5f5f5;
   display: block;
-  width: 730px;
   height: 40px;
-  margin-top: 15px;
+  border: 1px solid #afafaf;
+  width: 110%;
 }
 
 .attach-file {

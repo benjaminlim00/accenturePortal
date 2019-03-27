@@ -189,9 +189,9 @@
 }
 
 .property {
-  margin: 4%;
+  margin: 8% 4%;
   padding: 1%;
-  font-size: 80%;
+  font-size: 70%;
 }
 
 .propertyNormalWords {
@@ -220,7 +220,7 @@
 }
 
 .special-property {
-  margin: 4%;
+  margin: 8% 4%;
   padding: 1%;
   font-size: 80%;
 }
