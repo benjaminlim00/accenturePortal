@@ -4,7 +4,7 @@ import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg
 class TicketProperties extends React.Component {
   render() {
     return (
-      <div className="col span-1-of-4 text-boxes">
+      <div className="col span-1-of-4 text-boxes internal-scrolling">
         {console.log(this.props)}
         <div className="properties">
           <h2 className="small-heading">Ticket Properties</h2>

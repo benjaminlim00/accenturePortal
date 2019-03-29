@@ -360,3 +360,8 @@
   height: 25px;
   vertical-align: top;
 }
+
+.internal-scrolling {
+  height: 600px;
+  overflow-y: scroll;
+}

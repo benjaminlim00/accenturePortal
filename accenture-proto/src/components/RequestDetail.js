@@ -156,7 +156,7 @@ class RequestDetail extends React.Component {
 
             {this.displayData()}
 
-            <div className="col span-1-of-4 text-boxes">
+            <div className="col span-1-of-4 text-boxes internal-scrolling">
               <div className="combined-contact-past-ticket-details">
                 <div className="contact-details">
                   <h5 className="small-heading">Contact Details</h5>
