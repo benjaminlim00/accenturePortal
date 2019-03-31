@@ -7,7 +7,6 @@ import RequestDetail from "./components/RequestDetail";
 import NavBar from "./components/NavBar";
 import CreateTicket from "./components/CreateTicket";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
