@@ -88,6 +88,7 @@ class RequestDetail extends React.Component {
     return (
       <div>
         <NavBar />
+
         <div className="row">
           <h2 className="all-tickets">All Tickets</h2>
           <img src={profileIcon} className="user-icon" />
@@ -102,6 +103,7 @@ class RequestDetail extends React.Component {
             </button>
 
             <h3 className="back-to-tickets-text">Back to Tickets</h3>
+
             <img src="" className="settings" />
 
             <TrashModal show={this.state.show} handleBack={this.hideModal}>

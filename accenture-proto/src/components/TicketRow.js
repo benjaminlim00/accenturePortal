@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/App.css";
 import "../styles/grid.css";
 import "../styles/normalize.css";
-import DropdownCard from "./DropdownCard";
+import DropdownCardStatus from "./DropdownCardStatus";
 import DropdownCardAssigned from "./DropdownCardAssigned";
 
 import { Link } from "react-router-dom";
@@ -73,7 +73,7 @@ class TicketRow extends React.Component {
         </div>
         <div className="col span-1-of-9" id="rowC">
           <h4 className="detail">{this.props.status}</h4>
-          <DropdownCard />
+          <DropdownCardStatus idd={this.props.id} />
         </div>
         <div className="col span-1-of-9" id="rowC">
           <h4 className="detail">{this.props.assigned}</h4>

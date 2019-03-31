@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "../styles/App.css";
+import UpdateButton from "./UpdateButton";
 
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
-class DropdownCard extends Component {
+class DropdownCardStatus extends Component {
   constructor() {
     super();
 
@@ -32,6 +33,9 @@ class DropdownCard extends Component {
   }
 
   render() {
+    let pageId = this.props.idd;
+    // console.log("pageID is: " + pageId);
+
     return (
       <div>
         <button
@@ -49,8 +53,11 @@ class DropdownCard extends Component {
               this.dropdownMenu = element;
             }}
           >
+            <UpdateButton idd={pageId} text="Open" logic="open" />
             <button id="transparentButtonVer2"> Open </button>
             <br />
+            <UpdateButton idd={pageId} text="Resolved" logic="resolved" />
+
             <button id="transparentButtonVer2"> Resolved </button>
           </div>
         ) : null}
@@ -59,4 +66,4 @@ class DropdownCard extends Component {
   }
 }
 
-export default DropdownCard;
+export default DropdownCardStatus;
