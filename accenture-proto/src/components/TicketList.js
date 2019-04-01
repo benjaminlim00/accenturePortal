@@ -37,8 +37,14 @@ class TicketList extends React.Component {
   displayRequests() {
     var data = this.props.getRequestsQuery;
     if (!data.loading) {
-      console.log(data.requests);
-      return data.requests.map(request => {
+      // console.log(data.requests);
+      let dataArr = Object.values(data.requests);
+      dataArr.sort((a, b) =>
+        a.requester > b.requester ? 1 : b.requester > a.requester ? -1 : 0
+      );
+      // console.log(arr);
+
+      return dataArr.map(request => {
         return (
           <TicketRow
             id={request.id}
