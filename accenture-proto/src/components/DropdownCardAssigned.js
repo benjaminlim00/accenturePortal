@@ -49,11 +49,17 @@ class DropdownCardAssigned extends Component {
               this.dropdownMenu = element;
             }}
           >
-            <button id="transparentButtonVer2"> Ben </button>
-            <br />
-            <button id="transparentButtonVer2"> Bertha </button>
-            <br />
-            <button id="transparentButtonVer2"> HangWee </button>
+            <ul className="dropdownList2">
+              <li className="buttonList">
+                <button id="transparentButtonVer2"> Ben </button>
+              </li>
+              <li className="buttonList">
+                <button id="transparentButtonVer2"> Bertha </button>
+              </li>
+              <li className="buttonList">
+                <button id="transparentButtonVer2"> HangWee </button>
+              </li>
+            </ul>
           </div>
         ) : null}
       </div>

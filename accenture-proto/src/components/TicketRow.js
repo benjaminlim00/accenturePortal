@@ -71,12 +71,16 @@ class TicketRow extends React.Component {
         <div className="col span-1-of-9">
           <h4 className="detail">{this.props.priority}</h4> {/*High*/}
         </div>
-        <div className="col span-1-of-9" id="rowC">
+        <div className="col span-1-of-9" id="status">
           <h4 className="detail">{this.props.status}</h4>
+        </div>
+        <div className="statusArrow">
           <DropdownCardStatus idd={this.props.id} />
         </div>
-        <div className="col span-1-of-9" id="rowC">
+        <div className="col span-1-of-9" id="assignedTo">
           <h4 className="detail">{this.props.assigned}</h4>
+        </div>
+        <div className="assignedToArrow">
           <DropdownCardAssigned />
         </div>
       </div>

@@ -307,15 +307,76 @@ html {
   flex-direction: row;
 }
 
+.dropdownList {
+  border: 1px solid #acacac;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 0.5% 1%;
+  margin-left: -5.5%;
+}
+
+.dropdownList2 {
+  border: 1px solid #acacac;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 0.5% 1%;
+  margin-left: -6%;
+}
+
+.buttonList {
+  list-style: none;
+  margin: 10% 0;
+  position: relative;
+}
+
+.arrow-down-assigned {
+  width: 20px;
+  height: 20px;
+  vertical-align: top;
+}
+
 #transparentButtonVer2 {
   background: rgba(0, 0, 0, 0);
-  border-style: double;
-  padding: 5%;
-  width: 120%;
-  margin-left: -70%;
-  text-align: center;
-  border-radius: 3px;
+  border-style: none;
   height: auto;
+  font-weight: 300;
+}
+
+#transparentButtonVer2:link,
+#transparentButtonVer2:visited {
+  padding: 8px 0;
+  color: #414141;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+#transparentButtonVer2:hover,
+#transparentButtonVer2:active {
+  font-weight: 400;
+  color: #000000;
+  font-size: 100%;
+}
+
+.statusArrow {
+  margin: 1%;
+  margin-left: -2.5%;
+  margin-right: 2%;
+}
+
+#status {
+  margin-right: -1.5%;
+}
+
+#assignedTo {
+  margin-right: -3.5%;
+}
+
+.assignedToArrow {
+  margin-top: 1%;
 }
 
 .transparentButton-status {

@@ -98,7 +98,7 @@ class UpdateButton extends React.Component {
       >
         {(deleteRequest, { data }) => (
           <button
-            className="transparentButtonVer2"
+            id="transparentButtonVer2"
             style={this.props.style}
             onClick={e => {
               this.handleSubmit();

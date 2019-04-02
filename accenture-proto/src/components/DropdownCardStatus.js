@@ -53,12 +53,14 @@ class DropdownCardStatus extends Component {
               this.dropdownMenu = element;
             }}
           >
-            <UpdateButton idd={pageId} text="Open" logic="open" />
-            <button id="transparentButtonVer2"> Open </button>
-            <br />
-            <UpdateButton idd={pageId} text="Resolved" logic="resolved" />
-
-            <button id="transparentButtonVer2"> Resolved </button>
+            <ul className="dropdownList">
+              <li className="buttonList">
+                <UpdateButton idd={pageId} text="Open" logic="open" />
+              </li>
+              <li className="buttonList">
+                <UpdateButton idd={pageId} text="Resolved" logic="resolved" />
+              </li>
+            </ul>
           </div>
         ) : null}
       </div>

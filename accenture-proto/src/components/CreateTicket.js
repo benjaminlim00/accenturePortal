@@ -195,7 +195,7 @@ class CreateTicket extends React.Component {
 
               <select
                 onChange={e => this.setState({ assigned: e.target.value })}
-                className="small-input-field"
+                className="small-input-field dropdownOption"
               >
                 <option>Select admin</option>
                 {this.displayAssigned()}
@@ -208,7 +208,7 @@ class CreateTicket extends React.Component {
                   placeholder="Enter text here..."
                   rows="4"
                   cols="100"
-                  className="small-input-field last-field"
+                  className="small-input-field last-field dropdownOption"
                 />
               </label>
 

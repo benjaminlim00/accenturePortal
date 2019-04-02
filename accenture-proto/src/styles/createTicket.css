@@ -146,18 +146,16 @@ html {
 .small-input-field {
   background-color: #ffffff;
   border: 1px solid #808080;
-  padding: 1%;
-  margin: 2.7% 0;
+  padding: 0.75%;
+  margin-top: 6%;
   font-weight: 300;
   font-size: 80%;
   color: #414141;
   width: 110%;
 }
 
-.line-space {
-  margin: 5% 0;
-  display: inline-block;
-  width: 600px;
+.dropdownOption {
+  margin-top: 6.5%;
 }
 
 .arrow-down {
@@ -173,12 +171,12 @@ html {
   height: 23px;
   display: inline-block;
   margin: 1%;
-  margin-right: 0.5s%;
+  margin-right: 0.5%;
   vertical-align: top;
 }
 
 .top-field {
-  margin-top: 3%;
+  margin-top: 3.5%;
 }
 
 .input-fields {
@@ -214,10 +212,8 @@ html {
 .send-button {
   display: inline-block;
   font-size: 75%;
-  width: 70px;
   float: right;
-  margin: 1%;
-
+  margin: 0.7% 2%;
   border: none;
   background: rgba(0, 0, 0, 0);
 }
