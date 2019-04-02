@@ -9,6 +9,7 @@ import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg
 
 import TicketRow from "./TicketRow";
 import NavBar from "./NavBar";
+import CustomizedSnackbars from "./CustomizedSnackbars";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../queries/queries";
@@ -116,9 +117,17 @@ class TicketList extends React.Component {
   };
 
   render() {
+    if (performance.navigation.type == 1) {
+      console.info("This page is reloaded, lets pop a snackbar");
+      var showSnackbar = true;
+    } else {
+      console.info("This page is not reloaded");
+      var showSnackbar = false;
+    }
     return (
       <div>
         <NavBar />
+        {showSnackbar ? <CustomizedSnackbars /> : null}
         <div className="row">
           <h2 className="small-heading">All Tickets</h2>
           <img src={profileIcon} className="user-icon" />
