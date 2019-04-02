@@ -55,10 +55,10 @@ class DropdownCardStatus extends Component {
           >
             <ul className="dropdownList">
               <li className="buttonList">
-                <UpdateButton idd={pageId} text="Open" logic="open" />
+                <UpdateButton idd={pageId} text="Open" logic="status" />
               </li>
               <li className="buttonList">
-                <UpdateButton idd={pageId} text="Resolved" logic="resolved" />
+                <UpdateButton idd={pageId} text="Resolved" logic="status" />
               </li>
             </ul>
           </div>

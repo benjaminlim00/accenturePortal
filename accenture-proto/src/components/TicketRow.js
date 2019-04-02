@@ -81,7 +81,7 @@ class TicketRow extends React.Component {
           <h4 className="detail">{this.props.assigned}</h4>
         </div>
         <div className="assignedToArrow">
-          <DropdownCardAssigned />
+          <DropdownCardAssigned idd={this.props.id} />
         </div>
       </div>
     );

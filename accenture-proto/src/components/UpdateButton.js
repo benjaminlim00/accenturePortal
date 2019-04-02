@@ -44,7 +44,9 @@ class UpdateButton extends React.Component {
 
   handleSubmit(e) {
     let dataArr = this.retreiveData();
-    if (this.props.logic === "open") {
+    let propsText = this.props.text;
+
+    if (this.props.logic === "assigned") {
       this.props.addRequestMutation({
         variables: {
           requester: dataArr.requester,
@@ -53,8 +55,8 @@ class UpdateButton extends React.Component {
           subject: dataArr.subject,
           dateRequested: dataArr.dateRequested,
           priority: dataArr.priority,
-          status: "Open",
-          assigned: dataArr.assigned,
+          status: dataArr.status,
+          assigned: propsText,
           dateResolved: dataArr.dateResolved,
           dateClosed: dataArr.dateClosed
         }
@@ -68,7 +70,7 @@ class UpdateButton extends React.Component {
           subject: dataArr.subject,
           dateRequested: dataArr.dateRequested,
           priority: dataArr.priority,
-          status: "Resolved",
+          status: propsText,
           assigned: dataArr.assigned,
           dateResolved: dataArr.dateResolved,
           dateClosed: dataArr.dateClosed

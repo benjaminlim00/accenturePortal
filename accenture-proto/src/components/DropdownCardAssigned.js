@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styles/App.css";
+import UpdateButton from "./UpdateButton";
 
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
@@ -32,6 +33,8 @@ class DropdownCardAssigned extends Component {
   }
 
   render() {
+    let pageId = this.props.idd;
+
     return (
       <div>
         <button
@@ -51,13 +54,13 @@ class DropdownCardAssigned extends Component {
           >
             <ul className="dropdownList2">
               <li className="buttonList">
-                <button id="transparentButtonVer2"> Ben </button>
+                <UpdateButton idd={pageId} text="Ben" logic="assigned" />
               </li>
               <li className="buttonList">
-                <button id="transparentButtonVer2"> Bertha </button>
+                <UpdateButton idd={pageId} text="Bertha" logic="assigned" />
               </li>
               <li className="buttonList">
-                <button id="transparentButtonVer2"> HangWee </button>
+                <UpdateButton idd={pageId} text="Hangwee" logic="assigned" />
               </li>
             </ul>
           </div>
