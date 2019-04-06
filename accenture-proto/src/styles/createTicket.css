@@ -202,6 +202,7 @@ html {
 }
 
 .send {
+  padding: 7% 14px;
   text-align: center;
   background-color: #249d3b;
   color: #ffffff;
@@ -213,7 +214,7 @@ html {
   display: inline-block;
   font-size: 75%;
   float: right;
-  margin: 0.7% 2%;
+  margin: 1% 1.5%;
   border: none;
   background: rgba(0, 0, 0, 0);
 }

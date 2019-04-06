@@ -35,7 +35,7 @@ class UpdateButton extends React.Component {
         return request.id === pageId;
       });
       dataArr = dataArr[0];
-      console.log(dataArr); // here is data of the request.
+      // console.log(dataArr); // here is data of the request.
       return dataArr;
     } else {
       console.log("still retreiving data from mongoDB");
@@ -45,11 +45,11 @@ class UpdateButton extends React.Component {
   handleSubmit(e) {
     let dataArr = this.retreiveData();
     let propsText = this.props.text;
-
+    // console.log(dataArr);
+    // console.log(dataArr.user.id);
     if (this.props.logic === "assigned") {
       this.props.addRequestMutation({
         variables: {
-          requester: dataArr.requester,
           asset: dataArr.asset,
           type: dataArr.type,
           subject: dataArr.subject,
@@ -58,13 +58,14 @@ class UpdateButton extends React.Component {
           status: dataArr.status,
           assigned: propsText,
           dateResolved: dataArr.dateResolved,
-          dateClosed: dataArr.dateClosed
+          dateClosed: dataArr.dateClosed,
+          mainThread: dataArr.mainThread,
+          requesterId: dataArr.user.id //added
         }
       });
     } else {
       this.props.addRequestMutation({
         variables: {
-          requester: dataArr.requester,
           asset: dataArr.asset,
           type: dataArr.type,
           subject: dataArr.subject,
@@ -73,12 +74,13 @@ class UpdateButton extends React.Component {
           status: propsText,
           assigned: dataArr.assigned,
           dateResolved: dataArr.dateResolved,
-          dateClosed: dataArr.dateClosed
+          dateClosed: dataArr.dateClosed,
+          mainThread: dataArr.mainThread,
+          requesterId: dataArr.user.id //added
         }
       });
     }
-
-    console.log("Data sent! Redirecting page");
+    // console.log("Data sent! Redirecting page");
   }
 
   render() {

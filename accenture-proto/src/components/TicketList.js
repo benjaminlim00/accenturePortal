@@ -49,7 +49,7 @@ class TicketList extends React.Component {
         return (
           <TicketRow
             id={request.id}
-            requester={request.requester}
+            userFirstName={request.user.firstName}
             asset={request.asset}
             type={request.type}
             subject={request.subject}
@@ -57,6 +57,7 @@ class TicketList extends React.Component {
             priority={request.priority}
             status={request.status}
             assigned={request.assigned}
+            //mainThread={request.mainThread} //dont need this on ticketList page
             key={request.id}
           />
         );
@@ -128,10 +129,7 @@ class TicketList extends React.Component {
       <div>
         <NavBar />
         {showSnackbar ? <CustomizedSnackbars /> : null}
-        <div className="row">
-          <h2 className="small-heading">All Tickets</h2>
-          <img src={profileIcon} className="user-icon" />
-        </div>
+
         <section className="current-tickets">
           <div className="filter-text">
             <span>

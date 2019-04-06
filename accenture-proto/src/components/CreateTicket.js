@@ -2,9 +2,14 @@ import React from "react";
 import "../styles/createTicket.css";
 import { graphql, compose } from "react-apollo";
 import { Redirect } from "react-router-dom";
-import { addRequestMutation } from "../queries/queries";
+import {
+  addRequestMutation,
+  getUsersQuery,
+  addThreadMutation
+} from "../queries/queries";
 import NavBar from "./NavBar";
 import AssignedOptions from "../Resources/Data/AssignedOptions";
+import PriorityOptions from "../Resources/Data/PriorityOptions";
 
 import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
@@ -14,12 +19,13 @@ class CreateTicket extends React.Component {
   constructor() {
     super();
     this.state = {
-      requester: "",
       asset: "",
       type: "",
       subject: "",
       priority: "",
       assigned: "",
+      requesterId: "", //added
+      mainThread: "",
       redirect: false
     };
 
@@ -30,6 +36,21 @@ class CreateTicket extends React.Component {
     this.setState({
       redirect: true
     });
+  }
+
+  displayUsers() {
+    var data = this.props.getUsersQuery;
+    if (data.loading) {
+      return <option disabled>Loading... </option>;
+    } else {
+      return data.users.map(user => {
+        return (
+          <option key={user.id} value={user.id}>
+            {user.firstName}
+          </option> //need to have some kind of key-value pair
+        );
+      });
+    }
   }
 
   displayType() {
@@ -51,8 +72,6 @@ class CreateTicket extends React.Component {
   displayAssigned() {
     let datals = { AssignedOptions };
     datals = datals.AssignedOptions;
-    console.log(datals);
-
     return datals.map(data => {
       return (
         <option key={data.id} value={data.name}>
@@ -63,11 +82,8 @@ class CreateTicket extends React.Component {
   }
 
   displayPriority() {
-    let datals = [
-      { name: "Low", id: 0 },
-      { name: "Medium", id: 1 },
-      { name: "High", id: 2 }
-    ];
+    let datals = { PriorityOptions };
+    datals = datals.PriorityOptions;
 
     return datals.map(data => {
       return (
@@ -91,7 +107,6 @@ class CreateTicket extends React.Component {
 
     this.props.addRequestMutation({
       variables: {
-        requester: this.state.requester,
         asset: this.state.asset,
         type: this.state.type,
         subject: this.state.subject,
@@ -100,17 +115,35 @@ class CreateTicket extends React.Component {
         status: "Open",
         assigned: this.state.assigned,
         dateResolved: "",
-        dateClosed: ""
+        dateClosed: "",
+        mainThread: this.state.mainThread,
+        requesterId: this.state.requesterId //added
       }
     });
-    console.log("Data sent! Redirecting page");
+    // console.log("Data sent! Redirecting page");
     this.handleRedirect();
   }
 
   isFormValid = () => {
-    const { requester, asset, type, subject, priority, assigned } = this.state;
+    const {
+      requesterId,
+      asset,
+      type,
+      subject,
+      priority,
+      assigned,
+      mainThread
+    } = this.state;
 
-    return requester && asset && type && subject && priority && assigned;
+    return (
+      requesterId &&
+      asset &&
+      type &&
+      subject &&
+      priority &&
+      assigned &&
+      mainThread
+    );
   };
 
   render() {
@@ -121,10 +154,6 @@ class CreateTicket extends React.Component {
     return (
       <div>
         <NavBar />
-        <div className="row ticket-page-header">
-          <h2 className="small-heading">Create A New Ticket</h2>
-          <img src={profileIcon} className="user-icon" />
-        </div>
 
         <div className="create-new-tix-main-body">
           <div className="col span-1-of-7 heading-box">
@@ -142,11 +171,13 @@ class CreateTicket extends React.Component {
           <div className="col span-1-of-2 input-fields">
             <form onSubmit={this.submitForm.bind(this)}>
               <label>
-                <input
-                  type="text"
-                  onChange={e => this.setState({ requester: e.target.value })}
+                <select
+                  onChange={e => this.setState({ requesterId: e.target.value })}
                   className="top-field small-input-field"
-                />
+                >
+                  <option>Select requester</option>
+                  {this.displayUsers()}
+                </select>
               </label>
 
               <br />
@@ -206,9 +237,10 @@ class CreateTicket extends React.Component {
               <label>
                 <textarea
                   placeholder="Enter text here..."
+                  onChange={e => this.setState({ mainThread: e.target.value })}
                   rows="4"
-                  cols="100"
-                  className="small-input-field last-field dropdownOption"
+                  cols="10"
+                  className="small-input-field last-field"
                 />
               </label>
 
@@ -236,5 +268,7 @@ class CreateTicket extends React.Component {
 }
 
 export default compose(
-  graphql(addRequestMutation, { name: "addRequestMutation" })
+  graphql(addRequestMutation, { name: "addRequestMutation" }),
+  graphql(getUsersQuery, { name: "getUsersQuery" }),
+  graphql(addThreadMutation, { name: "addThreadMutation" })
 )(CreateTicket);

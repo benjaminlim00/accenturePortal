@@ -19,12 +19,6 @@
 .page-no {
   float: right;
 }
-/*.page-no {
-    display: inline-block;
-    float: right;
-    margin: 0.5%;
-}*/
-
 .arrow-left-new-2,
 .arrow-left-new,
 .arrow-right-new,
@@ -56,8 +50,9 @@
 /* -----------------------------------------------*/
 
 .enquiry-section {
-  background-color: inherit;
-  display: flex;
+  background-color: #e8e8e8;
+  overflow: auto;
+  width: 100%;
 }
 
 .enquiry-head {
@@ -117,14 +112,14 @@
   height: 25px;
   display: inline-block;
   margin: 1%;
-  margin-top: 2.2%;
+  margin-top: 1.5%;
   margin-right: 0;
   vertical-align: top;
 }
 
 .attach-file-words {
   display: inline-block;
-  margin: 1.5%;
+  margin: 1.2%;
   margin-bottom: 0;
   margin-left: 0;
   border-right: 1px solid #969696;
@@ -135,33 +130,19 @@
 
 .cancel-button {
   display: inline-block;
-  margin: 2%;
   font-size: 80%;
-  margin-left: 50%;
-}
-
-.send-button {
-  display: inline-block;
-  font-size: 80%;
+  margin-left: 68%;
+  margin-bottom: 1%;
 }
 
 .send-button-detailspage {
   display: inline-block;
   font-size: 80%;
-}
-
-.send-detailspage {
-  padding: 7.2% 23px;
-  margin-left: -1%;
-  text-align: center;
-  background-color: #249d3b;
-  color: #ffffff;
-  text-transform: uppercase;
-  border-radius: 7px;
+  margin-left: 1%;
 }
 
 .cancel {
-  padding: 6% 18px;
+  padding: 7% 10px;
   margin-left: -1%;
   background-color: #ffffff;
   text-align: center;
@@ -170,14 +151,15 @@
   border: 1px solid #969696;
 }
 
-.send {
-  padding: 7.2% 23px;
+.send-req-details {
+  padding: 7% 19px;
   margin-left: -1%;
   text-align: center;
   background-color: #249d3b;
   color: #ffffff;
   text-transform: uppercase;
   border-radius: 7px;
+  border: 1px solid #868686;
 }
 /* -----------------------------------------------*/
 /* PROPERTIES */
@@ -191,7 +173,7 @@
 .property {
   margin: 8% 4%;
   padding: 1%;
-  font-size: 70%;
+  font-size: 75%;
 }
 
 .propertyNormalWords {
@@ -209,29 +191,18 @@
 
 /* THIS PART: this line of code below is the ticket properties section (just need to take out this code to get rid of the lines) */
 
-.property:after {
-  display: block;
-  height: 1px;
-  background-color: #000000;
-  content: " ";
-  width: inherit;
-  margin: 0 auto;
-  margin-top: 0px;
-}
-
 .special-property {
   margin: 8% 4%;
   padding: 1%;
   font-size: 80%;
 }
 
-.arrow-down {
+.arrow-down-new {
   width: 20px;
   height: 20px;
+  vertical-align: top;
   margin-top: 2%;
-  margin-left: 5px;
-
-  margin-right: 10px;
+  margin-left: 30px;
 }
 
 /* -----------------------------------------------*/
@@ -250,11 +221,13 @@
 }
 
 .type-of-details {
-  padding: 3%;
+  margin-top: 6%;
+  margin-left: 2%;
 }
 
 .detail {
-  padding: 3%;
+  margin-top: 1%;
+  margin-left: 2%;
   font-weight: 300;
   font-size: 90%;
 }
@@ -272,7 +245,7 @@
   display: inline-block;
 }
 
-.reply-arrow-2 {
+.reply-arrow-new-2 {
   width: 25px;
   height: 25px;
 }
@@ -364,4 +337,114 @@
 .internal-scrolling {
   height: 600px;
   overflow-y: scroll;
+}
+
+/* -----------------------------------------------*/
+/* SECTION TO ADD */
+/* -----------------------------------------------*/
+
+.user-user-icon {
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin-right: 2%;
+  margin-top: 0.5%;
+}
+
+.user-main-nav {
+  float: right;
+  list-style: none;
+  margin-top: 1%;
+  position: relative;
+  display: inline-block;
+  margin-right: 2%;
+  vertical-align: top;
+}
+
+.user-main-nav li {
+  display: inline-block;
+  margin-left: 40px;
+  font-size: 80%;
+}
+
+.user-main-nav li a:link,
+.user-main-nav li a:visited {
+  padding: 8px 0;
+  color: #414141;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s;
+}
+
+.user-main-nav li a:hover,
+.user-main-nav li a:active {
+  border-bottom: 2px solid #909090;
+}
+
+.user-text-boxes {
+  background-color: #ffff;
+  border: 1px solid #7e7e7e;
+  width: 49.2%;
+  margin-top: 1%;
+}
+
+.user-back-to-tickets-section {
+  background-color: #ffff;
+  border: 1px solid #b1b1b1;
+  width: 74.6%;
+}
+
+.user-reply-button {
+  background-color: #f7f7f7;
+  padding: 1%;
+  width: 9%;
+  height: auto;
+  text-align: center;
+  margin-top: 3%;
+  font-size: 80%;
+  border-radius: 3px;
+}
+
+.user-reply-arrow {
+  width: 17px;
+  height: 17px;
+  vertical-align: top;
+  margin-right: 5%;
+}
+
+.reply-thread {
+  background-color: #ffff;
+  border: 1px solid #7e7e7e;
+  margin-top: 5%;
+}
+
+.add-col {
+  width: 74.6%;
+  margin-top: 1%;
+  display: inline-block;
+}
+
+.quarter-col {
+  width: 23.8%;
+  margin-top: 1%;
+  display: inline-block;
+  float: right;
+}
+
+.arrow-up-new {
+  width: 30px;
+  height: 30px;
+  vertical-align: top;
+  display: inline-block;
+  transform: rotate(180deg);
+  float: right;
+}
+
+.contact-property {
+  display: inline-block;
+}
+
+.clear {
+  clear: both;
 }

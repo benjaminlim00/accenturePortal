@@ -50,7 +50,7 @@ class TicketRow extends React.Component {
           />
         </div>
         <div className="col span-1-of-9">
-          <h4 className="detail">{this.props.requester}</h4> {/*John Tan*/}
+          <h4 className="detail">{this.props.userFirstName}</h4> {/*John Tan*/}
         </div>
         <div className="col span-1-of-9">
           <h4 className="detail">{this.props.asset}</h4> {/*Login API*/}

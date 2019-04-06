@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/TrashModal.css";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 
 import DeleteButton from "./deleteButton";
 

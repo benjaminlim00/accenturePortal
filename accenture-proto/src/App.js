@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import TicketList from "./components/TicketList";
 import LoginPage from "./components/LoginPage";
-import AddRequestNew from "./components/AddRequestNew";
-import AddRequestOld from "./components/AddRequestOld";
 import RequestDetail from "./components/RequestDetail";
 import NavBar from "./components/NavBar";
 import CreateTicket from "./components/CreateTicket";
@@ -50,8 +48,6 @@ class App extends Component {
                 <LoginPage {...props} handleAuth={this.handleAuth} />
               )}
             />
-            <Route exact path="/addnew" component={AddRequestNew} />
-            <Route exact path="/addold" component={AddRequestOld} />
             <Route exact path="/createTicket" component={CreateTicket} />
             <Route exact path="/requestDetail/:id" component={RequestDetail} />
           </Switch>

@@ -23,17 +23,6 @@ class RequestDetail extends React.Component {
     super();
     this.state = {
       show: false
-      //
-      // asset: null,
-      // type: null,
-      // priority: null,
-      // assigned: null,
-      // status: null,
-      // dateClosed: null,
-      // dateRequested: null,
-      // dateResolved: null,
-      // subject: null,
-      // dataArr: null
     };
   }
 
@@ -50,7 +39,6 @@ class RequestDetail extends React.Component {
     var dataArr;
     if (!data.loading) {
       let pageId = window.location.pathname.substring(15);
-
       // console.log(data.requests);  all the different data with diff ids
       // console.log(this.state.id); the current id
 
@@ -64,7 +52,7 @@ class RequestDetail extends React.Component {
       return (
         <TicketProperties
           id={dataArr.id}
-          assets={dataArr.assets}
+          asset={dataArr.asset}
           type={dataArr.type}
           priority={dataArr.priority}
           assigned={dataArr.assigned}
@@ -88,11 +76,6 @@ class RequestDetail extends React.Component {
     return (
       <div>
         <NavBar />
-
-        <div className="row">
-          <h2 className="all-tickets">All Tickets</h2>
-          <img src={profileIcon} className="user-icon" />
-        </div>
 
         <section className="ticket-enquiry-section">
           <div className="back-to-tickets-section">
@@ -131,107 +114,73 @@ class RequestDetail extends React.Component {
           </div>
 
           <div className="enquiry-section">
-            <div className="col span-1-of-2 text-boxes">
-              <div className="enquiry-head">
-                <h4 className="small-heading enquiry-title">
-                  Enquiry about API
-                </h4>
-                <p className="timing">About an hour ago</p>
-                <p className="author">Created by: Jane Lim</p>
-              </div>
-
-              <div className="enquiry-body">
-                <p>
-                  Hi,
-                  <br />
-                  <br /> I would like to enquire about the XXX API.
-                  <br />
-                  <br /> Thanks, <br />
-                  James
-                </p>
-                <div className="reply-button">
-                  <img src={replyArrow} className="reply-arrow" />
-                  Reply
+            <div className="add-col">
+              <div className="text-boxes">
+                <div className="enquiry-head">
+                  <h4 className="small-heading enquiry-title">
+                    Enquiry about API
+                  </h4>
+                  <p className="timing">About an hour ago</p>
+                  <p className="author">Created by: Jane Lim</p>
+                </div>
+                <div className="enquiry-body">
+                  <p>
+                    Hi,
+                    <br />
+                    <br /> I would like to enquire about the XXX API.
+                    <br />
+                    <br /> Thanks, <br />
+                    James
+                  </p>
                 </div>
               </div>
-            </div>
-
-            {this.displayData()}
-
-            <div className="col span-1-of-4 text-boxes internal-scrolling">
-              <div className="combined-contact-past-ticket-details">
-                <div className="contact-details">
-                  <h5 className="small-heading">Contact Details</h5>
-
-                  <h5 className="type-of-details">Requester</h5>
-                  <p className="detail">Jane Lim</p>
-
-                  <h5 className="type-of-details">Email</h5>
-                  <p className="detail">test@accenture.com</p>
-
-                  <h5 className="type-of-details">Mobile Number</h5>
-                  <p className="detail">+65 91235678</p>
-
-                  <h5 className="type-of-details">Company</h5>
-                  <p className="detail">Accenture</p>
+              <div className="reply-thread">
+                <div className="enquiry-head-reply">
+                  <div className="reply-attach">
+                    <img src={replyArrow} className="reply-arrow-new-2" />
+                  </div>
+                  <div className="from-to">
+                    <div className="border-from-to">
+                      <p className="recipient">From: John Tan</p>
+                      <p>To: Jane Lim</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="past-ticket-head">
-                <h2 className="small-heading">Past Ticket / Conversations</h2>
-              </div>
-              <div className="first-past-enquiry">
-                <p className="ticket-id">#ticket-id</p>
-                <h5 className="type-of-details">API Service Enquiry</h5>
-                <h2 className="smaller-head">Login API</h2>
-                <p className="past-ticket-body">xxxxxxxxx</p>
-                <br />
-                <p className="date">Created 2 days ago</p>
-                <p className="status">Resolved</p>
-              </div>
-              <div className="first-past-enquiry">
-                <p className="ticket-id">#ticket-id</p>
-                <h5 className="type-of-details">subject</h5>
-                <h2 className="smaller-head">Asset</h2>
-                <p className="past-ticket-body">xxxxxxxxx</p>
-                <br />
-                <p className="date">Date requested</p>
-                <p className="status">Status</p>
-              </div>
-              <div className="first-past-enquiry">
-                <p className="ticket-id">#1925</p>
-                <h5 className="type-of-details">Not Working</h5>
-                <h2 className="smaller-head">Login API</h2>
-                <p className="past-ticket-body">xxxxxxxxx</p>
-                <br />
-                <p className="date">Created 5 days ago</p>
-                <p className="status">Open</p>
-              </div>
-            </div>
-          </div>
-          <div className="enquiry-section">
-            <div className="col span-1-of-2 text-boxes">
-              <div className="enquiry-head-reply">
-                <div className="reply-attach">
-                  <img src={arrow} className="reply-arrow-2" />
-                </div>
-                <div className="from-to">
-                  <div className="border-from-to">
-                    <p className="recipient">From: John Tan</p>
-                    <p>To: Jane Lim</p>
+                <p className="enquiry-body"> hi</p>
+                <div className="enquiry-head">
+                  <img src={fileLogo} className="file-logo-reqdetail" />
+                  <p className="attach-file-words">Attach</p>
+                  <div className="cancel-button">
+                    <p className="cancel">Cancel</p>
+                  </div>
+                  <div className="send-button-detailspage">
+                    <p className="send-req-details">Send</p>
                   </div>
                 </div>
               </div>
-              <p className="enquiry-body"> hi</p>
-              <div className="enquiry-head">
-                <img src={fileLogo} className="file-logo-reqdetail" />
-                <p className="attach-file-words">Attach</p>
-                <div className="cancel-button">
-                  <p className="cancel">Cancel</p>
-                </div>
-                <div className="send-button-detailspage">
-                  <p className="send-detailspage">Send</p>
+            </div>
+            <div className="quarter-col text-boxes">
+              <div className="combined-contact-past-ticket-details">
+                <div className="contact-details">
+                  <h2 className="small-heading contact-property">
+                    Contact Details
+                  </h2>
+                  <img src={arrow} className="arrow-up-new" />
+
+                  <h5 className="type-of-details">Requester</h5>
+                  <p className="detail-req">Jane Lim</p>
+
+                  <h5 className="type-of-details">Email</h5>
+                  <p className="detail-req">test@accenture.com</p>
+
+                  <h5 className="type-of-details">Mobile Number</h5>
+                  <p className="detail-req">+65 91235678</p>
+
+                  <h5 className="type-of-details">Company</h5>
+                  <p className="detail-req">Accenture</p>
                 </div>
               </div>
+              {this.displayData()}
             </div>
           </div>
         </section>

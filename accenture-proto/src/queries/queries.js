@@ -1,10 +1,44 @@
 import { gql } from "apollo-boost";
 
-const getRequestsQuery = gql`
-  {
-    requests {
+//Single Author Query
+const getUserQuery = gql`
+  query($id: ID) {
+    user(id: $id) {
       id
-      requester
+      firstName
+      lastName
+      email
+      contactNumber
+      accountType
+
+      requests {
+        id
+        asset
+        type
+        subject
+        dateRequested
+        priority
+        status
+        assigned
+        dateResolved
+        dateClosed
+        mainThread
+
+        threads {
+          id
+          threadContent
+          threadCreatedDate
+        }
+      }
+    }
+  }
+`;
+
+//Single Request Query
+const getRequestQuery = gql`
+  query($id: ID) {
+    request(id: $id) {
+      id
       asset
       type
       subject
@@ -14,13 +48,119 @@ const getRequestsQuery = gql`
       assigned
       dateResolved
       dateClosed
+      mainThread
+
+      user {
+        id
+        firstName
+        lastName
+        email
+        contactNumber
+        accountType
+      }
+
+      threads {
+        id
+        threadContent
+        threadCreatedDate
+      }
+    }
+  }
+`;
+
+//Single Thread Query
+const getThreadQuery = gql`
+  query($id: ID) {
+    thread(id: $id) {
+      id
+      threadContent
+      threadCreatedDate
+
+      request {
+        id
+        asset
+        type
+        subject
+        dateRequested
+        priority
+        status
+        assigned
+        dateResolved
+        dateClosed
+        mainThread
+
+        user {
+          id
+          firstName
+          lastName
+          email
+          contactNumber
+          accountType
+        }
+      }
+    }
+  }
+`;
+
+//All Users Query
+const getUsersQuery = gql`
+  {
+    users {
+      id
+      firstName
+      lastName
+      email
+      contactNumber
+      accountType
+    }
+  }
+`;
+
+//All Request Query
+const getRequestsQuery = gql`
+  {
+    requests {
+      id
+      asset
+      type
+      subject
+      dateRequested
+      priority
+      status
+      assigned
+      dateResolved
+      dateClosed
+      mainThread
+      user {
+        id
+        firstName
+        lastName
+        email
+        contactNumber
+        accountType
+      }
+      threads {
+        id
+        threadContent
+        threadCreatedDate
+      }
+    }
+  }
+`;
+
+//All Threads Query
+const getThreadsQuery = gql`
+  {
+    threads {
+      id
+      threadContent
+      threadCreatedDate
     }
   }
 `;
 
 const addRequestMutation = gql`
   mutation(
-    $requester: String!
     $asset: String!
     $type: String!
     $subject: String!
@@ -30,9 +170,10 @@ const addRequestMutation = gql`
     $assigned: String!
     $dateResolved: String!
     $dateClosed: String!
+    $mainThread: String!
+    $requesterId: ID!
   ) {
     addRequest(
-      requester: $requester
       asset: $asset
       type: $type
       subject: $subject
@@ -42,8 +183,10 @@ const addRequestMutation = gql`
       assigned: $assigned
       dateResolved: $dateResolved
       dateClosed: $dateClosed
+      mainThread: $mainThread
+      requesterId: $requesterId
     ) {
-      requester
+      id
       asset
       type
       subject
@@ -51,6 +194,24 @@ const addRequestMutation = gql`
       priority
       status
       assigned
+    }
+  }
+`;
+
+const addThreadMutation = gql`
+  mutation(
+    $threadContent: String!
+    $threadCreatedDate: String!
+    $requestId: ID!
+  ) {
+    addThread(
+      threadContent: $threadContent
+      threadCreatedDate: $threadCreatedDate
+      requestId: $requestId
+    ) {
+      id
+      threadContent
+      threadCreatedDate
     }
   }
 `;
@@ -63,4 +224,14 @@ const deleteRequestMutation = gql`
   }
 `;
 
-export { getRequestsQuery, addRequestMutation, deleteRequestMutation };
+export {
+  getThreadQuery,
+  getThreadsQuery,
+  addThreadMutation,
+  getRequestQuery,
+  getRequestsQuery,
+  addRequestMutation,
+  deleteRequestMutation,
+  getUserQuery,
+  getUsersQuery //not used yet
+};
