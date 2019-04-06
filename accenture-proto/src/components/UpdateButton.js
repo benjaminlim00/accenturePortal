@@ -45,6 +45,7 @@ class UpdateButton extends React.Component {
   handleSubmit(e) {
     let dataArr = this.retreiveData();
     let propsText = this.props.text;
+    this.props.toggleUpdatedTicket();
     // console.log(dataArr);
     // console.log(dataArr.user.id);
     if (this.props.logic === "assigned") {
@@ -87,7 +88,9 @@ class UpdateButton extends React.Component {
     let id = this.props.idd;
     if (this.state.redirect) {
       // return <Redirect to="/requests" />;
-      window.location.reload();
+      setTimeout(function() {
+        window.location.reload();
+      }, 1000);
     }
     return (
       <Mutation

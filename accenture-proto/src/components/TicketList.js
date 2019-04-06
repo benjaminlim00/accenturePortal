@@ -41,7 +41,11 @@ class TicketList extends React.Component {
       // console.log(data.requests);
       let dataArr = Object.values(data.requests);
       dataArr.sort((a, b) =>
-        a.requester > b.requester ? 1 : b.requester > a.requester ? -1 : 0
+        a.user.firstName > b.user.firstName
+          ? 1
+          : b.user.firstName > a.user.firstName
+          ? -1
+          : 0
       );
       // console.log(arr);
 
@@ -59,6 +63,7 @@ class TicketList extends React.Component {
             assigned={request.assigned}
             //mainThread={request.mainThread} //dont need this on ticketList page
             key={request.id}
+            toggleUpdatedTicket={this.props.toggleUpdatedTicket}
           />
         );
       });
@@ -118,11 +123,18 @@ class TicketList extends React.Component {
   };
 
   render() {
-    if (performance.navigation.type == 1) {
-      console.info("This page is reloaded, lets pop a snackbar");
+    // console.log(this.props.state);
+    // if (performance.navigation.type == 1) {
+    //   console.info("This page is reloaded, lets pop a snackbar");
+    //   var showSnackbar = true;
+    // } else {
+    //   console.info("This page is not reloaded");
+    //   var showSnackbar = false;
+    // }
+
+    if (this.props.state.updatedTicket) {
       var showSnackbar = true;
     } else {
-      console.info("This page is not reloaded");
       var showSnackbar = false;
     }
     return (
