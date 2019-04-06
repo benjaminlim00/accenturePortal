@@ -188,6 +188,18 @@ const Mutation = new GraphQLObjectType({
       }
     },
 
+    //Delete Threads (of a request)
+    deleteThreads: {
+      type: ThreadType,
+      args: {
+        requestId: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parent, args) {
+        return Thread.deleteMany({requestId: args.requestId});
+
+      }
+    },
+
     //Add New User
     addUser: {
       type: UserType,
@@ -226,7 +238,22 @@ const Mutation = new GraphQLObjectType({
         });
         return thread.save();
       }
-    }
+    },
+
+    //Update Request Status
+    updateRequestStatus: {
+      type: RequestType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        status:{ type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        return Request.findByIdAndUpdate(args.id, {status: args.status}, {new: true});
+      }
+    },
+
+    //Update Request Status
+    
   })
 });
 

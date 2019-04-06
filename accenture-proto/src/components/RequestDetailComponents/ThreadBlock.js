@@ -1,14 +1,17 @@
 import React from "react";
-import "../styles/App.css";
-import "../styles/grid.css";
-import "../styles/normalize.css";
-import { getRequestQuery } from "../queries/queries";
+import "../../styles/App.css";
+import "../../styles/grid.css";
+import "../../styles/normalize.css";
+import "../../styles/RequestDetail.css";
+import { getRequestQuery } from "../../queries/queries";
 import {graphql} from 'react-apollo';
 
 import { Link } from "react-router-dom";
-import fileLogo from "../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
+import fileLogo from "../../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
+import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
+import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
-import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
+
 
 class ThreadBlock extends React.Component {
 
@@ -19,7 +22,7 @@ class ThreadBlock extends React.Component {
 
     //if (threads) {
         return (
-            <div className="thread-stream">
+            <div className="thread-stream" >
             {
                 this.props.threads.map(item => {
                   return (<div key={item.id}>
@@ -29,7 +32,7 @@ class ThreadBlock extends React.Component {
                                     <div className="enquiry-head-reply">
 
                                         <div className="reply-attach">
-                                        <img src={arrow} className="reply-arrow-2" />
+                                        <img src={replyArrow} className="reply-arrow-new-2" />
                                         </div>
 
                                         <div className="from-to">
@@ -77,7 +80,7 @@ class ThreadBlock extends React.Component {
 
     return ( 
         
-        <div id="thread-stream">
+        <div>
 
             {this.displayAllThreads()}
         

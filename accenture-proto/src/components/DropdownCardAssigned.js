@@ -78,6 +78,7 @@ class DropdownCardAssigned extends Component {
                 />
               </li>
             </ul>
+
           </div>
         ) : null}
       </div>

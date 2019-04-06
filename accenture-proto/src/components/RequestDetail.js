@@ -16,7 +16,11 @@ import fileLogo from "../Resources/Icons/iconfinder_ic_attach_file_48px_352032.s
 import { Link } from "react-router-dom";
 
 import { graphql, compose } from "react-apollo";
-import { getRequestsQuery } from "../queries/queries";
+import { getThreadsQuery, getRequestsQuery } from "../queries/queries";
+import ThreadBlock from "./RequestDetailComponents/ThreadBlock";
+import MainThread from "./RequestDetailComponents/MainThread";
+import ContactDetails from "./RequestDetailComponents/ContactDetails";
+import CreateThread from "./RequestDetailComponents/CreateThread";
 
 class RequestDetail extends React.Component {
   constructor() {
@@ -26,14 +30,103 @@ class RequestDetail extends React.Component {
     };
   }
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
+  displayCreateThread() {
+    var data = this.props.getRequestsQuery;
+    var dataArr;
+    if (!data.loading) {
+      let pageId = window.location.pathname.substring(15);
+      dataArr = data.requests.filter(request => {
+        return request.id === pageId;
+      });
 
-  hideModal = () => {
-    this.setState({ show: false });
-  };
+      dataArr = dataArr[0];
+      return <CreateThread requestId={dataArr.id} />;
+    } else {
+      console.log("still retreiving data from mongoDB");
+    }
+  }
 
+  displayContactDetails() {
+    var data = this.props.getRequestsQuery;
+    var dataArr;
+    if (!data.loading) {
+      let pageId = window.location.pathname.substring(15);
+      dataArr = data.requests.filter(request => {
+        return request.id === pageId;
+      });
+
+      dataArr = dataArr[0];
+      console.log("FUCK"); // here is data of the request.
+      console.log(dataArr); // here is data of the request.
+
+      return (
+        <ContactDetails
+          firstName={dataArr.user.firstName}
+          lastName={dataArr.user.lastName}
+          email={dataArr.user.email}
+          contactNumber={dataArr.user.contactNumber}
+          accountType={dataArr.user.accountType}
+        />
+      );
+    } else {
+      console.log("still retreiving data from mongoDB");
+    }
+  }
+
+  displayMainThread() {
+    var data = this.props.getRequestsQuery;
+    var dataArr;
+    if (!data.loading) {
+      let pageId = window.location.pathname.substring(15);
+      dataArr = data.requests.filter(request => {
+        return request.id === pageId;
+      });
+      dataArr = dataArr[0];
+      // console.log("TESTINGGGG");
+      // console.log(dataArr);
+
+      return (
+        <MainThread
+          mainThread={dataArr.mainThread}
+          subject={dataArr.subject}
+          dateRequested={dataArr.dateRequested}
+          creatorFirstName={dataArr.user.firstName}
+          creatorLastName={dataArr.user.lastName}
+        />
+      );
+    } else {
+      console.log("still retreiving data from mongoDB");
+    }
+  }
+
+  //function to display list of threads
+  displayThreads() {
+    var data = this.props.getRequestsQuery;
+    //console.log('threads check');
+    //console.log(data.threads);
+
+    var dataArr;
+    if (!data.loading) {
+      let pageId = window.location.pathname.substring(15);
+      dataArr = data.requests.filter(request => {
+        return request.id === pageId;
+      });
+      dataArr = dataArr[0];
+
+      console.log(data.threads);
+      return (
+        <ThreadBlock
+          id={dataArr.id}
+          key={dataArr.id}
+          threads={dataArr.threads}
+        />
+      );
+    } else {
+      console.log("still retreiving data from mongoDB");
+    }
+  }
+
+  //function to display ticket properties
   displayData() {
     var data = this.props.getRequestsQuery;
     var dataArr;
@@ -66,6 +159,14 @@ class RequestDetail extends React.Component {
       console.log("still retreiving data from mongoDB");
     }
   }
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   render() {
     const modalTextMargin = {
@@ -115,71 +216,15 @@ class RequestDetail extends React.Component {
 
           <div className="enquiry-section">
             <div className="add-col">
-              <div className="text-boxes">
-                <div className="enquiry-head">
-                  <h4 className="small-heading enquiry-title">
-                    Enquiry about API
-                  </h4>
-                  <p className="timing">About an hour ago</p>
-                  <p className="author">Created by: Jane Lim</p>
-                </div>
-                <div className="enquiry-body">
-                  <p>
-                    Hi,
-                    <br />
-                    <br /> I would like to enquire about the XXX API.
-                    <br />
-                    <br /> Thanks, <br />
-                    James
-                  </p>
-                </div>
-              </div>
-              <div className="reply-thread">
-                <div className="enquiry-head-reply">
-                  <div className="reply-attach">
-                    <img src={replyArrow} className="reply-arrow-new-2" />
-                  </div>
-                  <div className="from-to">
-                    <div className="border-from-to">
-                      <p className="recipient">From: John Tan</p>
-                      <p>To: Jane Lim</p>
-                    </div>
-                  </div>
-                </div>
-                <p className="enquiry-body"> hi</p>
-                <div className="enquiry-head">
-                  <img src={fileLogo} className="file-logo-reqdetail" />
-                  <p className="attach-file-words">Attach</p>
-                  <div className="cancel-button">
-                    <p className="cancel">Cancel</p>
-                  </div>
-                  <div className="send-button-detailspage">
-                    <p className="send-req-details">Send</p>
-                  </div>
-                </div>
-              </div>
+              {this.displayMainThread()}
+
+              {this.displayThreads()}
+
+              {this.displayCreateThread()}
             </div>
             <div className="quarter-col text-boxes">
-              <div className="combined-contact-past-ticket-details">
-                <div className="contact-details">
-                  <h2 className="small-heading contact-property">
-                    Contact Details
-                  </h2>
-                  <img src={arrow} className="arrow-up-new" />
+              {this.displayContactDetails()}
 
-                  <h5 className="type-of-details">Requester</h5>
-                  <p className="detail-req">Jane Lim</p>
-
-                  <h5 className="type-of-details">Email</h5>
-                  <p className="detail-req">test@accenture.com</p>
-
-                  <h5 className="type-of-details">Mobile Number</h5>
-                  <p className="detail-req">+65 91235678</p>
-
-                  <h5 className="type-of-details">Company</h5>
-                  <p className="detail-req">Accenture</p>
-                </div>
-              </div>
               {this.displayData()}
             </div>
           </div>

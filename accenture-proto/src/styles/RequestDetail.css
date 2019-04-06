@@ -90,6 +90,11 @@
   font-size: 80%;
 }
 
+.textareareplyThread {
+  padding: 1%;
+  width:100%
+}
+
 .reply-button {
   background-color: #ecf0f1;
   padding: 1%;
@@ -417,6 +422,12 @@
   background-color: #ffff;
   border: 1px solid #7e7e7e;
   margin-top: 5%;
+}
+
+.thread-stream{
+  margin-top: 2%;
+  margin-bottom: 2%;
+
 }
 
 .add-col {

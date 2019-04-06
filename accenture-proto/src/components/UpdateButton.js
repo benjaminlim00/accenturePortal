@@ -85,12 +85,13 @@ class UpdateButton extends React.Component {
   }
 
   render() {
+
     let id = this.props.idd;
     if (this.state.redirect) {
       // return <Redirect to="/requests" />;
       setTimeout(function() {
         window.location.reload();
-      }, 1000);
+      }, 500);
     }
     return (
       <Mutation

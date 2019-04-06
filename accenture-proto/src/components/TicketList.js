@@ -41,17 +41,13 @@ class TicketList extends React.Component {
       // console.log(data.requests);
       let dataArr = Object.values(data.requests);
       dataArr.sort((a, b) =>
-        a.user.firstName > b.user.firstName
-          ? 1
-          : b.user.firstName > a.user.firstName
-          ? -1
-          : 0
-      );
+      a.user.firstName > b.user.firstName ? 1 : b.user.firstName > a.user.firstName ? -1 : 0
+    );
       // console.log(arr);
 
       return dataArr.map(request => {
         return (
-          <TicketRow
+<TicketRow
             id={request.id}
             userFirstName={request.user.firstName}
             asset={request.asset}
@@ -123,20 +119,23 @@ class TicketList extends React.Component {
   };
 
   render() {
-    // console.log(this.props.state);
-    // if (performance.navigation.type == 1) {
-    //   console.info("This page is reloaded, lets pop a snackbar");
-    //   var showSnackbar = true;
-    // } else {
-    //   console.info("This page is not reloaded");
-    //   var showSnackbar = false;
-    // }
-
-    if (this.props.state.updatedTicket) {
+    /*
+    if (performance.navigation.type == 1) {
+      console.info("This page is reloaded, lets pop a snackbar");
       var showSnackbar = true;
     } else {
+      console.info("This page is not reloaded");
       var showSnackbar = false;
     }
+    */
+
+    if (this.props.state.updatedTicket) {
+    var showSnackbar = true;
+    } 
+    else {
+      var showSnackbar = false;
+    }
+
     return (
       <div>
         <NavBar />

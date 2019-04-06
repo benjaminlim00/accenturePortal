@@ -1,14 +1,14 @@
 import React from "react";
-import "../styles/createTicket.css";
-import "../styles/App.css";
-import "../styles/grid.css";
-import "../styles/normalize.css";
-import "../styles/RequestDetail.css";
+import "../../styles/createTicket.css";
+import "../../styles/App.css";
+import "../../styles/grid.css";
+import "../../styles/normalize.css";
+import "../../styles/RequestDetail.css";
 import { graphql, compose } from "react-apollo";
-import { addThreadMutation } from "../queries/queries";
+import { addThreadMutation } from "../../queries/queries";
 
-import replyArrow from "../Resources/Icons/iconfinder_reply_226602.svg";
-import fileLogo from "../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
+import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
+import fileLogo from "../../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
 
 
 class CreateThread extends React.Component {
@@ -73,9 +73,9 @@ class CreateThread extends React.Component {
                 <textarea
                 placeholder="Enter text here..."
                 onChange={e => this.setState({ threadContent: e.target.value })}
-                rows="10"
-                cols="3"
-                className="small-input-field last-field"
+                rows="8"
+                cols="88"
+                className="textareareplyThread"
                 />
             </label>
 

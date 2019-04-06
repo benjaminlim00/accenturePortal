@@ -224,6 +224,14 @@ const deleteRequestMutation = gql`
   }
 `;
 
+const deleteThreadsMutation = gql`
+  mutation deleteThreadsMutation($requestId: ID!) {
+    deleteThreads(id: $requestId) {
+      id
+    }
+  }
+`;
+
 export {
   getThreadQuery,
   getThreadsQuery,
@@ -233,5 +241,6 @@ export {
   addRequestMutation,
   deleteRequestMutation,
   getUserQuery,
-  getUsersQuery //not used yet
+  getUsersQuery, //not used yet
+  deleteThreadsMutation
 };
