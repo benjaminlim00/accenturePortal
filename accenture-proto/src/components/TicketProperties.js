@@ -5,7 +5,7 @@ class TicketProperties extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div className="properties internal-scrolling">
+      <div className="properties">
         <h2 className="small-heading contact-property">Ticket Properties</h2>
         <img src={arrow} className="arrow-up-new" />
         <div className="grid-row">

@@ -1,6 +1,9 @@
 /* -----------------------------------------------*/
 /* BACK TO TICKETS HEADING */
 /* -----------------------------------------------*/
+body {
+  overflow: hidden;
+}
 
 .back-to-tickets-section {
   background-color: #ffff;
@@ -51,7 +54,7 @@
 
 .enquiry-section {
   background-color: #e8e8e8;
-  overflow: auto;
+  overflow: hidden;
   width: 100%;
 }
 
@@ -92,7 +95,7 @@
 
 .textareareplyThread {
   padding: 1%;
-  width:100%
+  width: 100%;
 }
 
 .reply-button {
@@ -144,6 +147,14 @@
   display: inline-block;
   font-size: 80%;
   margin-left: 1%;
+}
+
+.send-button-createThread {
+  display: inline-block;
+  font-size: 80%;
+  margin-left: 1%;
+  border: none;
+  background: rgba(0, 0, 0, 0);
 }
 
 .cancel {
@@ -424,10 +435,9 @@
   margin-top: 5%;
 }
 
-.thread-stream{
+.thread-stream {
   margin-top: 2%;
   margin-bottom: 2%;
-
 }
 
 .add-col {

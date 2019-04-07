@@ -10,34 +10,31 @@ import { Link } from "react-router-dom";
 
 class ContactDetails extends React.Component {
   displayContactDetails() {
-    //const {book} = this.props.data;
     console.log("CONTACT DETAILS");
     console.log(this.props);
 
     return (
-      
+      <div className="contact-details">
+        <h2 className="small-heading contact-property">Contact Details</h2>
+        <img src={arrow} className="arrow-up-new" />
 
-        <div className="contact-details">
-          <h2 className="small-heading contact-property">
-            Contact Details
-          </h2>
-          <img src={arrow} className="arrow-up-new" />
+        <h5 className="type-of-details">Requester</h5>
+        <p className="detail-req">
+          {this.props.firstName} {this.props.lastName}
+        </p>
 
-          <h5 className="type-of-details">Requester</h5>
-          <p className="detail-req">{this.props.firstName} {this.props.lastName}</p>
+        <h5 className="type-of-details">Email</h5>
+        <p className="detail-req">{this.props.email}</p>
 
-          <h5 className="type-of-details">Email</h5>
-          <p className="detail-req">{this.props.email}</p>
+        <h5 className="type-of-details">Mobile Number</h5>
+        <p className="detail-req">{this.props.contactNumber}</p>
 
-          <h5 className="type-of-details">Mobile Number</h5>
-          <p className="detail-req">{this.props.contactNumber}</p>
+        <h5 className="type-of-details">Company</h5>
+        <p className="detail-req">EDIT THIS</p>
 
-          <h5 className="type-of-details">Company</h5>
-          <p className="detail-req">EDIT THIS</p>
-
-          <h5 className="type-of-details">Account Type</h5>
-          <p className="detail-req">{this.props.accountType}</p>
-        </div>
+        <h5 className="type-of-details">Account Type</h5>
+        <p className="detail-req">{this.props.accountType}</p>
+      </div>
     );
     /*
       } else {
@@ -54,8 +51,6 @@ class ContactDetails extends React.Component {
   }
 
   render() {
-    let linkStr = "requestDetail/" + this.props.id;
-
     return (
       <div className="combined-contact-past-ticket-details">
         {this.displayContactDetails()}

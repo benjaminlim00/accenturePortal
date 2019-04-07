@@ -56,7 +56,6 @@ class RequestDetail extends React.Component {
       });
 
       dataArr = dataArr[0];
-      console.log("FUCK"); // here is data of the request.
       console.log(dataArr); // here is data of the request.
 
       return (
@@ -82,7 +81,6 @@ class RequestDetail extends React.Component {
         return request.id === pageId;
       });
       dataArr = dataArr[0];
-      // console.log("TESTINGGGG");
       // console.log(dataArr);
 
       return (
@@ -215,14 +213,14 @@ class RequestDetail extends React.Component {
           </div>
 
           <div className="enquiry-section">
-            <div className="add-col">
+            <div className="add-col internal-scrolling">
               {this.displayMainThread()}
 
               {this.displayThreads()}
 
               {this.displayCreateThread()}
             </div>
-            <div className="quarter-col text-boxes">
+            <div className="quarter-col text-boxes internal-scrolling">
               {this.displayContactDetails()}
 
               {this.displayData()}
