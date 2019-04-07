@@ -21,7 +21,15 @@ class deleteButton extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/requests" />;
+      // return <Redirect to="/requests" />;
+      return (
+        <Redirect
+          to={{
+            pathname: "/requests",
+            state: { deletedTicket: true }
+          }}
+        />
+      );
     }
 
     let id = this.props.id;

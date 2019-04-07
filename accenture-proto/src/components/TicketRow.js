@@ -75,19 +75,13 @@ class TicketRow extends React.Component {
           <h4 className="detail">{this.props.status}</h4>
         </div>
         <div className="statusArrow">
-          <DropdownCardStatus
-            idd={this.props.id}
-            toggleUpdatedTicket={this.props.toggleUpdatedTicket}
-          />
+          <DropdownCardStatus idd={this.props.id} />
         </div>
         <div className="col span-1-of-9" id="assignedTo">
           <h4 className="detail">{this.props.assigned}</h4>
         </div>
         <div className="assignedToArrow">
-          <DropdownCardAssigned
-            idd={this.props.id}
-            toggleUpdatedTicket={this.props.toggleUpdatedTicket}
-          />
+          <DropdownCardAssigned idd={this.props.id} />
         </div>
       </div>
     );

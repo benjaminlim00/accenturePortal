@@ -54,31 +54,15 @@ class DropdownCardAssigned extends Component {
           >
             <ul className="dropdownList2">
               <li className="buttonList">
-                <UpdateButton
-                  idd={pageId}
-                  text="Ben"
-                  logic="assigned"
-                  toggleUpdatedTicket={this.props.toggleUpdatedTicket}
-                />
+                <UpdateButton idd={pageId} text="Ben" logic="assigned" />
               </li>
               <li className="buttonList">
-                <UpdateButton
-                  idd={pageId}
-                  text="Bertha"
-                  logic="assigned"
-                  toggleUpdatedTicket={this.props.toggleUpdatedTicket}
-                />
+                <UpdateButton idd={pageId} text="Bertha" logic="assigned" />
               </li>
               <li className="buttonList">
-                <UpdateButton
-                  idd={pageId}
-                  text="Hangwee"
-                  logic="assigned"
-                  toggleUpdatedTicket={this.props.toggleUpdatedTicket}
-                />
+                <UpdateButton idd={pageId} text="Hangwee" logic="assigned" />
               </li>
             </ul>
-
           </div>
         ) : null}
       </div>

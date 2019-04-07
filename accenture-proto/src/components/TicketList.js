@@ -41,13 +41,17 @@ class TicketList extends React.Component {
       // console.log(data.requests);
       let dataArr = Object.values(data.requests);
       dataArr.sort((a, b) =>
-      a.user.firstName > b.user.firstName ? 1 : b.user.firstName > a.user.firstName ? -1 : 0
-    );
+        a.user.firstName > b.user.firstName
+          ? 1
+          : b.user.firstName > a.user.firstName
+          ? -1
+          : 0
+      );
       // console.log(arr);
 
       return dataArr.map(request => {
         return (
-<TicketRow
+          <TicketRow
             id={request.id}
             userFirstName={request.user.firstName}
             asset={request.asset}
@@ -59,7 +63,6 @@ class TicketList extends React.Component {
             assigned={request.assigned}
             //mainThread={request.mainThread} //dont need this on ticketList page
             key={request.id}
-            toggleUpdatedTicket={this.props.toggleUpdatedTicket}
           />
         );
       });
@@ -128,18 +131,43 @@ class TicketList extends React.Component {
       var showSnackbar = false;
     }
     */
+    // console.log(this.props.location.state);
 
-    if (this.props.state.updatedTicket) {
-    var showSnackbar = true;
-    } 
-    else {
-      var showSnackbar = false;
+    var showSnackbarCreate = false;
+    if (typeof this.props.location.state !== "undefined") {
+      if (this.props.location.state.createdTicket) {
+        var showSnackbarCreate = true;
+      }
+    }
+
+    var showSnackbarDelete = false;
+    if (typeof this.props.location.state !== "undefined") {
+      if (this.props.location.state.deletedTicket) {
+        var showSnackbarDelete = true;
+      }
+    }
+
+    var showSnackbarUpdate = false;
+    if (typeof this.props.location.state !== "undefined") {
+      if (this.props.location.state.updatedTicket) {
+        var showSnackbarUpdate = true;
+      }
     }
 
     return (
       <div>
         <NavBar />
-        {showSnackbar ? <CustomizedSnackbars /> : null}
+        {showSnackbarUpdate ? (
+          <CustomizedSnackbars message="Request successfully updated" />
+        ) : null}
+
+        {showSnackbarDelete ? (
+          <CustomizedSnackbars message="Request successfully deleted" />
+        ) : null}
+
+        {showSnackbarCreate ? (
+          <CustomizedSnackbars message="Request successfully created" />
+        ) : null}
 
         <section className="current-tickets">
           <div className="filter-text">

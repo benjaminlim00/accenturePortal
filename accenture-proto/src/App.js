@@ -23,9 +23,6 @@ class App extends Component {
       deletedTicket: false
     };
     this.handleAuth = this.handleAuth.bind(this);
-    this.toggleUpdatedTicket = this.toggleUpdatedTicket.bind(this);
-    this.toggleCreatedTicket = this.toggleCreatedTicket.bind(this);
-    this.toggleDeletedTicket = this.toggleDeletedTicket.bind(this);
   }
 
   handleAuth() {
@@ -40,43 +37,13 @@ class App extends Component {
     }
   }
 
-  toggleUpdatedTicket() {
-    let bool = this.state.updatedTicket;
-    this.setState({
-      updatedTicket: !bool
-    });
-  }
-
-  toggleCreatedTicket() {
-    let bool = this.state.updatedTicket;
-    this.setState({
-      createdTicket: !bool
-    });
-  }
-  toggleDeletedTicket() {
-    let bool = this.state.updatedTicket;
-    this.setState({
-      deletedTicket: !bool
-    });
-  }
-
   render() {
     // let navHeader = this.state.isAuth ? <NavBar /> : "";
     return (
       <ApolloProvider client={client}>
         <Router>
           <Switch>
-            <Route
-              exact
-              path="/requests"
-              render={props => (
-                <TicketList
-                  {...props}
-                  toggleUpdatedTicket={this.toggleUpdatedTicket}
-                  state={this.state}
-                />
-              )}
-            />
+            <Route exact path="/requests" component={TicketList} />
             <Route
               exact
               path="/"
@@ -84,18 +51,8 @@ class App extends Component {
                 <LoginPage {...props} handleAuth={this.handleAuth} />
               )}
             />
-            <Route
-              exact
-              path="/createTicket"
-              component={CreateTicket}
-              toggleCreatedTicket={this.toggleCreatedTicket}
-            />
-            <Route
-              exact
-              path="/requestDetail/:id"
-              component={RequestDetail}
-              toggleDeletedTicket={this.toggleDeletedTicket}
-            />
+            <Route exact path="/createTicket" component={CreateTicket} />
+            <Route exact path="/requestDetail/:id" component={RequestDetail} />
           </Switch>
         </Router>
       </ApolloProvider>
