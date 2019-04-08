@@ -93,6 +93,16 @@ class UpdateButton extends React.Component {
     }
     if (this.state.redirect) {
       // return <Redirect to="/requests" />;
+      if (this.props.isClient) {
+        return (
+          <Redirect
+            to={{
+              pathname: "/crequests",
+              state: { updatedTicket: true }
+            }}
+          />
+        );
+      }
       return (
         <Redirect
           to={{

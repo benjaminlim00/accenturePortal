@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 
 class ContactDetails extends React.Component {
   displayContactDetails() {
-    console.log("CONTACT DETAILS");
-    console.log(this.props);
+    // console.log("CONTACT DETAILS");
+    // console.log(this.props);
 
     return (
       <div className="contact-details">

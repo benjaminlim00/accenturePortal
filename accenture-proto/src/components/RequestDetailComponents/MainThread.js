@@ -30,7 +30,7 @@ class MainThread extends React.Component {
   }
 
   render() {
-    let linkStr = "requestDetail/" + this.props.id;
+    // let linkStr = "requestDetail/" + this.props.id;
 
     return <div>{this.displayMainThread()}</div>;
   }

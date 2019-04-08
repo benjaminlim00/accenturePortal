@@ -13,9 +13,8 @@ import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.
 
 class ThreadBlock extends React.Component {
   displayAllThreads() {
-    //const {book} = this.props.data;
-    console.log("ThreadBlock");
-    console.log(this.props.threads);
+    // console.log("ThreadBlock");
+    // console.log(this.props.threads);
 
     //if (threads) {
     return (
@@ -53,7 +52,7 @@ class ThreadBlock extends React.Component {
   }
 
   render() {
-    let linkStr = "requestDetail/" + this.props.id;
+    // let linkStr = "requestDetail/" + this.props.id;
 
     return <div>{this.displayAllThreads()}</div>;
   }
