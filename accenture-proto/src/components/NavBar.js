@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/App.css";
 import "../styles/grid.css";
 import "../styles/normalize.css";
@@ -27,10 +28,10 @@ class NavBar extends React.Component {
             />
             <ul className="main-nav">
               <li className="home-page">
-                <a href="/requests">All Tickets</a>
+                <Link to="/requests">All Tickets</Link>
               </li>
               <li className="create-ticket-page">
-                <a href="/createTicket">Create Ticket</a>
+                <Link to="/createTicket">Create Ticket</Link>
               </li>
             </ul>
           </div>
