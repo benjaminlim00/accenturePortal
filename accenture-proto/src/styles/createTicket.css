@@ -43,67 +43,6 @@ html {
 }
 
 /* -----------------------------------------------*/
-/* NAVIGATION BAR */
-/* -----------------------------------------------*/
-
-.nav-bar {
-  vertical-align: top;
-  text-align: center;
-  font-weight: 400;
-  border-bottom: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #ecf0f1;
-}
-
-.accenture-head {
-  float: left;
-  margin-top: 1%;
-  margin-left: 2%;
-  margin-right: 0.5%;
-}
-
-.accenture-text {
-  padding: 1.2% 0;
-  float: left;
-}
-
-.accenture-logo {
-  height: 30px;
-  width: auto;
-}
-
-.main-nav {
-  float: right;
-  list-style: none;
-  margin-top: 1%;
-  position: relative;
-  display: inline-block;
-  margin-right: 5%;
-  vertical-align: top;
-}
-
-.main-nav li {
-  display: inline-block;
-  margin-left: 40px;
-  font-size: 80%;
-}
-
-.main-nav li a:link,
-.main-nav li a:visited {
-  padding: 8px 0;
-  color: #414141;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 0.2s;
-}
-
-.main-nav li a:hover,
-.main-nav li a:active {
-  border-bottom: 2px solid #909090;
-}
-
-/* -----------------------------------------------*/
 /* TICKET HEADING */
 /* -----------------------------------------------*/
 

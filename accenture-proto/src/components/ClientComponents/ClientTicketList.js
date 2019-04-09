@@ -48,6 +48,12 @@ class TicketList extends React.Component {
           : 0
       );
 
+      console.log(dataArr);
+      //only show for joseph, may change this
+      dataArr = dataArr.filter(request => {
+        return request.user.firstName.toLowerCase() == "joseph";
+      });
+
       return dataArr.map(request => {
         return (
           <ClientTicketRow
@@ -209,8 +215,8 @@ class TicketList extends React.Component {
                 <b>Status</b>
               </h4>
             </div>
-            <div class="col span-1-of-8">
-              <h4 class="detail" id="detailHeading">
+            <div className="col span-1-of-8">
+              <h4 className="detail" id="detailHeading">
                 <b>Close Request?</b>
               </h4>
             </div>

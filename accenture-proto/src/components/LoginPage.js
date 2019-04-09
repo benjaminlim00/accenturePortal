@@ -30,7 +30,8 @@ class LoginPage extends React.Component {
 
     // {name,value} = e.target;
     if (
-      this.state.username === "benjamin" &&
+      (this.state.username === "benjamin" ||
+        this.state.username === "joseph") &&
       this.state.password === "password"
     ) {
       //here i will change the isAuth state
@@ -49,6 +50,9 @@ class LoginPage extends React.Component {
 
   render() {
     if (this.state.redirect) {
+      if (this.state.username === "joseph") {
+        return <Redirect to="/crequests" />;
+      }
       return <Redirect to="/requests" />;
     }
 

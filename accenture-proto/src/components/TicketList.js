@@ -207,7 +207,7 @@ class TicketList extends React.Component {
                 <b>Type</b>
               </h4>
             </div>
-            <div className="col span-1-of-9">
+            <div className="col span-1-of-9" id="subject">
               <h4 className="detail" id="detailHeading">
                 <b>Subject</b>
               </h4>
