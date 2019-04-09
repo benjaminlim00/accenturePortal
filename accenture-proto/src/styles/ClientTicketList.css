@@ -25,6 +25,13 @@
   padding: 6px 10.5px;
 }
 
+.unable-close {
+  padding: 9px 30px;
+  color: #000000;
+  font-weight: 300;
+  text-align: left;
+}
+
 /* -----------------------------------------------*/
 /* CHANGE STATUS POPUP SCREEN */
 /* -----------------------------------------------*/

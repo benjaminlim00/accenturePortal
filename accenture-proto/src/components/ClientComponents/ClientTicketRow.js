@@ -91,6 +91,7 @@ class TicketRow extends React.Component {
 
   render() {
     let linkStr = "requestDetail/" + this.props.id;
+    let closedBool = this.props.dateClosed !== "";
 
     return (
       <div className="filter-box-2">
@@ -126,22 +127,26 @@ class TicketRow extends React.Component {
         <div className="statusArrow">
           <DropdownCardStatus idd={this.props.id} isClient="true" />
         </div>
-        <div className="col span-1-of-8">
-          <button
-            className="user-ticket-list-yes-button"
-            // disabled={!this.isYesValid()}
-            onClick={this.yesPress}
-          >
-            <p className="yes-button-text">Yes</p>
-          </button>
-          <button
-            className="user-ticket-list-no-button"
-            // disabled={!this.isYesValid()}
-            onClick={this.noPress}
-          >
-            <p className="no-button-text">No</p>
-          </button>
-        </div>
+        {closedBool ? (
+          <div className="col span-1-of-8">
+            <button
+              className="user-ticket-list-yes-button"
+              // disabled={!this.isYesValid()}
+              onClick={this.yesPress}
+            >
+              <p className="yes-button-text">Yes</p>
+            </button>
+            <button
+              className="user-ticket-list-no-button"
+              // disabled={!this.isYesValid()}
+              onClick={this.noPress}
+            >
+              <p className="no-button-text">No</p>
+            </button>
+          </div>
+        ) : (
+          <p className="unable-close">Unable to close</p>
+        )}
       </div>
     );
   }

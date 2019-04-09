@@ -59,6 +59,7 @@ class TicketList extends React.Component {
             type={request.type}
             subject={request.subject}
             dateRequested={request.dateRequested}
+            dateClosed={request.dateClosed}
             priority={request.priority}
             status={request.status}
             assigned={request.assigned}
