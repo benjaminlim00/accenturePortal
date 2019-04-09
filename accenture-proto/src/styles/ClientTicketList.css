@@ -3,24 +3,26 @@
   display: inline-block;
   font-size: 90%;
   font-weight: 300;
+  border: none;
+  background: rgba(0, 0, 0, 0);
 }
 
-.user-ticket-list-yes-button {
+.yes-button-text {
+  text-align: center;
   background-color: #249d3b;
-  padding: 3% 9%;
-  margin-left: 7%;
   color: #ffffff;
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
+  text-transform: uppercase;
+
+  padding: 6px 10.5px;
 }
 
-.user-ticket-list-no-button {
-  margin-left: -5%;
+.no-button-text {
+  text-align: center;
   background-color: #c12b2b;
-  padding: 3% 9%;
   color: #ffffff;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
+  text-transform: uppercase;
+
+  padding: 6px 10.5px;
 }
 
 /* -----------------------------------------------*/
@@ -75,4 +77,8 @@
 .change-status-yes-text {
   margin: 10%;
   text-align: center;
+}
+
+#client-status {
+  margin-right: -0.8%;
 }

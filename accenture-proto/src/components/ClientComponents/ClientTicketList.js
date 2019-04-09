@@ -9,7 +9,7 @@ import profileIcon from "../../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-RE
 import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 import ClientTicketRow from "./ClientTicketRow";
-import NavBar from "../NavBar";
+import CNavBar from "./CNavBar";
 import CustomizedSnackbars from "../CustomizedSnackbars";
 
 import { graphql, compose } from "react-apollo";
@@ -41,12 +41,8 @@ class TicketList extends React.Component {
     if (!data.loading) {
       let dataArr = Object.values(data.requests);
       dataArr.sort((a, b) =>
-        a.user.firstName > b.user.firstName
-          ? 1
-          : b.user.firstName > a.user.firstName
-          ? -1
-          : 0
-      );
+        a.subject > b.subject ? 1 : b.subject > a.subject ? -1 : 0
+      ); //sort by subject, maybe time will be better
 
       console.log(dataArr);
       //only show for joseph, may change this
@@ -149,7 +145,7 @@ class TicketList extends React.Component {
 
     return (
       <div>
-        <NavBar />
+        <CNavBar />
         {showSnackbarUpdate ? (
           <CustomizedSnackbars message="Request successfully updated" />
         ) : null}

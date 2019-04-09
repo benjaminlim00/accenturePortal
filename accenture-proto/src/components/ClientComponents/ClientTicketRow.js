@@ -1,4 +1,9 @@
 import React from "react";
+
+import { graphql, compose } from "react-apollo";
+import { Redirect } from "react-router-dom";
+import { addRequestMutation, getRequestsQuery } from "../../queries/queries";
+
 import "../../styles/App.css";
 import "../../styles/grid.css";
 import "../../styles/normalize.css";
@@ -18,6 +23,8 @@ class TicketRow extends React.Component {
     };
 
     this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.yesPress = this.yesPress.bind(this);
+    this.noPress = this.noPress.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +41,53 @@ class TicketRow extends React.Component {
       this.setState({ checkbox: true });
     }
   };
+
+  noPress() {
+    console.log("no button pressed");
+  }
+
+  yesPress() {
+    console.log("yes button pressed");
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
+    var data = this.props.getRequestsQuery;
+    var dataArr;
+    if (!data.loading) {
+      let pageId = this.props.id;
+      dataArr = data.requests.filter(request => {
+        return request.id === pageId;
+      });
+
+      dataArr = dataArr[0];
+      // console.log(dataArr);
+    } else {
+      console.log("still retreiving data from mongoDB");
+    }
+
+    // this.props.addRequestMutation({
+    //   variables: {
+    //     asset: dataArr.asset,
+    //     type: dataArr.type,
+    //     subject: dataArr.subject,
+    //     dateRequested: dataArr.dateRequested,
+    //     priority: dataArr.priority,
+    //     status: "Open",
+    //     assigned: dataArr.assigned,
+    //     dateResolved: date,
+    //     dateClosed: date,
+    //     mainThread: dataArr.mainThread,
+    //     requesterId: dataArr.requesterId
+    //   }
+    // });
+    console.log("Data sent! Redirecting page");
+    // this.handleRedirect();
+  }
 
   render() {
     let linkStr = "requestDetail/" + this.props.id;
@@ -66,23 +120,34 @@ class TicketRow extends React.Component {
         <div className="col span-1-of-5">
           <h4 className="detail">{this.props.dateClosed}</h4>
         </div>
-        <div className="col span-1-of-10" id="status">
+        <div className="col span-1-of-10" id="client-status">
           <h4 className="detail">{this.props.status}</h4>
         </div>
         <div className="statusArrow">
           <DropdownCardStatus idd={this.props.id} isClient="true" />
         </div>
         <div className="col span-1-of-8">
-          <div class="user-ticket-list-yes-button">
-            <p class="yes-button-text">Yes</p>
-          </div>
-          <div class="user-ticket-list-no-button">
-            <p class="no-button-text">No</p>
-          </div>
+          <button
+            className="user-ticket-list-yes-button"
+            // disabled={!this.isYesValid()}
+            onClick={this.yesPress}
+          >
+            <p className="yes-button-text">Yes</p>
+          </button>
+          <button
+            className="user-ticket-list-no-button"
+            // disabled={!this.isYesValid()}
+            onClick={this.noPress}
+          >
+            <p className="no-button-text">No</p>
+          </button>
         </div>
       </div>
     );
   }
 }
 
-export default TicketRow;
+export default compose(
+  graphql(addRequestMutation, { name: "addRequestMutation" }),
+  graphql(getRequestsQuery, { name: "getRequestsQuery" })
+)(TicketRow);
