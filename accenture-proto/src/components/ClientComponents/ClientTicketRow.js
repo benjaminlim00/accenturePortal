@@ -104,27 +104,29 @@ class TicketRow extends React.Component {
             onChange={this.handleCheckbox}
           />
         </div>
-        <div className="col span-1-of-10">
-          <h4 className="detail">{this.props.asset}</h4> {/*John Tan*/}
+        <div className="col span-1-of-9">
+          <h4 className="detail notSubject">{this.props.asset}</h4>{" "}
+          {/*John Tan*/}
         </div>
         <div className="col span-1-of-8">
-          <h4 className="detail">{this.props.type}</h4> {/*Login API*/}
+          <h4 className="detail notSubject">{this.props.type}</h4>{" "}
+          {/*Login API*/}
         </div>
-        <div className="col span-1-of-3">
+        <div className="col span-1-of-4">
           <Link to={linkStr} className="subjectLink">
             <h4 className="detail subjectLinkHover">{this.props.subject}</h4>
           </Link>
         </div>
-        <div className="col span-1-of-5">
-          <h4 className="detail">{this.props.dateRequested}</h4>
+        <div className="col span-1-of-5" id="dateRequestedDetails">
+          <h4 className="detail notSubject">{this.props.dateRequested}</h4>
         </div>
         <div className="col span-1-of-5">
-          <h4 className="detail">{this.props.dateClosed}</h4>
+          <h4 className="detail notSubject">{this.props.dateClosed}</h4>
         </div>
         <div className="col span-1-of-10" id="client-status">
-          <h4 className="detail">{this.props.status}</h4>
+          <h4 className="detail notSubject">{this.props.status}</h4>
         </div>
-        <div className="statusArrow">
+        <div className="clientStatusArrow">
           <DropdownCardStatus idd={this.props.id} isClient="true" />
         </div>
         {closedBool ? (

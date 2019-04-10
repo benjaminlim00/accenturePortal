@@ -32,6 +32,11 @@
   text-align: left;
 }
 
+.clientStatusArrow {
+  margin: 1%;
+  margin-left: 0;
+}
+
 /* -----------------------------------------------*/
 /* CHANGE STATUS POPUP SCREEN */
 /* -----------------------------------------------*/

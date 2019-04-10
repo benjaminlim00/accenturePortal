@@ -250,6 +250,7 @@ html {
   /* Required for text-overflow to do anything */
   white-space: nowrap;
   overflow: hidden;
+  padding: 2%;
 }
 
 .checkboxIMG {
@@ -264,6 +265,15 @@ html {
   color: #000000;
   font-weight: 300;
   text-align: left;
+  padding-top: 2%;
+}
+
+#dateRequestedDetails {
+  margin-left: 5%;
+}
+
+.notSubject {
+  padding-top: 4%;
 }
 
 #detailHeading {
