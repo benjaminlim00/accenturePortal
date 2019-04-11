@@ -49,13 +49,13 @@ class TicketRow extends React.Component {
             onChange={this.handleCheckbox}
           />
         </div>
-        <div className="col span-1-of-9">
+        <div className="col span-1-of-10">
           <h4 className="detail">{this.props.userFirstName}</h4> {/*John Tan*/}
         </div>
         <div className="col span-1-of-9">
           <h4 className="detail">{this.props.asset}</h4> {/*Login API*/}
         </div>
-        <div className="col span-1-of-9">
+        <div className="col span-1-of-5">
           <Link to={linkStr} className="subjectLink" id="subject">
             <h4 className="detail subjectLinkHover">
               {this.props.type}: {this.props.subject}
@@ -63,11 +63,15 @@ class TicketRow extends React.Component {
           </Link>
           {/*Enquiry about API => we make this one a link*/}
         </div>
-        <div className="col span-1-of-7" id="dateRequestedDetails">
+        <div className="col span-1-of-6">
           <h4 className="detail">{this.props.dateRequested}</h4>
           {/*12 January 2019 12:00:00*/}
         </div>
-        <div className="col span-1-of-9">
+        <div className="col span-1-of-6">
+          <h4 className="detail">{this.props.dateResolved}</h4>
+        </div>
+
+        <div className="col span-1-of-10">
           <h4 className="detail">{this.props.priority}</h4> {/*High*/}
         </div>
         <div className="col span-1-of-9" id="status">
@@ -76,7 +80,7 @@ class TicketRow extends React.Component {
         <div className="statusArrow">
           <DropdownCardStatus idd={this.props.id} isCLient="false" />
         </div>
-        <div className="col span-1-of-9" id="assignedTo">
+        <div className="col span-1-of-8" id="assignedTo">
           <h4 className="detail">{this.props.assigned}</h4>
         </div>
         <div className="assignedToArrow">

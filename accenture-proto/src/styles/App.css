@@ -149,6 +149,7 @@ html {
 .current-tickets {
   background-color: #ecf0f1;
   background-size: cover;
+  min-height: 700px;
 }
 
 .filter-text,
@@ -244,13 +245,14 @@ html {
 
 .subjectLinkHover {
   border: 1px solid #e5e5e5;
-  border-radius: 0;
+  border-radius: 3px;
   box-shadow: 1px 1px 1px #e5e5e5;
   text-overflow: ellipsis;
   /* Required for text-overflow to do anything */
   white-space: nowrap;
   overflow: hidden;
-  padding: 2%;
+  padding: 1%;
+  width: 190px;
 }
 
 .checkboxIMG {
@@ -266,14 +268,6 @@ html {
   font-weight: 300;
   text-align: left;
   padding-top: 2%;
-}
-
-#dateRequestedDetails {
-  margin-left: 5%;
-}
-
-.notSubject {
-  padding-top: 4%;
 }
 
 #detailHeading {
@@ -381,20 +375,19 @@ html {
 
 .statusArrow {
   margin: 1%;
-  margin-left: -2.5%;
-  margin-right: 2%;
 }
 
 #status {
-  margin-right: -1.5%;
+  margin-right: -3.5%;
 }
 
 #assignedTo {
-  margin-right: -3.5%;
+  margin-right: -4%;
 }
 
 .assignedToArrow {
   margin-top: 1%;
+  margin-right: 2.5%;
 }
 
 .transparentButton-status {

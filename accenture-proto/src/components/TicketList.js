@@ -58,6 +58,7 @@ class TicketList extends React.Component {
             type={request.type}
             subject={request.subject}
             dateRequested={request.dateRequested}
+            dateResolved={request.dateResolved}
             priority={request.priority}
             status={request.status}
             assigned={request.assigned}
@@ -192,7 +193,7 @@ class TicketList extends React.Component {
                 onChange={this.handleCheckbox}
               />
             </div>
-            <div className="col span-1-of-9">
+            <div className="col span-1-of-10">
               <h4 className="detail" id="detailHeading">
                 <b>Requester</b>
               </h4>
@@ -202,17 +203,22 @@ class TicketList extends React.Component {
                 <b>Asset(s)</b>
               </h4>
             </div>
-            <div className="col span-1-of-9" id="subject">
+            <div className="col span-1-of-5" id="subject">
               <h4 className="detail" id="detailHeading">
                 <b>Subject</b>
               </h4>
             </div>
-            <div className="col span-1-of-7">
+            <div className="col span-1-of-6">
               <h4 className="detail" id="detailHeading">
                 <b>Date/Time Requested</b>
               </h4>
             </div>
-            <div className="col span-1-of-9">
+            <div className="col span-1-of-6">
+              <h4 className="detail" id="detailHeading">
+                <b>Date/Time Resolved</b>
+              </h4>
+            </div>
+            <div className="col span-1-of-10">
               <h4 className="detail" id="detailHeading">
                 <b>Priority</b>
               </h4>
@@ -222,7 +228,7 @@ class TicketList extends React.Component {
                 <b>Status</b>
               </h4>
             </div>
-            <div className="col span-1-of-9">
+            <div className="col span-1-of-8">
               <h4 className="detail" id="detailHeading">
                 <b>Assigned To</b>
               </h4>

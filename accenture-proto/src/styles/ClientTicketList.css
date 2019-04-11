@@ -1,3 +1,45 @@
+.clientDetail {
+  font-size: 85%;
+  color: #000000;
+  font-weight: 300;
+  text-align: left;
+  padding-top: 2%;
+}
+
+.clientNotSubject {
+  padding-top: 4%;
+}
+
+.clientSubjectLink {
+  text-decoration: none;
+}
+
+.clientSubjectLinkHover:link,
+.clientSubjectLinkHover:visited {
+  padding: 8px 0;
+  color: #414141;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.clientSubjectLinkHover:hover,
+.clientSubjectLinkHover:active {
+  font-weight: bold;
+  color: #000000;
+}
+
+.clientSubjectLinkHover {
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #e5e5e5;
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 200px;
+  padding: 2%;
+}
+
 .user-ticket-list-yes-button,
 .user-ticket-list-no-button {
   display: inline-block;
@@ -12,7 +54,6 @@
   background-color: #249d3b;
   color: #ffffff;
   text-transform: uppercase;
-
   padding: 6px 10.5px;
 }
 
@@ -27,14 +68,18 @@
 
 .unable-close {
   padding: 9px 30px;
-  color: #000000;
-  font-weight: 300;
   text-align: left;
+  font-size: 90%;
 }
 
 .clientStatusArrow {
   margin: 1%;
-  margin-left: 0;
+  margin-left: -4%;
+  margin-right: 3.5%;
+}
+
+#client-status {
+  margin-right: -0.8%;
 }
 
 /* -----------------------------------------------*/
@@ -89,8 +134,4 @@
 .change-status-yes-text {
   margin: 10%;
   text-align: center;
-}
-
-#client-status {
-  margin-right: -0.8%;
 }

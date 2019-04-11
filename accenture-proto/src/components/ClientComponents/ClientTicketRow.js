@@ -108,33 +108,39 @@ class TicketRow extends React.Component {
           />
         </div>
         <div className="col span-1-of-9">
-          <h4 className="detail notSubject">{this.props.asset}</h4>{" "}
+          <h4 className="clientDetail clientNotSubject">{this.props.asset}</h4>{" "}
           {/*John Tan*/}
         </div>
-        <div className="col span-1-of-4">
-          <Link to={linkStr} className="subjectLink">
-            <h4 className="detail subjectLinkHover">
+        <div className="col span-1-of-5">
+          <Link to={linkStr} className="clientSubjectLink">
+            <h4 className="clientDetail clientSubjectLinkHover">
               {this.props.type}: {this.props.subject}
             </h4>
           </Link>
         </div>
-        <div className="col span-1-of-5" id="dateRequestedDetails">
-          <h4 className="detail notSubject">{this.props.dateRequested}</h4>
+        <div className="col span-1-of-7">
+          <h4 className="clientDetail clientNotSubject">
+            {this.props.dateRequested}
+          </h4>
         </div>
-        <div className="col span-1-of-5">
-          <h4 className="detail notSubject">{this.props.dateResolved}</h4>
+        <div className="col span-1-of-7">
+          <h4 className="clientDetail clientNotSubject">
+            {this.props.dateResolved}
+          </h4>
         </div>
-        <div className="col span-1-of-5">
-          <h4 className="detail notSubject">{this.props.dateClosed}</h4>
+        <div className="col span-1-of-7">
+          <h4 className="clientDetail clientNotSubject">
+            {this.props.dateClosed}
+          </h4>
         </div>
-        <div className="col span-1-of-10" id="client-status">
-          <h4 className="detail notSubject">{this.props.status}</h4>
+        <div className="col span-1-of-8" id="client-status">
+          <h4 className="clientDetail clientNotSubject">{this.props.status}</h4>
         </div>
         <div className="clientStatusArrow">
           <DropdownCardStatus idd={this.props.id} isClient="true" />
         </div>
         {resolvedBool ? (
-          <div className="col span-1-of-8">
+          <div className="col span-1-of-9">
             <button
               className="user-ticket-list-yes-button"
               onClick={this.yesPress}

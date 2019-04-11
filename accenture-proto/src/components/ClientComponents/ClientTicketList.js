@@ -184,37 +184,37 @@ class TicketList extends React.Component {
               />
             </div>
             <div className="col span-1-of-9">
-              <h4 className="detail" id="detailHeading">
+              <h4 className="clientDetail" id="clientDetailHeading">
                 <b>Asset(s)</b>
               </h4>
             </div>
-            <div className="col span-1-of-4">
-              <h4 className="detail" id="detailHeading">
+            <div className="col span-1-of-5">
+              <h4 className="clientDetail" id="clientDetailHeading">
                 <b>Subject</b>
               </h4>
             </div>
-            <div className="col span-1-of-5">
-              <h4 className="detail" id="detailHeading">
+            <div className="col span-1-of-7">
+              <h4 className="clientDetail" id="clientDetailHeading">
                 <b>Date/Time Requested</b>
               </h4>
             </div>
-            <div className="col span-1-of-5">
-              <h4 className="detail" id="detailHeading">
+            <div className="col span-1-of-7">
+              <h4 className="clientDetail" id="clientDetailHeading">
                 <b>Date/Time Resolved</b>
               </h4>
             </div>
-            <div className="col span-1-of-5">
-              <h4 className="detail" id="detailHeading">
+            <div className="col span-1-of-7">
+              <h4 className="clientDetail" id="clientDetailHeading">
                 <b>Date/Time Closed</b>
               </h4>
             </div>
-            <div className="col span-1-of-10">
-              <h4 className="detail" id="detailHeading">
+            <div className="col span-1-of-8">
+              <h4 className="clientDetail" id="clientDetailHeading">
                 <b>Status</b>
               </h4>
             </div>
-            <div className="col span-1-of-8">
-              <h4 className="detail" id="detailHeading">
+            <div className="col span-1-of-9">
+              <h4 className="clientDetail" id="clientDetailHeading">
                 <b>Close Request?</b>
               </h4>
             </div>

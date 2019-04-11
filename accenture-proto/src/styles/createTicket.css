@@ -61,10 +61,10 @@ html {
 /* -----------------------------------------------*/
 /* MAIN BODY */
 /* -----------------------------------------------*/
-
 .create-new-tix-main-body {
   background-color: #ecf0f1;
   display: flex;
+  height: 700px;
 }
 
 .heading-box {
