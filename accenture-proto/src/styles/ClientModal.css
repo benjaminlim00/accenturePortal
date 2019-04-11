@@ -24,3 +24,9 @@
 .client-display-none {
   display: none;
 }
+
+.error-textVerClientModal {
+  font-size: 18px;
+  color: #d63301;
+  margin-bottom: 15px;
+}

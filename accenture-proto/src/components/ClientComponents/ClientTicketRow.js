@@ -172,7 +172,13 @@ class TicketRow extends React.Component {
           <h4 className="clientDetail clientNotSubject">{this.props.status}</h4>
         </div>
 
-        {closedBool ? null : (
+        {closedBool ? (
+          <div className="clientStatusArrowInvisible">
+            <p id="transparentButton" className="transparentButton-status">
+              <img src={arrow} className="arrow-down-2" />
+            </p>
+          </div>
+        ) : (
           <div className="clientStatusArrow">
             <DropdownCardStatus idd={this.props.id} isClient="true" />
           </div>

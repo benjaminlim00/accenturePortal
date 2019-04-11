@@ -2,6 +2,8 @@ import React from "react";
 import { graphql, compose } from "react-apollo";
 import { Redirect } from "react-router-dom";
 
+import ClientModal from "./ClientComponents/ClientModal";
+
 import {
   getRequestsQuery,
   addRequestMutation,
@@ -21,6 +23,9 @@ class UpdateButton extends React.Component {
     // this.handleRedirect = this.handleRedirect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleSnackbarUpdate = this.toggleSnackbarUpdate.bind(this);
+
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   // handleRedirect() {
@@ -28,6 +33,14 @@ class UpdateButton extends React.Component {
   //     redirect: true
   //   });
   // }
+
+  showModal() {
+    this.setState({ show: true });
+  }
+
+  hideModal() {
+    this.setState({ show: false });
+  }
 
   toggleSnackbarUpdate() {
     this.setState({
@@ -65,6 +78,7 @@ class UpdateButton extends React.Component {
         }
       });
     } else {
+      //"status" edit
       let today = new Date();
       let time =
         today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -89,6 +103,7 @@ class UpdateButton extends React.Component {
           }
         });
       } else {
+        //changing to resolved now
         this.props.updateRequestStatusMutation({
           variables: {
             id: dataArr.id,
@@ -96,6 +111,11 @@ class UpdateButton extends React.Component {
             dateResolved: date
           }
         });
+
+        if (this.props.isClient) {
+          //make modal pop
+          this.showModal();
+        }
       }
     }
     // console.log("Data sent! Redirecting page");
@@ -105,6 +125,7 @@ class UpdateButton extends React.Component {
     let showSnackbarUpdate = this.state.showSnackbarUpdate;
 
     // let id = this.props.idd;
+
     // if (this.state.redirect) {
     //   // return <Redirect to="/requests" />;
     //   setTimeout(function() {
@@ -133,9 +154,28 @@ class UpdateButton extends React.Component {
     //   );
     // }
     //
-    //
+
+    const modalTextMargin = {
+      marginTop: "10px"
+    };
+
     return (
       <div>
+        <ClientModal
+          show={this.state.show}
+          handleBack={this.hideModal}
+          idd={this.props.idd}
+        >
+          <h3 style={modalTextMargin}>
+            Would you like to close this request as well?
+          </h3>
+          <br />
+          <br />
+          <p className="error-textVerClientModal">
+            This action cannot be reversed
+          </p>
+        </ClientModal>
+
         {showSnackbarUpdate ? (
           <CustomizedSnackbars message="Request successfully updated" />
         ) : null}

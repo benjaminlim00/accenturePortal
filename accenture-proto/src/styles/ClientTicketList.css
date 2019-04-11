@@ -80,6 +80,13 @@
   margin-right: 3.5%;
 }
 
+.clientStatusArrowInvisible {
+  margin: 1%;
+  margin-left: -3.8%;
+  margin-right: 3.5%;
+  visibility: hidden;
+}
+
 #client-status {
   margin-right: -0.8%;
 }
