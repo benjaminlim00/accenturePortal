@@ -91,7 +91,8 @@ class TicketRow extends React.Component {
 
   render() {
     let linkStr = "requestDetail/" + this.props.id;
-    let closedBool = this.props.dateClosed !== "";
+    let resolvedBool = this.props.dateResolved !== "";
+    //or look at status instead.
 
     return (
       <div className="filter-box-2">
@@ -108,17 +109,18 @@ class TicketRow extends React.Component {
           <h4 className="detail notSubject">{this.props.asset}</h4>{" "}
           {/*John Tan*/}
         </div>
-        <div className="col span-1-of-8">
-          <h4 className="detail notSubject">{this.props.type}</h4>{" "}
-          {/*Login API*/}
-        </div>
         <div className="col span-1-of-4">
           <Link to={linkStr} className="subjectLink">
-            <h4 className="detail subjectLinkHover">{this.props.subject}</h4>
+            <h4 className="detail subjectLinkHover">
+              {this.props.type}: {this.props.subject}
+            </h4>
           </Link>
         </div>
         <div className="col span-1-of-5" id="dateRequestedDetails">
           <h4 className="detail notSubject">{this.props.dateRequested}</h4>
+        </div>
+        <div className="col span-1-of-5">
+          <h4 className="detail notSubject">{this.props.dateResolved}</h4>
         </div>
         <div className="col span-1-of-5">
           <h4 className="detail notSubject">{this.props.dateClosed}</h4>
@@ -129,7 +131,7 @@ class TicketRow extends React.Component {
         <div className="clientStatusArrow">
           <DropdownCardStatus idd={this.props.id} isClient="true" />
         </div>
-        {closedBool ? (
+        {resolvedBool ? (
           <div className="col span-1-of-8">
             <button
               className="user-ticket-list-yes-button"

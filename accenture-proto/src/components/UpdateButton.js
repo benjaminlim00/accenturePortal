@@ -64,6 +64,20 @@ class UpdateButton extends React.Component {
         }
       });
     } else {
+      //change status. we will add date resolved here
+
+      let today = new Date();
+      let time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      let date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate() +
+        " " +
+        time;
+
       this.props.addRequestMutation({
         variables: {
           asset: dataArr.asset,
@@ -73,7 +87,7 @@ class UpdateButton extends React.Component {
           priority: dataArr.priority,
           status: propsText,
           assigned: dataArr.assigned,
-          dateResolved: dataArr.dateResolved,
+          dateResolved: date,
           dateClosed: dataArr.dateClosed,
           mainThread: dataArr.mainThread,
           requesterId: dataArr.user.id //added

@@ -195,8 +195,7 @@ const Mutation = new GraphQLObjectType({
         requestId: { type: new GraphQLNonNull(GraphQLID) }
       },
       resolve(parent, args) {
-        return Thread.deleteMany({requestId: args.requestId});
-
+        return Thread.deleteMany({ requestId: args.requestId });
       }
     },
 
@@ -240,20 +239,23 @@ const Mutation = new GraphQLObjectType({
       }
     },
 
-    //Update Request Status
+    //Update Request Status - WORKS
     updateRequestStatus: {
       type: RequestType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
-        status:{ type: new GraphQLNonNull(GraphQLString) },
+        status: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
-        return Request.findByIdAndUpdate(args.id, {status: args.status}, {new: true});
+        return Request.findByIdAndUpdate(
+          args.id,
+          { status: args.status },
+          { new: true }
+        );
       }
-    },
+    }
 
     //Update Request Status
-    
   })
 });
 

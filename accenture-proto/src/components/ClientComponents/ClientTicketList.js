@@ -59,6 +59,7 @@ class TicketList extends React.Component {
             type={request.type}
             subject={request.subject}
             dateRequested={request.dateRequested}
+            dateResolved={request.dateResolved}
             dateClosed={request.dateClosed}
             priority={request.priority}
             status={request.status}
@@ -187,11 +188,6 @@ class TicketList extends React.Component {
                 <b>Asset(s)</b>
               </h4>
             </div>
-            <div className="col span-1-of-8">
-              <h4 className="detail" id="detailHeading">
-                <b>Type</b>
-              </h4>
-            </div>
             <div className="col span-1-of-4">
               <h4 className="detail" id="detailHeading">
                 <b>Subject</b>
@@ -200,6 +196,11 @@ class TicketList extends React.Component {
             <div className="col span-1-of-5">
               <h4 className="detail" id="detailHeading">
                 <b>Date/Time Requested</b>
+              </h4>
+            </div>
+            <div className="col span-1-of-5">
+              <h4 className="detail" id="detailHeading">
+                <b>Date/Time Resolved</b>
               </h4>
             </div>
             <div className="col span-1-of-5">
