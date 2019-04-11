@@ -37,6 +37,7 @@ class TicketRow extends React.Component {
 
   render() {
     let linkStr = "requestDetail/" + this.props.id;
+    let closedBool = this.props.status === "Closed";
 
     return (
       <div className="filter-box-2">
@@ -80,6 +81,13 @@ class TicketRow extends React.Component {
         <div className="statusArrow">
           <DropdownCardStatus idd={this.props.id} isCLient="false" />
         </div>
+
+        {/* {closedBool ? null : (
+          <div className="statusArrow">
+            <DropdownCardStatus idd={this.props.id} isCLient="false" />
+          </div>
+        )} */}
+
         <div className="col span-1-of-8" id="assignedTo">
           <h4 className="detail">{this.props.assigned}</h4>
         </div>

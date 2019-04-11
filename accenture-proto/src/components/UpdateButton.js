@@ -1,27 +1,37 @@
 import React from "react";
-import { Mutation } from "react-apollo";
 import { graphql, compose } from "react-apollo";
 import { Redirect } from "react-router-dom";
 
 import {
   getRequestsQuery,
-  deleteRequestMutation,
-  addRequestMutation
+  addRequestMutation,
+  updateRequestStatusMutation,
+  updateRequestAssignedMutation
 } from "../queries/queries";
+
+import CustomizedSnackbars from "./CustomizedSnackbars";
 
 class UpdateButton extends React.Component {
   constructor() {
     super();
     this.state = {
-      redirect: false
+      // redirect: false
+      showSnackbarUpdate: false
     };
-    this.handleRedirect = this.handleRedirect.bind(this);
+    // this.handleRedirect = this.handleRedirect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleSnackbarUpdate = this.toggleSnackbarUpdate.bind(this);
   }
 
-  handleRedirect() {
+  // handleRedirect() {
+  //   this.setState({
+  //     redirect: true
+  //   });
+  // }
+
+  toggleSnackbarUpdate() {
     this.setState({
-      redirect: true
+      showSnackbarUpdate: !this.state.showSnackbarUpdate
     });
   }
 
@@ -48,24 +58,13 @@ class UpdateButton extends React.Component {
     // console.log(dataArr);
     // console.log(dataArr.user.id);
     if (this.props.logic === "assigned") {
-      this.props.addRequestMutation({
+      this.props.updateRequestAssignedMutation({
         variables: {
-          asset: dataArr.asset,
-          type: dataArr.type,
-          subject: dataArr.subject,
-          dateRequested: dataArr.dateRequested,
-          priority: dataArr.priority,
-          status: dataArr.status,
-          assigned: propsText,
-          dateResolved: dataArr.dateResolved,
-          dateClosed: dataArr.dateClosed,
-          mainThread: dataArr.mainThread,
-          requesterId: dataArr.user.id //added
+          id: dataArr.id,
+          assigned: propsText
         }
       });
     } else {
-      //change status. we will add date resolved here
-
       let today = new Date();
       let time =
         today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -78,42 +77,23 @@ class UpdateButton extends React.Component {
         " " +
         time;
 
+      // console.log(dataArr);
+
       if (propsText === "Open") {
         //clear the date resolved field
-        this.props.addRequestMutation({
+        this.props.updateRequestStatusMutation({
           variables: {
-            asset: dataArr.asset,
-            type: dataArr.type,
-            subject: dataArr.subject,
-            dateRequested: dataArr.dateRequested,
-            priority: dataArr.priority,
+            id: dataArr.id,
             status: propsText,
-            assigned: dataArr.assigned,
-            dateResolved: "",
-            dateClosed: dataArr.dateClosed,
-            mainThread: dataArr.mainThread,
-            requesterId: dataArr.user.id //added
+            dateResolved: ""
           }
         });
       } else {
-        //change to resolved
-        // if (this.props.isClient) {
-        //
-        // }
-
-        this.props.addRequestMutation({
+        this.props.updateRequestStatusMutation({
           variables: {
-            asset: dataArr.asset,
-            type: dataArr.type,
-            subject: dataArr.subject,
-            dateRequested: dataArr.dateRequested,
-            priority: dataArr.priority,
+            id: dataArr.id,
             status: propsText,
-            assigned: dataArr.assigned,
-            dateResolved: date,
-            dateClosed: dataArr.dateClosed,
-            mainThread: dataArr.mainThread,
-            requesterId: dataArr.user.id //added
+            dateResolved: date
           }
         });
       }
@@ -122,68 +102,64 @@ class UpdateButton extends React.Component {
   }
 
   render() {
-    let id = this.props.idd;
-    if (this.state.redirect) {
-      // return <Redirect to="/requests" />;
-      setTimeout(function() {
-        window.location.reload();
-      }, 500);
-    }
-    if (this.state.redirect) {
-      // return <Redirect to="/requests" />;
-      if (this.props.isClient) {
-        return (
-          <Redirect
-            to={{
-              pathname: "/crequests",
-              state: { updatedTicket: true }
-            }}
-          />
-        );
-      }
-      return (
-        <Redirect
-          to={{
-            pathname: "/requests",
-            state: { updatedTicket: true }
-          }}
-        />
-      );
-    }
+    let showSnackbarUpdate = this.state.showSnackbarUpdate;
+
+    // let id = this.props.idd;
+    // if (this.state.redirect) {
+    //   // return <Redirect to="/requests" />;
+    //   setTimeout(function() {
+    //     window.location.reload();
+    //   }, 500);
+    // }
+    // if (this.state.redirect) {
+    //   // return <Redirect to="/requests" />;
+    //   if (this.props.isClient) {
+    //     return (
+    //       <Redirect
+    //         to={{
+    //           pathname: "/crequests",
+    //           state: { updatedTicket: true }
+    //         }}
+    //       />
+    //     );
+    //   }
+    //   return (
+    //     <Redirect
+    //       to={{
+    //         pathname: "/requests",
+    //         state: { updatedTicket: true }
+    //       }}
+    //     />
+    //   );
+    // }
+    //
+    //
     return (
-      <Mutation
-        mutation={deleteRequestMutation}
-        update={(cache, { data: { deleteRequest } }) => {
-          const { requests } = cache.readQuery({ query: getRequestsQuery });
-          cache.writeQuery({
-            query: getRequestsQuery,
-            data: { requests: requests.filter(e => e.id !== id) }
-          });
-        }}
-      >
-        {(deleteRequest, { data }) => (
-          <button
-            id="transparentButtonVer2"
-            style={this.props.style}
-            onClick={e => {
-              this.handleSubmit();
-              deleteRequest({
-                variables: {
-                  id
-                }
-              });
-              this.handleRedirect();
-            }}
-          >
-            {this.props.text}
-          </button>
-        )}
-      </Mutation>
+      <div>
+        {showSnackbarUpdate ? (
+          <CustomizedSnackbars message="Request successfully updated" />
+        ) : null}
+        <button
+          id="transparentButtonVer2"
+          style={this.props.style}
+          onClick={e => {
+            this.handleSubmit();
+            this.toggleSnackbarUpdate();
+            //this.handleRedirect(); //updates without refreshing, can take away this
+          }}
+        >
+          {this.props.text}
+        </button>
+      </div>
     );
   }
 }
 
 export default compose(
   graphql(addRequestMutation, { name: "addRequestMutation" }),
-  graphql(getRequestsQuery, { name: "getRequestsQuery" })
+  graphql(getRequestsQuery, { name: "getRequestsQuery" }),
+  graphql(updateRequestStatusMutation, { name: "updateRequestStatusMutation" }),
+  graphql(updateRequestAssignedMutation, {
+    name: "updateRequestAssignedMutation"
+  })
 )(UpdateButton);

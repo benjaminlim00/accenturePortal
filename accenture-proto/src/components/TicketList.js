@@ -148,19 +148,9 @@ class TicketList extends React.Component {
       }
     }
 
-    var showSnackbarUpdate = false;
-    if (typeof this.props.location.state !== "undefined") {
-      if (this.props.location.state.updatedTicket) {
-        var showSnackbarUpdate = true;
-      }
-    }
-
     return (
       <div>
         <NavBar />
-        {showSnackbarUpdate ? (
-          <CustomizedSnackbars message="Request successfully updated" />
-        ) : null}
 
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />

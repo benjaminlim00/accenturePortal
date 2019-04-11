@@ -2,7 +2,12 @@ import React from "react";
 
 import { graphql, compose } from "react-apollo";
 import { Redirect } from "react-router-dom";
-import { addRequestMutation, getRequestsQuery } from "../../queries/queries";
+import {
+  addRequestMutation,
+  getRequestsQuery,
+  updateDateClosedMutation,
+  updateRequestStatusMutation
+} from "../../queries/queries";
 
 import "../../styles/App.css";
 import "../../styles/grid.css";
@@ -43,18 +48,42 @@ class TicketRow extends React.Component {
   };
 
   noPress() {
-    console.log("no button pressed");
+    // console.log("no button pressed");
+    var data = this.props.getRequestsQuery;
+    var dataArr;
+    if (!data.loading) {
+      let pageId = this.props.id;
+      dataArr = data.requests.filter(request => {
+        return request.id === pageId;
+      });
+
+      dataArr = dataArr[0];
+    } else {
+      console.log("still retreiving data from mongoDB");
+    }
+
+    this.props.updateRequestStatusMutation({
+      variables: {
+        id: dataArr.id,
+        dateResolved: "",
+        status: "Open"
+      }
+    });
   }
 
   yesPress() {
-    console.log("yes button pressed");
+    // console.log("yes button pressed");
     let today = new Date();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let date =
       today.getFullYear() +
       "-" +
       (today.getMonth() + 1) +
       "-" +
-      today.getDate();
+      today.getDate() +
+      " " +
+      time;
 
     var data = this.props.getRequestsQuery;
     var dataArr;
@@ -86,14 +115,20 @@ class TicketRow extends React.Component {
     //   }
     // });
 
-    console.log("updatemutation here, add date closed.");
-
-    // this.handleRedirect();
+    // console.log("updatemutation here, add date closed.");
+    this.props.updateDateClosedMutation({
+      variables: {
+        id: dataArr.id,
+        dateClosed: date,
+        status: "Closed"
+      }
+    });
   }
 
   render() {
     let linkStr = "requestDetail/" + this.props.id;
     let resolvedBool = this.props.dateResolved !== "";
+    let closedBool = this.props.status === "Closed";
     //or look at status instead.
 
     return (
@@ -136,10 +171,14 @@ class TicketRow extends React.Component {
         <div className="col span-1-of-8" id="client-status">
           <h4 className="clientDetail clientNotSubject">{this.props.status}</h4>
         </div>
-        <div className="clientStatusArrow">
-          <DropdownCardStatus idd={this.props.id} isClient="true" />
-        </div>
-        {resolvedBool ? (
+
+        {closedBool ? null : (
+          <div className="clientStatusArrow">
+            <DropdownCardStatus idd={this.props.id} isClient="true" />
+          </div>
+        )}
+
+        {resolvedBool && !closedBool ? (
           <div className="col span-1-of-9">
             <button
               className="user-ticket-list-yes-button"
@@ -164,5 +203,7 @@ class TicketRow extends React.Component {
 
 export default compose(
   graphql(addRequestMutation, { name: "addRequestMutation" }),
-  graphql(getRequestsQuery, { name: "getRequestsQuery" })
+  graphql(getRequestsQuery, { name: "getRequestsQuery" }),
+  graphql(updateDateClosedMutation, { name: "updateDateClosedMutation" }),
+  graphql(updateRequestStatusMutation, { name: "updateRequestStatusMutation" })
 )(TicketRow);

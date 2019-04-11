@@ -216,6 +216,8 @@ const addThreadMutation = gql`
   }
 `;
 
+//  mutation deleteRequestMutation($id: ID!) { - the deleteRequestMutation is optional
+
 const deleteRequestMutation = gql`
   mutation deleteRequestMutation($id: ID!) {
     deleteRequest(id: $id) {
@@ -224,10 +226,31 @@ const deleteRequestMutation = gql`
   }
 `;
 
-const deleteThreadsMutation = gql`
-  mutation deleteThreadsMutation($requestId: ID!) {
-    deleteThreads(id: $requestId) {
+const updateRequestStatusMutation = gql`
+  mutation($id: ID!, $status: String!, $dateResolved: String!) {
+    updateRequestStatus(id: $id, status: $status, dateResolved: $dateResolved) {
       id
+      status
+      dateResolved
+    }
+  }
+`;
+
+const updateRequestAssignedMutation = gql`
+  mutation($id: ID!, $assigned: String!) {
+    updateRequestAssigned(id: $id, assigned: $assigned) {
+      id
+      assigned
+    }
+  }
+`;
+
+const updateDateClosedMutation = gql`
+  mutation($id: ID!, $dateClosed: String!, $status: String!) {
+    updateDateClosed(id: $id, dateClosed: $dateClosed, status: $status) {
+      id
+      dateClosed
+      status
     }
   }
 `;
@@ -242,5 +265,7 @@ export {
   deleteRequestMutation,
   getUserQuery,
   getUsersQuery, //not used yet
-  deleteThreadsMutation
+  updateRequestStatusMutation,
+  updateRequestAssignedMutation,
+  updateDateClosedMutation
 };

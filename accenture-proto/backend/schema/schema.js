@@ -239,23 +239,54 @@ const Mutation = new GraphQLObjectType({
       }
     },
 
-    //Update Request Status - WORKS
+    //Update Request Status
     updateRequestStatus: {
       type: RequestType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
+        status: { type: new GraphQLNonNull(GraphQLString) },
+        dateResolved: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve(parent, args) {
+        return Request.findByIdAndUpdate(
+          args.id,
+          { status: args.status, dateResolved: args.dateResolved },
+          { new: true }
+        );
+      }
+    },
+
+    //Update Request Assigned
+    updateRequestAssigned: {
+      type: RequestType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        assigned: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve(parent, args) {
+        return Request.findByIdAndUpdate(
+          args.id,
+          { assigned: args.assigned },
+          { new: true }
+        );
+      }
+    },
+
+    updateDateClosed: {
+      type: RequestType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        dateClosed: { type: new GraphQLNonNull(GraphQLString) },
         status: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
         return Request.findByIdAndUpdate(
           args.id,
-          { status: args.status },
+          { dateClosed: args.dateClosed, status: args.status },
           { new: true }
         );
       }
     }
-
-    //Update Request Status
   })
 });
 
