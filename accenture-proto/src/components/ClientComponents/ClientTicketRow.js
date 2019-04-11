@@ -77,15 +77,17 @@ class TicketRow extends React.Component {
     //     subject: dataArr.subject,
     //     dateRequested: dataArr.dateRequested,
     //     priority: dataArr.priority,
-    //     status: "Open",
+    //     status: dataArr.status,
     //     assigned: dataArr.assigned,
-    //     dateResolved: date,
-    //     dateClosed: date,
+    //     dateResolved: dataArr.dateResolved,
+    //     dateClosed: ,
     //     mainThread: dataArr.mainThread,
     //     requesterId: dataArr.requesterId
     //   }
     // });
-    console.log("Data sent! Redirecting page");
+
+    console.log("updatemutation here, add date closed.");
+
     // this.handleRedirect();
   }
 
@@ -135,21 +137,19 @@ class TicketRow extends React.Component {
           <div className="col span-1-of-8">
             <button
               className="user-ticket-list-yes-button"
-              // disabled={!this.isYesValid()}
               onClick={this.yesPress}
             >
               <p className="yes-button-text">Yes</p>
             </button>
             <button
               className="user-ticket-list-no-button"
-              // disabled={!this.isYesValid()}
               onClick={this.noPress}
             >
               <p className="no-button-text">No</p>
             </button>
           </div>
         ) : (
-          <p className="unable-close">Unable to close</p>
+          <p className="unable-close">-</p>
         )}
       </div>
     );

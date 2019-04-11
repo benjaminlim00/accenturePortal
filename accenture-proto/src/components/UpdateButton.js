@@ -78,21 +78,45 @@ class UpdateButton extends React.Component {
         " " +
         time;
 
-      this.props.addRequestMutation({
-        variables: {
-          asset: dataArr.asset,
-          type: dataArr.type,
-          subject: dataArr.subject,
-          dateRequested: dataArr.dateRequested,
-          priority: dataArr.priority,
-          status: propsText,
-          assigned: dataArr.assigned,
-          dateResolved: date,
-          dateClosed: dataArr.dateClosed,
-          mainThread: dataArr.mainThread,
-          requesterId: dataArr.user.id //added
-        }
-      });
+      if (propsText === "Open") {
+        //clear the date resolved field
+        this.props.addRequestMutation({
+          variables: {
+            asset: dataArr.asset,
+            type: dataArr.type,
+            subject: dataArr.subject,
+            dateRequested: dataArr.dateRequested,
+            priority: dataArr.priority,
+            status: propsText,
+            assigned: dataArr.assigned,
+            dateResolved: "",
+            dateClosed: dataArr.dateClosed,
+            mainThread: dataArr.mainThread,
+            requesterId: dataArr.user.id //added
+          }
+        });
+      } else {
+        //change to resolved
+        // if (this.props.isClient) {
+        //
+        // }
+
+        this.props.addRequestMutation({
+          variables: {
+            asset: dataArr.asset,
+            type: dataArr.type,
+            subject: dataArr.subject,
+            dateRequested: dataArr.dateRequested,
+            priority: dataArr.priority,
+            status: propsText,
+            assigned: dataArr.assigned,
+            dateResolved: date,
+            dateClosed: dataArr.dateClosed,
+            mainThread: dataArr.mainThread,
+            requesterId: dataArr.user.id //added
+          }
+        });
+      }
     }
     // console.log("Data sent! Redirecting page");
   }
