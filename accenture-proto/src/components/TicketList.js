@@ -10,6 +10,7 @@ import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg
 import TicketRow from "./TicketRow";
 import NavBar from "./NavBar";
 import CustomizedSnackbars from "./CustomizedSnackbars";
+import CircularIndeterminate from "./CircularIndeterminate";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../queries/queries";
@@ -39,6 +40,7 @@ class TicketList extends React.Component {
     var data = this.props.getRequestsQuery;
     if (!data.loading) {
       // console.log(data.requests);
+
       let dataArr = Object.values(data.requests);
       dataArr.sort((a, b) =>
         a.user.firstName > b.user.firstName
@@ -148,6 +150,12 @@ class TicketList extends React.Component {
       }
     }
 
+    let loading = true;
+    if (!this.props.getRequestsQuery.loading) {
+      loading = false;
+    }
+    // console.log(loading);
+
     return (
       <div>
         <NavBar />
@@ -225,6 +233,7 @@ class TicketList extends React.Component {
             </div>
           </div>
           {/*end of bar, here we start displaying the data*/}
+          {loading ? <CircularIndeterminate /> : null}
           {this.displayRequests()}
         </section>
       </div>

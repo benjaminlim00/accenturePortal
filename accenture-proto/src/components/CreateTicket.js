@@ -149,6 +149,9 @@ class CreateTicket extends React.Component {
   render() {
     if (this.state.redirect) {
       // return <Redirect to="/requests" />;
+      setTimeout(function() {
+        window.location.reload();
+      }, 500);
       return (
         <Redirect
           to={{

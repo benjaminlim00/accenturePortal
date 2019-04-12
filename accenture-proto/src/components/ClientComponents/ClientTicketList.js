@@ -11,6 +11,7 @@ import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.
 import ClientTicketRow from "./ClientTicketRow";
 import CNavBar from "./CNavBar";
 import CustomizedSnackbars from "../CustomizedSnackbars";
+import CircularIndeterminate from "../CircularIndeterminate";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../../queries/queries";
@@ -28,8 +29,7 @@ class TicketList extends React.Component {
         checkboxIcon5: false,
         checkboxIcon6: false,
         checkboxIcon7: false
-      },
-      data: null
+      }
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -44,7 +44,7 @@ class TicketList extends React.Component {
         a.subject > b.subject ? 1 : b.subject > a.subject ? -1 : 0
       ); //sort by subject, maybe time will be better
 
-      console.log(dataArr);
+      // console.log(dataArr);
       //only show for joseph, may change this
       dataArr = dataArr.filter(request => {
         return request.user.firstName.toLowerCase() == "joseph";
@@ -138,6 +138,11 @@ class TicketList extends React.Component {
       }
     }
 
+    let loading = true;
+    if (!this.props.getRequestsQuery.loading) {
+      loading = false;
+    }
+
     return (
       <div>
         <CNavBar />
@@ -210,6 +215,8 @@ class TicketList extends React.Component {
             </div>
           </div>
           {/*end of bar, here we start displaying the data*/}
+          {loading ? <CircularIndeterminate /> : null}
+
           {this.displayRequests()}
         </section>
       </div>
