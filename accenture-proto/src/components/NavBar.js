@@ -33,6 +33,9 @@ class NavBar extends React.Component {
               <li className="create-ticket-page">
                 <Link to="/createTicket">Create Ticket</Link>
               </li>
+              <li>
+                <Link to="/">Log Out</Link>
+              </li>
             </ul>
           </div>
         </nav>
