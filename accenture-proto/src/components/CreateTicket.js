@@ -98,12 +98,16 @@ class CreateTicket extends React.Component {
     e.preventDefault();
 
     let today = new Date();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let date =
       today.getFullYear() +
       "-" +
       (today.getMonth() + 1) +
       "-" +
-      today.getDate();
+      today.getDate() +
+      " " +
+      time;
 
     this.props.addRequestMutation({
       variables: {
