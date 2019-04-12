@@ -126,7 +126,8 @@ class TicketRow extends React.Component {
   }
 
   render() {
-    let linkStr = "requestDetail/" + this.props.id;
+    // let linkStr = "requestDetail/" + this.props.id;
+    let linkStr = "crequestDetail/" + this.props.id;
     let resolvedBool = this.props.dateResolved !== "";
     let closedBool = this.props.status === "Closed";
     //or look at status instead.

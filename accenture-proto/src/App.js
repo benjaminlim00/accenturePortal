@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import CreateTicket from "./components/CreateTicket";
 import ClientTicketList from "./components/ClientComponents/ClientTicketList";
 import ClientCreateTicket from "./components/ClientComponents/ClientCreateTicket";
+import ClientRequestDetail from "./components/ClientComponents/ClientRequestDetail";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import ApolloClient from "apollo-boost";
@@ -55,8 +56,14 @@ class App extends Component {
             />
             <Route exact path="/createTicket" component={CreateTicket} />
             <Route exact path="/requestDetail/:id" component={RequestDetail} />
+
             <Route exact path="/crequests" component={ClientTicketList} />
             <Route exact path="/ccreateTicket" component={ClientCreateTicket} />
+            <Route
+              exact
+              path="/crequestDetail/:id"
+              component={ClientRequestDetail}
+            />
           </Switch>
         </Router>
       </ApolloProvider>
