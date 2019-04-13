@@ -60,38 +60,7 @@ class UploadFile extends React.Component {
   };
 
   render() {
-    const buttonStyleUpload = {
-      background: "#3d94f6",
-      borderRadius: "6px",
-      color: "#ffffff",
-      fontFamily: "Lato",
-      fontSize: "20px",
-      fontWeight: "400",
-      padding: "10px",
-      display: "inline-block",
-      cursor: "pointer",
-      borderStyle: "solid",
-      border: "none",
-      marginLeft: "20px",
-      marginRight: "10px",
-      marginBottom: "20px"
-    };
-
-    const buttonStyleBack = {
-      background: "#D00000",
-      borderRadius: "6px",
-      color: "#ffffff",
-      fontFamily: "Lato",
-      fontSize: "20px",
-      fontWeight: "400",
-      padding: "10px",
-      display: "inline-block",
-      cursor: "pointer",
-      borderStyle: "solid",
-      border: "none"
-    };
-
-    console.log(this.props.clickBack);
+    // console.log(this.props.clickBack);
 
     let showDone = this.state.progress == 100;
 
@@ -112,11 +81,11 @@ class UploadFile extends React.Component {
         <br />
         <br />
 
-        <button style={buttonStyleUpload} onClick={this.handleUpload}>
+        <button className="buttonStyleUpload" onClick={this.handleUpload}>
           Upload
         </button>
 
-        <button style={buttonStyleBack} onClick={this.props.clickBack}>
+        <button className="buttonStyleBack" onClick={this.props.clickBack}>
           Back
         </button>
       </div>

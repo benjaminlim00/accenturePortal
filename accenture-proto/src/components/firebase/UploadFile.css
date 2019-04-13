@@ -4,3 +4,34 @@
   width: 100px;
   margin-bottom: 10px;
 }
+
+.buttonStyleUpload {
+  background: #3d94f6;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: "Lato";
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px;
+  display: inline-block;
+  cursor: pointer;
+  border-style: solid;
+  border: none;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.buttonStyleBack {
+  background: #d00000;
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: "Lato";
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px;
+  display: inline-block;
+  cursor: pointer;
+  border-style: solid;
+  border: none;
+}
