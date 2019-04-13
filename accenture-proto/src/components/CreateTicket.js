@@ -10,6 +10,7 @@ import {
 import NavBar from "./NavBar";
 import AssignedOptions from "../Resources/Data/AssignedOptions";
 import PriorityOptions from "../Resources/Data/PriorityOptions";
+import UploadModal from "./firebase/UploadModal";
 
 import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
@@ -26,11 +27,20 @@ class CreateTicket extends React.Component {
       assigned: "",
       requesterId: "", //added
       mainThread: "",
-      redirect: false
+      redirect: false,
+      show: false
     };
 
     this.handleRedirect = this.handleRedirect.bind(this);
   }
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   handleRedirect() {
     this.setState({
@@ -168,6 +178,8 @@ class CreateTicket extends React.Component {
 
     return (
       <div>
+        <UploadModal show={this.state.show} handleBack={this.hideModal} />
+
         <NavBar />
 
         <div className="create-new-tix-main-body">
@@ -262,7 +274,15 @@ class CreateTicket extends React.Component {
               <br />
 
               <div className="attach-send-bar">
-                <img src={attachment} className="file-logo" />
+                {/* <img src={attachment} className="file-logo" /> */}
+                <button
+                  type="button"
+                  id="transparentButton"
+                  onClick={this.showModal}
+                  className="file-logo"
+                >
+                  <img src={attachment} className="file-logo" />
+                </button>
 
                 <p className="attach-file">Attach</p>
 

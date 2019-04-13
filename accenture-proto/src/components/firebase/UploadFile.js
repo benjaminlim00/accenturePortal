@@ -1,6 +1,7 @@
 import React from "react";
 // import axios from "axios"
 import { storage } from "./firebaseExport";
+import "./UploadFile.css";
 
 class UploadFile extends React.Component {
   constructor(props) {
@@ -51,21 +52,71 @@ class UploadFile extends React.Component {
           });
       }
     );
+
+    // let handleBack = this.props.click;
+    // console.log(handleBack);
   };
 
   render() {
+    const buttonStyleUpload = {
+      background: "#3d94f6",
+      borderRadius: "6px",
+      color: "#ffffff",
+      fontFamily: "Lato",
+      fontSize: "20px",
+      fontWeight: "400",
+      padding: "10px",
+      display: "inline-block",
+      cursor: "pointer",
+      borderStyle: "solid",
+      border: "none",
+      marginLeft: "20px",
+      marginRight: "10px",
+      marginBottom: "20px"
+    };
+
+    const buttonStyleBack = {
+      background: "#D00000",
+      borderRadius: "6px",
+      color: "#ffffff",
+      fontFamily: "Lato",
+      fontSize: "20px",
+      fontWeight: "400",
+      padding: "10px",
+      display: "inline-block",
+      cursor: "pointer",
+      borderStyle: "solid",
+      border: "none"
+    };
+
+    console.log(this.props.clickBack);
+
+    let showDone = this.state.progress == 100;
+
     return (
       <div>
-        <progress value={this.state.progress} max="100" />
-        <input type="file" onChange={this.handleChange} />
-        <button onClick={this.handleUpload}>Upload</button>
-        <br />
         <img
-          src={this.state.url || "http://via.placeholder.com/400x300"}
+          src={this.state.url || "http://via.placeholder.com/400x250"}
           alt="uploaded images"
-          height="300"
-          width="400"
+          height="400"
+          width="250"
         />
+        <br />
+        {showDone ? <p>Successfully uploaded!</p> : null}
+        <br />
+        <progress id="uploader" value={this.state.progress} max="100" />
+        <br />
+        <input type="file" onChange={this.handleChange} />
+        <br />
+        <br />
+
+        <button style={buttonStyleUpload} onClick={this.handleUpload}>
+          Upload
+        </button>
+
+        <button style={buttonStyleBack} onClick={this.props.clickBack}>
+          Back
+        </button>
       </div>
     );
   }
