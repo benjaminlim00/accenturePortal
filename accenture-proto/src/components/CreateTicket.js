@@ -178,7 +178,11 @@ class CreateTicket extends React.Component {
 
     return (
       <div>
-        <UploadModal show={this.state.show} handleBack={this.hideModal} />
+        <UploadModal
+          show={this.state.show}
+          handleBack={this.hideModal}
+          userID={this.state.requesterId}
+        />
 
         <NavBar />
 

@@ -26,7 +26,9 @@ class UploadFile extends React.Component {
 
   handleUpload = () => {
     const { image } = this.state;
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    const uploadTask = storage
+      .ref(`${this.props.userID}/${image.name}`)
+      .put(image);
     uploadTask.on(
       "state_changed",
       snapshot => {

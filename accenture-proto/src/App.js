@@ -9,8 +9,6 @@ import ClientCreateTicket from "./components/ClientComponents/ClientCreateTicket
 import ClientRequestDetail from "./components/ClientComponents/ClientRequestDetail";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 
-import UploadFile from "./components/firebase/UploadFile";
-
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
@@ -66,7 +64,6 @@ class App extends Component {
               path="/crequestDetail/:id"
               component={ClientRequestDetail}
             />
-            <Route exact path="/test" component={UploadFile} />
           </Switch>
         </Router>
       </ApolloProvider>
