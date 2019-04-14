@@ -8,6 +8,7 @@ import ClientTicketList from "./components/ClientComponents/ClientTicketList";
 import ClientCreateTicket from "./components/ClientComponents/ClientCreateTicket";
 import ClientRequestDetail from "./components/ClientComponents/ClientRequestDetail";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import Chat from "./components/Chat/Chat";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
@@ -64,6 +65,7 @@ class App extends Component {
               path="/crequestDetail/:id"
               component={ClientRequestDetail}
             />
+            <Route exact path="/chat" component={Chat} />
           </Switch>
         </Router>
       </ApolloProvider>
