@@ -40,7 +40,16 @@ class ClientRequestDetail extends React.Component {
       });
 
       dataArr = dataArr[0];
-      return <CreateThread requestId={dataArr.id} />;
+      // console.log("here");
+      // console.log(dataArr);
+
+      return (
+        <CreateThread
+          requestId={dataArr.id}
+          userID={dataArr.user.id}
+          subject={dataArr.subject}
+        />
+      );
     } else {
       console.log("still retreiving data from mongoDB");
     }

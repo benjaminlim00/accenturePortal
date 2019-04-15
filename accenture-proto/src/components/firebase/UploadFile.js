@@ -31,7 +31,7 @@ class UploadFile extends React.Component {
     // console.log(`${this.props.userID}/${image.name}`);
 
     const uploadTask = storage
-      .ref(`${this.props.userID}/${image.name}`)
+      .ref(`${this.props.userID}/${this.props.subject}/${image.name}`)
       .put(image);
     uploadTask.on(
       "state_changed",
@@ -49,7 +49,7 @@ class UploadFile extends React.Component {
       () => {
         //complete fnc
         storage
-          .ref(`${this.props.userID}`)
+          .ref(`${this.props.userID}/${this.props.subject}`)
           .child(image.name)
           .getDownloadURL()
           .then(url => {
@@ -77,7 +77,7 @@ class UploadFile extends React.Component {
           width="250"
         />
         <br />
-        {showDone ? <p>Successfully uploaded!</p> : null}
+        {showDone ? <p>Image attached succesfully</p> : null}
         <br />
         {/* <progress id="uploader" value={this.state.progress} max="100" /> */}
 
@@ -93,7 +93,7 @@ class UploadFile extends React.Component {
         <br />
         <br />
         <button className="buttonStyleUpload" onClick={this.handleUpload}>
-          Upload
+          Attach
         </button>
         <button className="buttonStyleBack" onClick={this.props.clickBack}>
           Back

@@ -9,8 +9,8 @@ import {
   addThreadMutation
 } from "../../queries/queries";
 import CNavBar from "./CNavBar";
+import UploadModal from "../firebase/UploadModal";
 
-import profileIcon from "../../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 import attachment from "../../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
 
@@ -25,11 +25,20 @@ class ClientCreateTicket extends React.Component {
       assigned: "Ben",
       requesterId: "5ca6d2311c9d4400004044b2", //this is the id of joseph
       mainThread: "",
-      redirect: false
+      redirect: false,
+      show: false
     };
 
     this.handleRedirect = this.handleRedirect.bind(this);
   }
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   handleRedirect() {
     this.setState({
@@ -111,6 +120,13 @@ class ClientCreateTicket extends React.Component {
 
     return (
       <div>
+        <UploadModal
+          show={this.state.show}
+          handleBack={this.hideModal}
+          userID={this.state.requesterId}
+          subject={this.state.subject}
+        />
+
         <CNavBar />
 
         <div className="create-new-tix-main-body">
@@ -177,7 +193,14 @@ class ClientCreateTicket extends React.Component {
               <br />
 
               <div className="attach-send-bar">
-                <img src={attachment} className="file-logo" />
+                <button
+                  type="button"
+                  id="transparentButton"
+                  onClick={this.showModal}
+                  className="file-logo"
+                >
+                  <img src={attachment} className="file-logo" />
+                </button>
 
                 <p className="attach-file">Attach</p>
 

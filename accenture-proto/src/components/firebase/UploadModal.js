@@ -14,7 +14,11 @@ class UploadModal extends React.Component {
       <div className={showHideClassName}>
         <section className="modal-main">
           {children}
-          <UploadFile userID={this.props.userID} clickBack={handleBack} />
+          <UploadFile
+            userID={this.props.userID}
+            clickBack={handleBack}
+            subject={this.props.subject}
+          />
         </section>
       </div>
     );

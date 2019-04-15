@@ -182,6 +182,7 @@ class CreateTicket extends React.Component {
           show={this.state.show}
           handleBack={this.hideModal}
           userID={this.state.requesterId}
+          subject={this.state.subject}
         />
 
         <NavBar />
