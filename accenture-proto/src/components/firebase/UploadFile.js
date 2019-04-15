@@ -1,6 +1,8 @@
 import React from "react";
 // import axios from "axios"
 import { storage } from "./firebaseExport";
+import LinearDeterminate from "../LinearDeterminate";
+
 import "./UploadFile.css";
 
 class UploadFile extends React.Component {
@@ -75,19 +77,29 @@ class UploadFile extends React.Component {
         <br />
         {showDone ? <p>Successfully uploaded!</p> : null}
         <br />
-        <progress id="uploader" value={this.state.progress} max="100" />
+        {/* <progress id="uploader" value={this.state.progress} max="100" /> */}
+        <label class="chooseFile">
+          <input type="file" onChange={this.handleChange} />
+        </label>
+        {/* <div>
+          <label for="files">Select Image</label>
+          <input
+            id="files"
+            style="visibility:hidden;"
+            type="file"
+            onChange={this.handleChange}
+          />
+        </div> */}
         <br />
-        <input type="file" onChange={this.handleChange} />
         <br />
-        <br />
-
         <button className="buttonStyleUpload" onClick={this.handleUpload}>
           Upload
         </button>
-
         <button className="buttonStyleBack" onClick={this.props.clickBack}>
           Back
         </button>
+
+        <LinearDeterminate id="uploader" progress={this.state.progress} />
       </div>
     );
   }

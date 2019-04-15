@@ -1,8 +1,13 @@
-#uploader {
+/* #uploader {
   -webkit-appearance: none;
   appearance: none;
   width: 100px;
   margin-bottom: 10px;
+} */
+
+#uploader {
+  position: fixed;
+  bottom: 0;
 }
 
 .buttonStyleUpload {
