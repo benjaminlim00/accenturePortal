@@ -78,18 +78,16 @@ class UploadFile extends React.Component {
         {showDone ? <p>Successfully uploaded!</p> : null}
         <br />
         {/* <progress id="uploader" value={this.state.progress} max="100" /> */}
-        <label class="chooseFile">
+
+        {/* <div class="btn-file-input">
           <input type="file" onChange={this.handleChange} />
-        </label>
-        {/* <div>
-          <label for="files">Select Image</label>
-          <input
-            id="files"
-            style="visibility:hidden;"
-            type="file"
-            onChange={this.handleChange}
-          />
         </div> */}
+
+        <div class="file-input-wrapper">
+          <button class="btn-file-input">Choose File</button>
+          <input type="file" onChange={this.handleChange} />
+        </div>
+
         <br />
         <br />
         <button className="buttonStyleUpload" onClick={this.handleUpload}>
