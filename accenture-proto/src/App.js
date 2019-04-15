@@ -9,6 +9,7 @@ import ClientCreateTicket from "./components/ClientComponents/ClientCreateTicket
 import ClientRequestDetail from "./components/ClientComponents/ClientRequestDetail";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 import MyChat from "./components/MyChat/MyChat";
+import ChatButton from "./components/MyChat/ChatButton";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
@@ -75,6 +76,12 @@ class App extends Component {
               exact
               path="/MyChat2"
               render={props => <MyChat {...props} author="admin" />}
+            />
+
+            <Route
+              exact
+              path="/test"
+              render={props => <ChatButton {...props} author="joseph" />}
             />
           </Switch>
         </Router>

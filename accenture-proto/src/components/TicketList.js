@@ -233,7 +233,11 @@ class TicketList extends React.Component {
             </div>
           </div>
           {/*end of bar, here we start displaying the data*/}
-          {loading ? <CircularIndeterminate /> : null}
+          {loading ? (
+            <div className="CircularIndeterminate">
+              <CircularIndeterminate />
+            </div>
+          ) : null}
           {this.displayRequests()}
         </section>
       </div>

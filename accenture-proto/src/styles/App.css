@@ -393,3 +393,10 @@ html {
 .transparentButton-status {
   margin-top: 4px;
 }
+
+.CircularIndeterminate {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}

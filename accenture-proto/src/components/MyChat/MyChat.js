@@ -2,7 +2,14 @@ import React from "react";
 import firebase from "firebase/app";
 import "./MyChat.css";
 
-// import { database } from "../firebase/firebaseExport";
+const style = {
+  margin: 0,
+  top: "auto",
+  right: 20,
+  bottom: 20,
+  left: "auto",
+  position: "fixed"
+};
 
 class MyChat extends React.Component {
   constructor(props, context) {
@@ -54,13 +61,13 @@ class MyChat extends React.Component {
   render() {
     const currentMessage = this.state.messages.map((message, i) => {
       return (
-        <li className="message-wrapper" key={message.id}>
+        <p className="message-wrapper" key={message.id}>
           {message.author}: {message.text}
-        </li>
+        </p>
       );
     });
     return (
-      <div>
+      <div style={style}>
         {this.props.author === "joseph" ? (
           <h3>Ben (Admin)</h3>
         ) : (
@@ -69,7 +76,7 @@ class MyChat extends React.Component {
 
         {/* take props */}
 
-        <ol>{currentMessage}</ol>
+        {currentMessage}
         <form onSubmit={this.submitMessage}>
           <input
             onChange={this.updateMessage}
