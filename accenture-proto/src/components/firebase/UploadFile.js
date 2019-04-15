@@ -28,6 +28,8 @@ class UploadFile extends React.Component {
 
   handleUpload = () => {
     const { image } = this.state;
+    // console.log(`${this.props.userID}/${image.name}`);
+
     const uploadTask = storage
       .ref(`${this.props.userID}/${image.name}`)
       .put(image);
@@ -47,7 +49,7 @@ class UploadFile extends React.Component {
       () => {
         //complete fnc
         storage
-          .ref(`images`)
+          .ref(`${this.props.userID}`)
           .child(image.name)
           .getDownloadURL()
           .then(url => {
@@ -83,8 +85,8 @@ class UploadFile extends React.Component {
           <input type="file" onChange={this.handleChange} />
         </div> */}
 
-        <div class="file-input-wrapper">
-          <button class="btn-file-input">Choose File</button>
+        <div className="file-input-wrapper">
+          <button className="btn-file-input">Choose File</button>
           <input type="file" onChange={this.handleChange} />
         </div>
 

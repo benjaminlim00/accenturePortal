@@ -10,6 +10,7 @@ import ClientTicketRow from "./ClientTicketRow";
 import CNavBar from "./CNavBar";
 import CustomizedSnackbars from "../CustomizedSnackbars";
 import CircularIndeterminate from "../CircularIndeterminate";
+import ChatButton from "../MyChat/ChatButton";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../../queries/queries";
@@ -144,6 +145,7 @@ class TicketList extends React.Component {
     return (
       <div>
         <CNavBar />
+        <ChatButton author="joseph" />
 
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />
@@ -213,7 +215,11 @@ class TicketList extends React.Component {
             </div>
           </div>
           {/*end of bar, here we start displaying the data*/}
-          {loading ? <CircularIndeterminate /> : null}
+          {loading ? (
+            <div className="CircularIndeterminate">
+              <CircularIndeterminate />
+            </div>
+          ) : null}
 
           {this.displayRequests()}
         </section>

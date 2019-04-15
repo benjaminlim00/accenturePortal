@@ -11,6 +11,7 @@ import TicketRow from "./TicketRow";
 import NavBar from "./NavBar";
 import CustomizedSnackbars from "./CustomizedSnackbars";
 import CircularIndeterminate from "./CircularIndeterminate";
+import ChatButton from "./MyChat/ChatButton";
 
 import { graphql, compose } from "react-apollo";
 import { getRequestsQuery } from "../queries/queries";
@@ -38,9 +39,9 @@ class TicketList extends React.Component {
 
   displayRequests() {
     var data = this.props.getRequestsQuery;
+    // console.log(data);
     if (!data.loading) {
       // console.log(data.requests);
-
       let dataArr = Object.values(data.requests);
       dataArr.sort((a, b) =>
         a.user.firstName > b.user.firstName
@@ -159,6 +160,7 @@ class TicketList extends React.Component {
     return (
       <div>
         <NavBar />
+        <ChatButton author="admin" />
 
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />

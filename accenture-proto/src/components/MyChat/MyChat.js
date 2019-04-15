@@ -5,8 +5,8 @@ import "./MyChat.css";
 const style = {
   margin: 0,
   top: "auto",
-  right: 20,
-  bottom: 20,
+  right: 40,
+  bottom: 70,
   left: "auto",
   position: "fixed"
 };
@@ -71,7 +71,7 @@ class MyChat extends React.Component {
         {this.props.author === "joseph" ? (
           <h3>Ben (Admin)</h3>
         ) : (
-          <h3>Joseph (Admin)</h3>
+          <h3>Joseph</h3>
         )}
 
         {/* take props */}

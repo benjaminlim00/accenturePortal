@@ -38,7 +38,7 @@ class ChatButton extends Component {
           onClick={this.toggleDiv}
         >
           <img src={chatIcon} alt="chatIcon" />
-          <i class="fas fa-comment" />
+          <i className="fas fa-comment" />
         </Button>
       </div>
     );
