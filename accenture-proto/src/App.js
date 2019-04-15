@@ -65,7 +65,17 @@ class App extends Component {
               path="/crequestDetail/:id"
               component={ClientRequestDetail}
             />
-            <Route exact path="/chat" component={Chat} />
+            <Route
+              exact
+              path="/chat1"
+              render={props => <Chat {...props} author="joseph" />}
+            />
+
+            <Route
+              exact
+              path="/chat2"
+              render={props => <Chat {...props} author="admin" />}
+            />
           </Switch>
         </Router>
       </ApolloProvider>

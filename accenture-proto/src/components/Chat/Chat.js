@@ -33,10 +33,12 @@ class Chat extends React.Component {
     this.setState({ message: e.target.value });
   }
   submitMessage(e) {
+    e.preventDefault();
+    this.setState({ message: "" }); //clear the input
     const nextMessage = {
       id: this.state.messages.length,
       text: this.state.message,
-      author: "Joseph" //here use props too
+      author: this.props.author //here use props too
     };
     // let list = Object.assign([], this.state.messages);
     // list.push(nextMessage);
@@ -59,17 +61,25 @@ class Chat extends React.Component {
     });
     return (
       <div>
-        <h3>Ben (Admin)</h3>
+        {this.props.author === "joseph" ? (
+          <h3>Ben (Admin)</h3>
+        ) : (
+          <h3>Joseph (Admin)</h3>
+        )}
+
         {/* take props */}
 
         <ol>{currentMessage}</ol>
-        <input
-          onChange={this.updateMessage}
-          type="text"
-          placeholder="Message"
-        />
-        <br />
-        <button onClick={this.submitMessage}>Submit Message</button>
+        <form onSubmit={this.submitMessage}>
+          <input
+            onChange={this.updateMessage}
+            type="text"
+            placeholder="Message"
+            value={this.state.message}
+          />
+          <br />
+          <button type="submit">Submit Message</button>
+        </form>
       </div>
     );
   }
