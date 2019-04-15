@@ -8,7 +8,7 @@ import ClientTicketList from "./components/ClientComponents/ClientTicketList";
 import ClientCreateTicket from "./components/ClientComponents/ClientCreateTicket";
 import ClientRequestDetail from "./components/ClientComponents/ClientRequestDetail";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
-import Chat from "./components/Chat/Chat";
+import MyChat from "./components/MyChat/MyChat";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
@@ -67,14 +67,14 @@ class App extends Component {
             />
             <Route
               exact
-              path="/chat1"
-              render={props => <Chat {...props} author="joseph" />}
+              path="/MyChat1"
+              render={props => <MyChat {...props} author="joseph" />}
             />
 
             <Route
               exact
-              path="/chat2"
-              render={props => <Chat {...props} author="admin" />}
+              path="/MyChat2"
+              render={props => <MyChat {...props} author="admin" />}
             />
           </Switch>
         </Router>

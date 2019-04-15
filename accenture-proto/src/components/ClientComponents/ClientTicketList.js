@@ -4,8 +4,6 @@ import "../../styles/grid.css";
 import "../../styles/normalize.css";
 import "../../styles/ClientTicketList.css";
 
-import editIcon from "../../Resources/Icons/iconfinder_compose_3671747.svg";
-import profileIcon from "../../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 import ClientTicketRow from "./ClientTicketRow";
@@ -47,7 +45,7 @@ class TicketList extends React.Component {
       // console.log(dataArr);
       //only show for joseph, may change this
       dataArr = dataArr.filter(request => {
-        return request.user.firstName.toLowerCase() == "joseph";
+        return request.user.firstName.toLowerCase() === "joseph";
       });
 
       return dataArr.map(request => {
@@ -127,14 +125,14 @@ class TicketList extends React.Component {
     var showSnackbarCreate = false;
     if (typeof this.props.location.state !== "undefined") {
       if (this.props.location.state.createdTicket) {
-        var showSnackbarCreate = true;
+        showSnackbarCreate = true;
       }
     }
 
     var showSnackbarDelete = false;
     if (typeof this.props.location.state !== "undefined") {
       if (this.props.location.state.deletedTicket) {
-        var showSnackbarDelete = true;
+        showSnackbarDelete = true;
       }
     }
 
@@ -159,13 +157,13 @@ class TicketList extends React.Component {
           <div className="filter-text">
             <span>
               Filters
-              <img src={arrow} className="arrow-right" />
+              <img src={arrow} className="arrow-right" alt="arrow" />
             </span>
           </div>
           <div className="sort-by-text">
             <span>
               Sort by: Date Requested
-              <img src={arrow} className="arrow-down-datereq" />
+              <img src={arrow} className="arrow-down-datereq" alt="arrow" />
             </span>
           </div>
           <div className="filter-box request-list-header">

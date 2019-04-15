@@ -1,10 +1,10 @@
 import React from "react";
 import firebase from "firebase/app";
-import "./Chat.css";
+import "./MyChat.css";
 
 // import { database } from "../firebase/firebaseExport";
 
-class Chat extends React.Component {
+class MyChat extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -85,4 +85,4 @@ class Chat extends React.Component {
   }
 }
 
-export default Chat;
+export default MyChat;
