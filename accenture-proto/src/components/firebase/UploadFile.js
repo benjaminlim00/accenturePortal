@@ -83,12 +83,14 @@ class UploadFile extends React.Component {
 
         <br />
 
-        <img
-          src={this.state.url || "http://via.placeholder.com/400x250"}
-          alt="uploaded images"
-          height="400"
-          width="250"
-        />
+        {this.state.url ? (
+          <img
+            src={this.state.url}
+            alt="uploaded image"
+            height="400"
+            width="250"
+          />
+        ) : null}
         <br />
         {showDone ? <p>Image attached succesfully</p> : null}
         <br />
@@ -99,7 +101,7 @@ class UploadFile extends React.Component {
         </div> */}
 
         <div className="file-input-wrapper">
-          <button className="btn-file-input">Choose File</button>
+          <button className="btn-file-input">Choose Image</button>
           <input type="file" onChange={this.handleChange} />
         </div>
 

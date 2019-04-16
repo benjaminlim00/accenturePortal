@@ -394,9 +394,10 @@ html {
   margin-top: 4px;
 }
 
+/* take note of the % */
 .CircularIndeterminate {
   display: inline-block;
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 48%;
+  top: 45%;
 }

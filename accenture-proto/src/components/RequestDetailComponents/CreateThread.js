@@ -144,7 +144,12 @@ class CreateThread extends React.Component {
           <div className="enquiry-head">
             <div className="">
               <img src={fileLogo} alt="attachment" className="file-logo" />
-              <input type="file" onChange={this.handleFileChange} />
+              {/* <input type="file" onChange={this.handleFileChange} /> */}
+
+              <div className="file-input-wrapper">
+                <button className="btn-file-input">Choose Image</button>
+                <input type="file" onChange={this.handleFileChange} />
+              </div>
             </div>
 
             <div className="cancel-button">
