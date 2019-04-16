@@ -13,10 +13,6 @@ import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.
 
 class ThreadBlock extends React.Component {
   displayAllThreads() {
-    // console.log("ThreadBlock");
-    // console.log(this.props.threads);
-
-    //if (threads) {
     return (
       <div>
         {this.props.threads.map(item => {
@@ -36,7 +32,12 @@ class ThreadBlock extends React.Component {
                   </div>
                 </div>
 
-                <p className="enquiry-body"> {item.threadContent} </p>
+                <p className="enquiry-body">{item.threadContent}</p>
+                {item.threadImage === "" ? null : (
+                  <a className="url-bottom-left" href={item.threadImage}>
+                    View attached image
+                  </a>
+                )}
               </div>
             </div>
           );
@@ -59,15 +60,3 @@ class ThreadBlock extends React.Component {
 }
 
 export default ThreadBlock;
-
-/*
-export default graphql(getRequestQuery,{
-  options:(props) => {
-    return{
-      variables: {
-        id: props.requestId
-      }
-    }
-  }
-})(ThreadBlock);
-*/

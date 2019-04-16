@@ -5,6 +5,8 @@ import LinearDeterminate from "../LinearDeterminate";
 
 import "./UploadFile.css";
 
+import cross from "./cross.svg";
+
 class UploadFile extends React.Component {
   constructor(props) {
     super(props);
@@ -70,6 +72,17 @@ class UploadFile extends React.Component {
 
     return (
       <div>
+        <button
+          type="button"
+          className="buttonStyleCross"
+          id="transparentButton"
+          onClick={this.props.clickBack}
+        >
+          <img src={cross} alt="cross" />
+        </button>
+
+        <br />
+
         <img
           src={this.state.url || "http://via.placeholder.com/400x250"}
           alt="uploaded images"
@@ -94,9 +107,6 @@ class UploadFile extends React.Component {
         <br />
         <button className="buttonStyleUpload" onClick={this.handleUpload}>
           Attach
-        </button>
-        <button className="buttonStyleBack" onClick={this.props.clickBack}>
-          Back
         </button>
 
         <LinearDeterminate id="uploader" progress={this.state.progress} />

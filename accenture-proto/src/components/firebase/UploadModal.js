@@ -12,7 +12,7 @@ class UploadModal extends React.Component {
 
     return (
       <div className={showHideClassName}>
-        <section className="modal-main">
+        <section className="modal-main-upload">
           {children}
           <UploadFile
             userID={this.props.userID}

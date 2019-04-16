@@ -77,6 +77,7 @@ const ThreadType = new GraphQLObjectType({
     id: { type: GraphQLID },
     threadContent: { type: GraphQLString },
     threadCreatedDate: { type: GraphQLString },
+    threadImage: { type: GraphQLString },
     request: {
       type: RequestType,
       resolve(parent, args) {
@@ -227,13 +228,15 @@ const Mutation = new GraphQLObjectType({
       args: {
         threadContent: { type: new GraphQLNonNull(GraphQLString) },
         threadCreatedDate: { type: new GraphQLNonNull(GraphQLString) },
-        requestId: { type: new GraphQLNonNull(GraphQLID) }
+        requestId: { type: new GraphQLNonNull(GraphQLID) },
+        threadImage: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
         let thread = new Thread({
           threadContent: args.threadContent,
           threadCreatedDate: args.threadCreatedDate,
-          requestId: args.requestId
+          requestId: args.requestId,
+          threadImage: args.threadImage
         });
         return thread.save();
       }

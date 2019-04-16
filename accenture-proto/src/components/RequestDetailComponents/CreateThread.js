@@ -48,10 +48,10 @@ class CreateThread extends React.Component {
 
     this.props.addThreadMutation({
       variables: {
-        threadContent:
-          this.state.threadContent + "\n\nAttached image: " + this.state.url, //take away soon
+        threadContent: this.state.threadContent,
         threadCreatedDate: date,
-        requestId: this.props.requestId //added
+        requestId: this.props.requestId, //added
+        threadImage: this.state.url
       }
     });
 

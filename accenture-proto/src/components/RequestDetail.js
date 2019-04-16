@@ -40,7 +40,13 @@ class RequestDetail extends React.Component {
       });
 
       dataArr = dataArr[0];
-      return <CreateThread requestId={dataArr.id} />;
+      return (
+        <CreateThread
+          requestId={dataArr.id}
+          userID={dataArr.user.id}
+          subject={dataArr.subject}
+        />
+      );
     } else {
       console.log("still retreiving data from mongoDB");
     }
@@ -100,8 +106,6 @@ class RequestDetail extends React.Component {
   //function to display list of threads
   displayThreads() {
     var data = this.props.getRequestsQuery;
-    //console.log('threads check');
-    //console.log(data.threads);
 
     var dataArr;
     if (!data.loading) {
@@ -111,7 +115,8 @@ class RequestDetail extends React.Component {
       });
       dataArr = dataArr[0];
 
-      console.log(data.threads);
+      // console.log("threads check");
+      // console.log(dataArr);
       return (
         <ThreadBlock
           id={dataArr.id}

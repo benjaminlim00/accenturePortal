@@ -84,12 +84,14 @@ class LoginPage extends React.Component {
               <input
                 type="text"
                 placeholder="Username"
+                id="username-jest" //added for jest
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
               <input
                 type="password"
+                id="password-jest" //added for jest
                 placeholder="Password"
                 name="password"
                 value={this.state.password}

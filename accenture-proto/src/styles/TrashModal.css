@@ -17,6 +17,16 @@
   transform: translate(-50%, -50%);
 }
 
+.modal-main-upload {
+  position: fixed;
+  background: white;
+  width: 50%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .trash-display-block {
   display: block;
 }

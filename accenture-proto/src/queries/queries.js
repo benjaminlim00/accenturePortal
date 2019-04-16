@@ -63,6 +63,7 @@ const getRequestQuery = gql`
         id
         threadContent
         threadCreatedDate
+        threadImage
       }
     }
   }
@@ -143,6 +144,7 @@ const getRequestsQuery = gql`
         id
         threadContent
         threadCreatedDate
+        threadImage
       }
     }
   }
@@ -153,6 +155,7 @@ const getThreadsQuery = gql`
   {
     threads {
       id
+      threadImage
       threadContent
       threadCreatedDate
     }
@@ -202,14 +205,17 @@ const addThreadMutation = gql`
   mutation(
     $threadContent: String!
     $threadCreatedDate: String!
+    $threadImage: String!
     $requestId: ID!
   ) {
     addThread(
       threadContent: $threadContent
       threadCreatedDate: $threadCreatedDate
+      threadImage: $threadImage
       requestId: $requestId
     ) {
       id
+      threadImage
       threadContent
       threadCreatedDate
     }
