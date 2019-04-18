@@ -13,9 +13,12 @@ import CircularIndeterminate from "../CircularIndeterminate";
 import ChatButton from "../MyChat/ChatButton";
 
 import { graphql, compose } from "react-apollo";
-import { getRequestsQuery } from "../../queries/queries";
+import {
+  getRequestsQuery,
+  updateRequestStatusMutation
+} from "../../queries/queries";
 
-class TicketList extends React.Component {
+class ClientTicketList extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -35,6 +38,24 @@ class TicketList extends React.Component {
     this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
+  checkIfMore7Days = a => {
+    let todayDate = new Date();
+
+    let temp = a.split("-"); // 0 returns year, 1 returns month
+    let temp2 = temp[2].split(" "); //0 returns date
+
+    // console.log(today.getFullYear() >= temp[0]);
+    // console.log(today.getMonth() + 1 >= temp[1]);
+    // console.log(today.getDate() - 7 >= temp2[0]);
+    let dateStr = (temp[1] + "/" + temp2[0] + "/" + temp[0]).toString();
+    let oldDate = new Date(dateStr);
+    // console.log(oldDate);
+
+    let timeDiff = todayDate.getTime() - oldDate.getTime();
+    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return diffDays >= 7;
+  };
+
   displayRequests() {
     var data = this.props.getRequestsQuery;
     if (!data.loading) {
@@ -48,6 +69,41 @@ class TicketList extends React.Component {
       dataArr = dataArr.filter(request => {
         return request.user.firstName.toLowerCase() === "joseph";
       });
+
+      //here we check if any requests has been unresolved for a week
+      let checkArr = dataArr.filter(a => {
+        return this.checkIfMore7Days(a.dateRequested) && a.status === "Open";
+      });
+
+      // console.log("old unresolved requests are");
+      // console.log(checkArr);
+      // console.log(checkArr.length);
+
+      let today = new Date();
+      let time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      let date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate() +
+        " " +
+        time;
+
+      if (checkArr.length !== 0) {
+        checkArr.map(a => {
+          this.props.updateRequestStatusMutation({
+            variables: {
+              id: a.id,
+              status: "Resolved",
+              dateResolved: date
+            }
+          });
+        });
+
+        return 0;
+      }
 
       return dataArr.map(request => {
         return (
@@ -227,6 +283,8 @@ class TicketList extends React.Component {
     );
   }
 }
-export default compose(graphql(getRequestsQuery, { name: "getRequestsQuery" }))(
-  TicketList
-);
+
+export default compose(
+  graphql(getRequestsQuery, { name: "getRequestsQuery" }),
+  graphql(updateRequestStatusMutation, { name: "updateRequestStatusMutation" })
+)(ClientTicketList);

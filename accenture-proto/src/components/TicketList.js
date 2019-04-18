@@ -104,6 +104,8 @@ class TicketList extends React.Component {
               dateResolved: date
             }
           });
+
+          return 0;
         });
       }
 
