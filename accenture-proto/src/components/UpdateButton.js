@@ -17,22 +17,14 @@ class UpdateButton extends React.Component {
   constructor() {
     super();
     this.state = {
-      // redirect: false
       showSnackbarUpdate: false
     };
-    // this.handleRedirect = this.handleRedirect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleSnackbarUpdate = this.toggleSnackbarUpdate.bind(this);
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
   }
-
-  // handleRedirect() {
-  //   this.setState({
-  //     redirect: true
-  //   });
-  // }
 
   showModal() {
     this.setState({ show: true });
@@ -123,37 +115,6 @@ class UpdateButton extends React.Component {
 
   render() {
     let showSnackbarUpdate = this.state.showSnackbarUpdate;
-
-    // let id = this.props.idd;
-
-    // if (this.state.redirect) {
-    //   // return <Redirect to="/requests" />;
-    //   setTimeout(function() {
-    //     window.location.reload();
-    //   }, 500);
-    // }
-    // if (this.state.redirect) {
-    //   // return <Redirect to="/requests" />;
-    //   if (this.props.isClient) {
-    //     return (
-    //       <Redirect
-    //         to={{
-    //           pathname: "/crequests",
-    //           state: { updatedTicket: true }
-    //         }}
-    //       />
-    //     );
-    //   }
-    //   return (
-    //     <Redirect
-    //       to={{
-    //         pathname: "/requests",
-    //         state: { updatedTicket: true }
-    //       }}
-    //     />
-    //   );
-    // }
-    //
 
     const modalTextMargin = {
       marginTop: "10px"

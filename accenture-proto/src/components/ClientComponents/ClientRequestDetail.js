@@ -166,7 +166,7 @@ class ClientRequestDetail extends React.Component {
 
             <h3 className="back-to-tickets-text">Back to Tickets</h3>
 
-            <img src="" className="settings" alt="settings" />
+            <img src="" className="settings" alt="" />
 
             <TrashModal show={this.state.show} handleBack={this.hideModal}>
               <h3 style={modalTextMargin}>

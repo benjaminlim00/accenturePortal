@@ -1,6 +1,8 @@
 import React from "react";
 import firebase from "firebase/app";
 import "./MyChat.css";
+import MeText from "./MeText";
+import AdminText from "./AdminText";
 
 const style = {
   margin: 0,
@@ -41,11 +43,24 @@ class MyChat extends React.Component {
   }
   submitMessage(e) {
     e.preventDefault();
+
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    var time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + " " + time;
+
     this.setState({ message: "" }); //clear the input
     const nextMessage = {
       id: this.state.messages.length,
       text: this.state.message,
-      author: this.props.author //here use props too
+      author: this.props.author,
+      time: dateTime
     };
     // let list = Object.assign([], this.state.messages);
     // list.push(nextMessage);
@@ -60,11 +75,16 @@ class MyChat extends React.Component {
 
   render() {
     const currentMessage = this.state.messages.map((message, i) => {
-      return (
-        <p className="message-wrapper" key={message.id}>
-          {message.author}: {message.text}
-        </p>
-      );
+      if (message.author !== "admin") {
+        // sent by me
+        return (
+          <MeText text={message.text} time={message.time} key={message.id} />
+        );
+      } else {
+        return (
+          <AdminText text={message.text} time={message.time} key={message.id} />
+        );
+      }
     });
     return (
       <div style={style}>
@@ -74,19 +94,37 @@ class MyChat extends React.Component {
           <h3>Joseph</h3>
         )}
 
-        {/* take props */}
+        {/* chat history starts here */}
+        <div className="chatbox">
+          <div className="chatboxheading">
+            <h1 className="chatboxtextheading">Chat Support</h1>
+          </div>
 
-        {currentMessage}
-        <form onSubmit={this.submitMessage}>
-          <input
-            onChange={this.updateMessage}
-            type="text"
-            placeholder="Message"
-            value={this.state.message}
-          />
-          <br />
-          <button type="submit">Submit Message</button>
-        </form>
+          <div className="chatboxbody internal-scrolling-chat">
+            {currentMessage}
+
+            <div className="clearchat" />
+          </div>
+
+          <form onSubmit={this.submitMessage}>
+            <div className="reply-box">
+              <button type="submit" className="sendbutton">
+                Send
+              </button>
+              <div className="typemessageherebox">
+                <textarea
+                  rows="5"
+                  cols="35"
+                  className="textarea"
+                  placeholder="Type your message here..."
+                  onChange={this.updateMessage}
+                  value={this.state.message}
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        {/* chat history ends here */}
       </div>
     );
   }
