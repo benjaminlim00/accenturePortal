@@ -12,8 +12,8 @@ import AssignedOptions from "../Resources/Data/AssignedOptions";
 import PriorityOptions from "../Resources/Data/PriorityOptions";
 import UploadModal from "./firebase/UploadModal";
 
-import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
-import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
+// import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
+// import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 import attachment from "../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
 
 class CreateTicket extends React.Component {
@@ -286,7 +286,11 @@ class CreateTicket extends React.Component {
                   onClick={this.showModal}
                   className="file-logo"
                 >
-                  <img src={attachment} className="file-logo" />
+                  <img
+                    src={attachment}
+                    className="file-logo"
+                    alt="attachment"
+                  />
                 </button>
 
                 <p className="attach-file">Attach</p>

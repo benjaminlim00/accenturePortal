@@ -2,11 +2,11 @@ import React from "react";
 import "../../styles/App.css";
 import "../../styles/grid.css";
 import "../../styles/normalize.css";
-import { getRequestQuery, getUserQuery } from "../../queries/queries";
-import { graphql } from "react-apollo";
+// import { getRequestQuery, getUserQuery } from "../../queries/queries";
+// import { graphql } from "react-apollo";
 import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class ContactDetails extends React.Component {
   displayContactDetails() {
@@ -16,7 +16,7 @@ class ContactDetails extends React.Component {
     return (
       <div className="contact-details">
         <h2 className="small-heading contact-property">Contact Details</h2>
-        <img src={arrow} className="arrow-up-new" />
+        <img src={arrow} className="arrow-up-new" alt="arrow" />
 
         <h5 className="type-of-details">Requester</h5>
         <p className="detail-req">

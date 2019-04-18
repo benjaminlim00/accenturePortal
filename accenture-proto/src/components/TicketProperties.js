@@ -7,7 +7,7 @@ class TicketProperties extends React.Component {
     return (
       <div className="properties">
         <h2 className="small-heading contact-property">Ticket Properties</h2>
-        <img src={arrow} className="arrow-up-new" />
+        <img src={arrow} className="arrow-up-new" alt="arrow" />
         <div className="grid-row">
           <p className="property">Ticket ID</p>
           <p className="propertyNormalWords">
@@ -29,14 +29,14 @@ class TicketProperties extends React.Component {
           <div className="special-property">
             <p>Assigned</p>
             <p className="propertyArrowWords">
-              <img src={arrow} className="arrow-down" />
+              <img src={arrow} className="arrow-down" alt="arrow" />
               {this.props.assigned}
             </p>
           </div>
           <div className="special-property">
             <p>Status</p>
             <p className="propertyArrowWords">
-              <img src={arrow} className="arrow-down" />
+              <img src={arrow} className="arrow-down" alt="arrow" />
               {this.props.status}
             </p>
           </div>

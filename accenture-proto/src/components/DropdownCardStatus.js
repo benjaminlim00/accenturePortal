@@ -43,7 +43,7 @@ class DropdownCardStatus extends Component {
           id="transparentButton"
           className="transparentButton-status"
         >
-          <img src={arrow} className="arrow-down-2" />
+          <img src={arrow} className="arrow-down-2" alt="arrow" />
         </button>
 
         {this.state.showMenu ? (

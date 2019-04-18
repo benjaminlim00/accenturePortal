@@ -5,9 +5,9 @@ import "../styles/normalize.css";
 import DropdownCardStatus from "./DropdownCardStatus";
 import DropdownCardAssigned from "./DropdownCardAssigned";
 
-import { Link } from "react-router-dom";
-
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
+
+import { Link } from "react-router-dom";
 
 class TicketRow extends React.Component {
   constructor() {
@@ -78,13 +78,20 @@ class TicketRow extends React.Component {
         <div className="col span-1-of-9" id="status">
           <h4 className="detail">{this.props.status}</h4>
         </div>
+
         <div className="statusArrow">
           <DropdownCardStatus idd={this.props.id} isCLient="false" />
         </div>
 
-        {/* {closedBool ? null : (
+        {/* {closedBool ? (
+          <div className="clientStatusArrowInvisible">
+            <p id="transparentButton" className="transparentButton-status">
+          <img src={arrow} className="arrow-down-2" />
+            </p>
+          </div>
+          ) : (
           <div className="statusArrow">
-            <DropdownCardStatus idd={this.props.id} isCLient="false" />
+            <DropdownCardStatus idd={this.props.id} isClient="false" />
           </div>
         )} */}
 

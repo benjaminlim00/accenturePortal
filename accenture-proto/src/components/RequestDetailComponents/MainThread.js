@@ -2,8 +2,8 @@ import React from "react";
 import "../../styles/App.css";
 import "../../styles/grid.css";
 import "../../styles/normalize.css";
-import { getRequestQuery } from "../../queries/queries";
-import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
+// import { getRequestQuery } from "../../queries/queries";
+// import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
 
 class MainThread extends React.Component {
   displayMainThread() {

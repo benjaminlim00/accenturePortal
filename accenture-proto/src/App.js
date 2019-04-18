@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import TicketList from "./components/TicketList";
 import LoginPage from "./components/LoginPage";
 import RequestDetail from "./components/RequestDetail";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 import CreateTicket from "./components/CreateTicket";
 import ClientTicketList from "./components/ClientComponents/ClientTicketList";
 import ClientCreateTicket from "./components/ClientComponents/ClientCreateTicket";
 import ClientRequestDetail from "./components/ClientComponents/ClientRequestDetail";
-import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import MyChat from "./components/MyChat/MyChat";
 
 import ApolloClient from "apollo-boost";

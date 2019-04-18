@@ -68,7 +68,7 @@ class UploadFile extends React.Component {
   render() {
     // console.log(this.props.clickBack);
 
-    let showDone = this.state.progress == 100;
+    let showDone = this.state.progress === 100;
 
     return (
       <div>

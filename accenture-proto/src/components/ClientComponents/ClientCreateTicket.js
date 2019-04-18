@@ -11,7 +11,7 @@ import {
 import CNavBar from "./CNavBar";
 import UploadModal from "../firebase/UploadModal";
 
-import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
+// import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 import attachment from "../../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
 
 class ClientCreateTicket extends React.Component {
@@ -199,7 +199,11 @@ class ClientCreateTicket extends React.Component {
                   onClick={this.showModal}
                   className="file-logo"
                 >
-                  <img src={attachment} className="file-logo" />
+                  <img
+                    src={attachment}
+                    className="file-logo"
+                    alt="attachment"
+                  />
                 </button>
 
                 <p className="attach-file">Attach</p>

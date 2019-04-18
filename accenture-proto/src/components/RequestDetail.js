@@ -7,16 +7,13 @@ import TicketProperties from "./TicketProperties";
 import TrashModal from "./TrashModal";
 import NavBar from "./NavBar";
 
-import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 import trash from "../Resources/Icons/iconfinder_25_2135797.svg";
-import replyArrow from "../Resources/Icons/iconfinder_reply_226602.svg";
-import fileLogo from "../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
 
 import { Link } from "react-router-dom";
 
 import { graphql, compose } from "react-apollo";
-import { getThreadsQuery, getRequestsQuery } from "../queries/queries";
+import { getRequestsQuery } from "../queries/queries";
 import ThreadBlock from "./RequestDetailComponents/ThreadBlock";
 import MainThread from "./RequestDetailComponents/MainThread";
 import ContactDetails from "./RequestDetailComponents/ContactDetails";
@@ -185,13 +182,13 @@ class RequestDetail extends React.Component {
           <div className="back-to-tickets-section">
             <button type="button" id="transparentButton">
               <Link to="/requests">
-                <img src={arrow} className="arrow-left-new" />
+                <img src={arrow} className="arrow-left-new" alt="arrow" />
               </Link>
             </button>
 
             <h3 className="back-to-tickets-text">Back to Tickets</h3>
 
-            <img src="" className="settings" />
+            <img src="" className="settings" alt="settings" />
 
             <TrashModal show={this.state.show} handleBack={this.hideModal}>
               <h3 style={modalTextMargin}>
@@ -210,10 +207,10 @@ class RequestDetail extends React.Component {
               onClick={this.showModal}
               className="trash"
             >
-              <img src={trash} className="trash" />
+              <img src={trash} className="trash" alt="trash" />
             </button>
-            <img src={arrow} className="arrow-right-new" />
-            <img src={arrow} className="arrow-left-new-2" />
+            <img src={arrow} className="arrow-right-new" alt="arrow" />
+            <img src={arrow} className="arrow-left-new-2" alt="arrow" />
             <p className="page-no">1 out of 100</p>
           </div>
 

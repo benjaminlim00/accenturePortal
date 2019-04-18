@@ -3,8 +3,8 @@ import "../styles/App.css";
 import "../styles/grid.css";
 import "../styles/normalize.css";
 
-import editIcon from "../Resources/Icons/iconfinder_compose_3671747.svg";
-import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
+// import editIcon from "../Resources/Icons/iconfinder_compose_3671747.svg";
+// import profileIcon from "../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 import TicketRow from "./TicketRow";
@@ -140,14 +140,14 @@ class TicketList extends React.Component {
     var showSnackbarCreate = false;
     if (typeof this.props.location.state !== "undefined") {
       if (this.props.location.state.createdTicket) {
-        var showSnackbarCreate = true;
+        showSnackbarCreate = true;
       }
     }
 
     var showSnackbarDelete = false;
     if (typeof this.props.location.state !== "undefined") {
       if (this.props.location.state.deletedTicket) {
-        var showSnackbarDelete = true;
+        showSnackbarDelete = true;
       }
     }
 

@@ -7,7 +7,6 @@ import "../../styles/RequestDetail.css";
 import { storage } from "../firebase/firebaseExport";
 import { graphql, compose } from "react-apollo";
 import { addThreadMutation } from "../../queries/queries";
-import UploadModal from "../firebase/UploadModal";
 import CircularIndeterminate from "../CircularIndeterminate";
 
 import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
@@ -120,7 +119,7 @@ class CreateThread extends React.Component {
         ) : null}
         <div className="enquiry-head-reply">
           <div className="reply-attach">
-            <img src={replyArrow} className="reply-arrow" />
+            <img src={replyArrow} className="reply-arrow" alt="arrow" />
           </div>
 
           <div className="from-to">

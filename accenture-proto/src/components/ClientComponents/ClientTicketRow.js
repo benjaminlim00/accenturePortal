@@ -1,7 +1,7 @@
 import React from "react";
 
 import { graphql, compose } from "react-apollo";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import {
   addRequestMutation,
   getRequestsQuery,
@@ -176,7 +176,7 @@ class TicketRow extends React.Component {
         {closedBool ? (
           <div className="clientStatusArrowInvisible">
             <p id="transparentButton" className="transparentButton-status">
-              <img src={arrow} className="arrow-down-2" />
+              <img src={arrow} className="arrow-down-2" alt="arrow" />
             </p>
           </div>
         ) : (

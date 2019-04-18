@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, compose } from "react-apollo";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 import ClientModal from "./ClientComponents/ClientModal";
 
