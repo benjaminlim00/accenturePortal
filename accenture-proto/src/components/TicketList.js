@@ -23,16 +23,8 @@ class TicketList extends React.Component {
   constructor() {
     super();
     this.state = {
-      checkbox: {
-        checkboxAll: false,
-        checkboxIcon1: false,
-        checkboxIcon2: false,
-        checkboxIcon3: false,
-        checkboxIcon4: false,
-        checkboxIcon5: false,
-        checkboxIcon6: false,
-        checkboxIcon7: false
-      },
+      checkboxAll: false,
+      checkboxArr: [],
       data: null
     };
 
@@ -137,59 +129,13 @@ class TicketList extends React.Component {
     const { name, value, type, checked } = event.target;
 
     if (name === "checkboxAll") {
-      if (checked === true) {
-        this.setState({
-          checkbox: {
-            checkboxAll: true,
-            checkboxIcon1: true,
-            checkboxIcon2: true,
-            checkboxIcon3: true,
-            checkboxIcon4: true,
-            checkboxIcon5: true,
-            checkboxIcon6: true,
-            checkboxIcon7: true
-          }
-        });
-      } else {
-        this.setState({
-          checkbox: {
-            checkboxAll: false,
-            checkboxIcon1: false,
-            checkboxIcon2: false,
-            checkboxIcon3: false,
-            checkboxIcon4: false,
-            checkboxIcon5: false,
-            checkboxIcon6: false,
-            checkboxIcon7: false
-          }
-        });
-      }
-    } else {
-      type === "checkbox"
-        ? this.setState(prevState => {
-            return {
-              checkbox: {
-                ...prevState.checkbox,
-                [name]: checked
-              }
-            };
-          })
-        : this.setState({ [name]: value });
+      this.setState({
+        [name]: checked
+      });
     }
   };
 
   render() {
-    /*
-    if (performance.navigation.type == 1) {
-      console.info("This page is reloaded, lets pop a snackbar");
-      var showSnackbar = true;
-    } else {
-      console.info("This page is not reloaded");
-      var showSnackbar = false;
-    }
-    */
-    // console.log(this.props.location.state);
-
     var showSnackbarCreate = false;
     if (typeof this.props.location.state !== "undefined") {
       if (this.props.location.state.createdTicket) {
@@ -208,7 +154,6 @@ class TicketList extends React.Component {
     if (!this.props.getRequestsQuery.loading) {
       loading = false;
     }
-    // console.log(loading);
 
     return (
       <div>
@@ -242,7 +187,7 @@ class TicketList extends React.Component {
                 className="checkboxAll"
                 type="checkbox"
                 name="checkboxAll"
-                checked={this.state.checkbox.checkboxAll}
+                checked={this.state.checkboxAll}
                 onChange={this.handleCheckbox}
               />
             </div>

@@ -27,12 +27,11 @@ class TicketRow extends React.Component {
   }
 
   handleCheckbox = event => {
+    const { name, checked } = event.target;
     console.log("clicked checkbox");
-    if (this.state.checkbox === true) {
-      this.setState({ checkbox: false });
-    } else {
-      this.setState({ checkbox: true });
-    }
+    this.setState({
+      [name]: checked
+    });
   };
 
   render() {

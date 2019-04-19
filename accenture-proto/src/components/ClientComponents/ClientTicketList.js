@@ -22,16 +22,7 @@ class ClientTicketList extends React.Component {
   constructor() {
     super();
     this.state = {
-      checkbox: {
-        checkboxAll: false,
-        checkboxIcon1: false,
-        checkboxIcon2: false,
-        checkboxIcon3: false,
-        checkboxIcon4: false,
-        checkboxIcon5: false,
-        checkboxIcon6: false,
-        checkboxIcon7: false
-      }
+      checkboxAll: false
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -137,44 +128,9 @@ class ClientTicketList extends React.Component {
     const { name, value, type, checked } = event.target;
 
     if (name === "checkboxAll") {
-      if (checked === true) {
-        this.setState({
-          checkbox: {
-            checkboxAll: true,
-            checkboxIcon1: true,
-            checkboxIcon2: true,
-            checkboxIcon3: true,
-            checkboxIcon4: true,
-            checkboxIcon5: true,
-            checkboxIcon6: true,
-            checkboxIcon7: true
-          }
-        });
-      } else {
-        this.setState({
-          checkbox: {
-            checkboxAll: false,
-            checkboxIcon1: false,
-            checkboxIcon2: false,
-            checkboxIcon3: false,
-            checkboxIcon4: false,
-            checkboxIcon5: false,
-            checkboxIcon6: false,
-            checkboxIcon7: false
-          }
-        });
-      }
-    } else {
-      type === "checkbox"
-        ? this.setState(prevState => {
-            return {
-              checkbox: {
-                ...prevState.checkbox,
-                [name]: checked
-              }
-            };
-          })
-        : this.setState({ [name]: value });
+      this.setState({
+        [name]: checked
+      });
     }
   };
 
@@ -230,7 +186,7 @@ class ClientTicketList extends React.Component {
                 className="checkboxAll"
                 type="checkbox"
                 name="checkboxAll"
-                checked={this.state.checkbox.checkboxAll}
+                checked={this.state.checkboxAll}
                 onChange={this.handleCheckbox}
               />
             </div>
