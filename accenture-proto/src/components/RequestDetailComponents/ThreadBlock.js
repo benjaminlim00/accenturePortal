@@ -37,11 +37,13 @@ class ThreadBlock extends React.Component {
                 </div>
 
                 <p className="enquiry-body">{item.threadContent}</p>
-                {item.threadImage === "" ? null : (
-                  <a className="url-bottom-left" href={item.threadImage}>
-                    View attached image
-                  </a>
-                )}
+                <div className="attachedImageAccess">
+                  {item.threadImage === "" ? null : (
+                    <a className="url-bottom-left" href={item.threadImage}>
+                      View attached image
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           );

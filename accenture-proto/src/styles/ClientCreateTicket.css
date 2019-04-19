@@ -15,3 +15,11 @@
   color: #414141;
   width: 110%;
 }
+
+.send-button {
+  cursor: pointer;
+}
+
+#transparentButton {
+  cursor: pointer;
+}

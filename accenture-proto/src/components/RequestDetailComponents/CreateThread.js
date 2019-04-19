@@ -22,6 +22,7 @@ class CreateThread extends React.Component {
       image: null,
       url: "",
       loading: false
+      // fileName: ""
     };
     this.submitForm = this.submitForm.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
@@ -29,7 +30,9 @@ class CreateThread extends React.Component {
   }
 
   handleFileChange = e => {
+    e.preventDefault();
     if (e.target.files[0]) {
+      // this.setState({ fileName: e.target.files[0].name });
       const image = e.target.files[0];
       this.setState(() => ({ image }));
     }
@@ -129,7 +132,7 @@ class CreateThread extends React.Component {
             </div>
           </div>
         </div>
-        <form onSubmit={this.submitForm}>
+        <form>
           <label>
             <textarea
               placeholder="Enter text here..."
@@ -142,11 +145,16 @@ class CreateThread extends React.Component {
 
           <div className="enquiry-head">
             <div className="">
-              <img src={fileLogo} alt="attachment" className="file-logo" />
+              {/* <img src={fileLogo} alt="attachment" className="file-logo" /> */}
               {/* <input type="file" onChange={this.handleFileChange} /> */}
 
-              <div className="file-input-wrapper">
-                <button className="btn-file-input">Choose Image</button>
+              <div className="file-input-wrapper2">
+                <button className="btn-file-input2">Choose Image</button>
+                {/* <br />
+                  {this.state.fileName !== "" ? (
+                  <p>{this.state.fileName}</p>
+                ) : null} */}
+
                 <input type="file" onChange={this.handleFileChange} />
               </div>
             </div>
@@ -156,7 +164,7 @@ class CreateThread extends React.Component {
             </div>
             <button
               className="send-button-createThread"
-              type="submit"
+              onClick={this.submitForm}
               disabled={!this.isFormValid()}
             >
               <p className="send-req-details">Send</p>

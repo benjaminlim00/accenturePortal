@@ -96,6 +96,15 @@ body {
 .textareareplyThread {
   padding: 1%;
   width: 100%;
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  font-size: 78%;
+  color: #868686;
 }
 
 .reply-button {
@@ -139,8 +148,9 @@ body {
 .cancel-button {
   display: inline-block;
   font-size: 80%;
-  margin-left: 68%;
+  margin-left: 80%;
   margin-bottom: 1%;
+  margin-top: 0.5%;
 }
 
 .send-button-detailspage {
@@ -355,9 +365,23 @@ body {
   overflow-y: scroll;
 }
 
+.attachedImageAccess {
+  margin: 2% 0;
+}
+
 .url-bottom-left {
   font-size: 65%;
   padding: 3% 6%;
+  margin-bottom: 5%;
+}
+
+.url-bottom-left:link {
+  text-decoration: none;
+}
+
+.url-bottom-left:hover {
+  text-decoration: underline;
+  font-weight: 400;
 }
 
 /* -----------------------------------------------*/
@@ -473,4 +497,38 @@ body {
 
 .clear {
   clear: both;
+}
+
+/* -----------------------------------------------*/
+/* CREATE THREAD SECTION */
+/* -----------------------------------------------*/
+
+.file-input-wrapper2 {
+  width: 120px;
+  height: 45px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 2%;
+  margin-bottom: -4%;
+  padding-top: 0.5%;
+}
+
+.file-input-wrapper2 > input[type="file"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-input-wrapper2 > .btn-file-input2 {
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  border: none;
+  background-color: #1160bc;
+  font-size: 85%;
+  border-radius: 3px;
+  color: #ffffff;
+  font-weight: 400;
 }

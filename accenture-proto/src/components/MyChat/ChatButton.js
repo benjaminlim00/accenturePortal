@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MyChat from "./MyChat";
-import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
 
 import chatIcon from "./chat.svg";
 
@@ -31,15 +31,10 @@ class ChatButton extends Component {
     return (
       <div>
         <div>{this.state.show && <MyChat author={this.props.author} />}</div>
-        <Button
-          variant="fab"
-          aria-label="add"
-          style={style}
-          onClick={this.toggleDiv}
-        >
+        <Fab style={style} onClick={this.toggleDiv}>
           <img src={chatIcon} alt="chatIcon" />
           <i className="fas fa-comment" />
-        </Button>
+        </Fab>
       </div>
     );
   }

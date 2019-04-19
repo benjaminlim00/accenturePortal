@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="properties"
+>
+  <h2
+    className="small-heading contact-property"
+  >
+    Ticket Properties
+  </h2>
+  <img
+    alt="arrow"
+    className="arrow-up-new"
+    src="iconfinder_icon-ios7-arrow-down_211687.svg"
+  />
+  <div
+    className="grid-row"
+  >
+    <p
+      className="property"
+    >
+      Ticket ID
+    </p>
+    <p
+      className="propertyNormalWords"
+    >
+      <u />
+    </p>
+    <p
+      className="property"
+    >
+      Asset(s)
+    </p>
+    <p
+      className="propertyNormalWords"
+    >
+      <u />
+    </p>
+    <p
+      className="property"
+    >
+      Type
+    </p>
+    <p
+      className="propertyNormalWords"
+    >
+      <u />
+    </p>
+    <p
+      className="property"
+    >
+      Priority
+    </p>
+    <p
+      className="propertyNormalWords"
+    >
+      <u />
+    </p>
+    <div
+      className="special-property"
+    >
+      <p>
+        Assigned
+      </p>
+      <p
+        className="propertyArrowWords"
+      >
+        <img
+          alt="arrow"
+          className="arrow-down"
+          src="iconfinder_icon-ios7-arrow-down_211687.svg"
+        />
+      </p>
+    </div>
+    <div
+      className="special-property"
+    >
+      <p>
+        Status
+      </p>
+      <p
+        className="propertyArrowWords"
+      >
+        <img
+          alt="arrow"
+          className="arrow-down"
+          src="iconfinder_icon-ios7-arrow-down_211687.svg"
+        />
+      </p>
+    </div>
+    <p
+      className="property"
+    >
+      Date/Time Requested
+    </p>
+    <p
+      className="propertyNormalWords"
+    >
+      <u />
+    </p>
+    <p
+      className="property"
+    >
+      Date/Time Resolved
+    </p>
+    <p
+      className="propertyNormalWords"
+    >
+      <u />
+    </p>
+    <p
+      className="property"
+    >
+      Date/Time Closed
+    </p>
+    <p
+      className="propertyNormalWords"
+    >
+      <u />
+    </p>
+  </div>
+</div>
+`;

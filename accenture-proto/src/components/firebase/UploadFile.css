@@ -10,19 +10,30 @@
   font-family: "Lato";
   font-size: 20px;
   font-weight: 400;
-  text-transform: uppercase;
+
   font-size: 80%;
   padding: 10px;
-  display: inline-block;
+  display: block;
   cursor: pointer;
   border-style: solid;
   border: none;
-  margin-left: 20px;
-  margin-right: 10px;
-  margin-bottom: 20px;
+  margin: 2%;
+  margin-left: 87%;
 }
 
 .buttonStyleCross {
+  float: right;
+  cursor: pointer;
+}
+
+.successfulFileAttach {
+  margin-left: 35%;
+  font-size: 90%;
+  color: #000000;
+}
+
+.imageAttachment {
+  margin-left: 33%;
 }
 
 /*
@@ -57,12 +68,13 @@
 } */
 
 .file-input-wrapper {
-  width: 200px;
+  width: 120px;
   height: 40px;
   overflow: hidden;
   position: relative;
-  margin-left: 4%;
+  margin-left: 42%;
   margin-bottom: -4%;
+  margin-top: 2%;
 }
 
 .file-input-wrapper > input[type="file"] {
@@ -75,12 +87,20 @@
 
 .file-input-wrapper > .btn-file-input {
   display: inline-block;
-  width: 110px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
   border: none;
   background-color: #1160bc;
   font-size: 85%;
   border-radius: 3px;
   color: #ffffff;
-  font-weight: 300;
+  font-weight: 400;
+}
+
+.uploadAttachmentHere {
+  margin-left: 30%;
+}
+
+.uploadAttachmentText {
+  color: #000000;
 }
