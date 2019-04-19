@@ -25,11 +25,14 @@
     "semantic-ui-react": "^0.85.0"
   },
   "scripts": {
-    "start": "concurrently \"node ./backend/server.js\" \"react-scripts start\"",
+    "start": "concurrently \"npm run server\" \"npm run smsServer\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon ./backend/server.js",
+    "smsServer": "nodemon ./backend/smsServer.js"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": "react-app"
   },

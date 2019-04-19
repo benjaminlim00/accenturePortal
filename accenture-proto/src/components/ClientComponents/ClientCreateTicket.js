@@ -26,7 +26,15 @@ class ClientCreateTicket extends React.Component {
       requesterId: "5ca6d2311c9d4400004044b2", //this is the id of joseph
       mainThread: "",
       redirect: false,
-      show: false
+      show: false,
+
+      //these are for sms fnc
+      message: {
+        to: "",
+        body: ""
+      },
+      submitting: false,
+      error: false
     };
 
     this.handleRedirect = this.handleRedirect.bind(this);
@@ -116,6 +124,34 @@ class ClientCreateTicket extends React.Component {
         }
       });
     }
+
+    //these are for sms fnc
+    this.setState({ submitting: true });
+    fetch("/api/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state.message)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          this.setState({
+            error: false,
+            submitting: false,
+            message: {
+              to: "",
+              body: ""
+            }
+          });
+        } else {
+          this.setState({
+            error: true,
+            submitting: false
+          });
+        }
+      });
 
     // console.log("Data sent! Redirecting page");
     this.handleRedirect();
