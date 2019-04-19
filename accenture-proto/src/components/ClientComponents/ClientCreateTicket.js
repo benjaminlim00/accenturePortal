@@ -47,10 +47,16 @@ class ClientCreateTicket extends React.Component {
   }
 
   displayType() {
+    // let datals = [
+    //   { name: "Request", id: 0 },
+    //   { name: "Consult", id: 1 },
+    //   { name: "Enquiry", id: 2 }
+    // ];
+
     let datals = [
-      { name: "Request", id: 0 },
-      { name: "Consult", id: 1 },
-      { name: "Enquiry", id: 2 }
+      { name: "Purchase", id: 0 },
+      { name: "Complaint", id: 1 },
+      { name: "Tech Support", id: 2 }
     ];
 
     return datals.map(data => {
@@ -77,21 +83,40 @@ class ClientCreateTicket extends React.Component {
       " " +
       time;
 
-    this.props.addRequestMutation({
-      variables: {
-        asset: this.state.asset,
-        type: this.state.type,
-        subject: this.state.subject,
-        dateRequested: date,
-        priority: this.state.priority,
-        status: "Open",
-        assigned: this.state.assigned,
-        dateResolved: "",
-        dateClosed: "",
-        mainThread: this.state.mainThread,
-        requesterId: this.state.requesterId //added
-      }
-    });
+    if (this.state.type === "Purchase") {
+      this.props.addRequestMutation({
+        variables: {
+          asset: this.state.asset,
+          type: this.state.type,
+          subject: this.state.subject,
+          dateRequested: date,
+          priority: "High",
+          status: "Open",
+          assigned: this.state.assigned,
+          dateResolved: "",
+          dateClosed: "",
+          mainThread: this.state.mainThread,
+          requesterId: this.state.requesterId //added
+        }
+      });
+    } else {
+      this.props.addRequestMutation({
+        variables: {
+          asset: this.state.asset,
+          type: this.state.type,
+          subject: this.state.subject,
+          dateRequested: date,
+          priority: this.state.priority,
+          status: "Open",
+          assigned: this.state.assigned,
+          dateResolved: "",
+          dateClosed: "",
+          mainThread: this.state.mainThread,
+          requesterId: this.state.requesterId //added
+        }
+      });
+    }
+
     // console.log("Data sent! Redirecting page");
     this.handleRedirect();
   }
