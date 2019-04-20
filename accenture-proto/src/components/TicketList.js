@@ -12,6 +12,7 @@ import NavBar from "./NavBar";
 import CustomizedSnackbars from "./CustomizedSnackbars";
 import CircularIndeterminate from "./CircularIndeterminate";
 import ChatButton from "./MyChat/ChatButton";
+import DropdownCardSort from "./DropdownCardSort";
 
 import { graphql, compose } from "react-apollo";
 import {
@@ -25,11 +26,20 @@ class TicketList extends React.Component {
     this.state = {
       checkboxAll: false,
       checkboxArr: [],
-      data: null
+      data: null,
+      sortby: "Priority"
     };
 
     this.handleCheckbox = this.handleCheckbox.bind(this);
   }
+
+  handleSortButton = e => {
+    const { value } = e.target;
+    // console.log(value);
+    this.setState({
+      sortby: value
+    });
+  };
 
   //add to test
   checkIfMore7Days = a => {
@@ -58,13 +68,35 @@ class TicketList extends React.Component {
     if (!data.loading) {
       // console.log(data.requests);
       let dataArr = Object.values(data.requests);
-      dataArr.sort((a, b) =>
-        a.user.firstName > b.user.firstName
-          ? 1
-          : b.user.firstName > a.user.firstName
-          ? -1
-          : 0
-      );
+
+      //here we sort.
+      if (this.state.sortby === "Name") {
+        dataArr.sort((a, b) =>
+          a.user.firstName > b.user.firstName
+            ? 1
+            : b.user.firstName > a.user.firstName
+            ? -1
+            : 0
+        );
+      } else if (this.state.sortby === "Priority") {
+        dataArr.sort((a, b) => {
+          if (a.priority === "High") {
+            return -1;
+          }
+          if (a.priority === "Low") {
+            return 1;
+          }
+          return 0;
+        });
+      } else if (this.state.sortby === "Subject") {
+        dataArr.sort((a, b) =>
+          a.subject > b.subject ? 1 : b.subject > a.subject ? -1 : 0
+        );
+      } else if (this.state.sortby === "Asset") {
+        dataArr.sort((a, b) =>
+          a.asset > b.asset ? 1 : b.asset > a.asset ? -1 : 0
+        );
+      }
 
       //here we check if any requests has been unresolved for a week
       let checkArr = dataArr.filter(a => {
@@ -158,7 +190,7 @@ class TicketList extends React.Component {
     return (
       <div>
         <NavBar />
-        <ChatButton author="admin" />
+        <ChatButton />
 
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />
@@ -177,8 +209,9 @@ class TicketList extends React.Component {
           </div>
           <div className="sort-by-text">
             <span>
-              Sort by: Date Requested
-              <img src={arrow} className="arrow-down-datereq" alt="arrow" />
+              Sort by: {this.state.sortby}
+              {/* <img src={arrow} className="arrow-down-datereq" alt="arrow" /> */}
+              <DropdownCardSort handleSortButton={this.handleSortButton} />
             </span>
           </div>
           <div className="filter-box request-list-header">

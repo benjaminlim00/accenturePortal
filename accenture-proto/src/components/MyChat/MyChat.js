@@ -7,8 +7,8 @@ import AdminText from "./AdminText";
 const style = {
   margin: 0,
   top: "auto",
-  right: 40,
-  bottom: 70,
+  right: 20,
+  bottom: 80,
   left: "auto",
   position: "fixed"
 };
@@ -88,11 +88,11 @@ class MyChat extends React.Component {
     });
     return (
       <div style={style}>
-        {this.props.author === "joseph" ? (
+        {/* {this.props.author === "joseph" ? (
           <h3>Ben (Admin)</h3>
-        ) : (
+          ) : (
           <h3>Joseph</h3>
-        )}
+        )} */}
 
         {/* chat history starts here */}
         <div className="chatbox">
