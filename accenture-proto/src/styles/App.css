@@ -377,6 +377,11 @@ html {
   margin: 1%;
 }
 
+.adminStatusArrowInvisible {
+  margin: 1%;
+  visibility: hidden;
+}
+
 #status {
   margin-right: -3.5%;
 }

@@ -12,6 +12,9 @@ import CustomizedSnackbars from "../CustomizedSnackbars";
 import CircularIndeterminate from "../CircularIndeterminate";
 import ChatButton from "../MyChat/ChatButton";
 
+import DropdownCardSort from "../DropdownCardSort";
+import DropdownCardFilter from "../DropdownCardFilter";
+
 import { graphql, compose } from "react-apollo";
 import {
   getRequestsQuery,
@@ -22,12 +25,30 @@ class ClientTicketList extends React.Component {
   constructor() {
     super();
     this.state = {
-      checkboxAll: false
+      checkboxAll: false,
+      sortby: "Priority",
+      filterby: "No filter"
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
   }
+
+  handleSortButton = e => {
+    const { value } = e.target;
+    // console.log(value);
+    this.setState({
+      sortby: value
+    });
+  };
+
+  handleFilterButton = e => {
+    const { value } = e.target;
+    // console.log(value);
+    this.setState({
+      filterby: value
+    });
+  };
 
   checkIfMore7Days = a => {
     let todayDate = new Date();
@@ -51,15 +72,66 @@ class ClientTicketList extends React.Component {
     var data = this.props.getRequestsQuery;
     if (!data.loading) {
       let dataArr = Object.values(data.requests);
-      dataArr.sort((a, b) =>
-        a.subject > b.subject ? 1 : b.subject > a.subject ? -1 : 0
-      ); //sort by subject, maybe time will be better
 
       // console.log(dataArr);
       //only show for joseph, may change this
       dataArr = dataArr.filter(request => {
         return request.user.firstName.toLowerCase() === "joseph";
       });
+
+      //here we sort.
+      if (this.state.sortby === "Status") {
+        dataArr.sort((a, b) => {
+          if (a.status === "Open") {
+            return -1;
+          } else if (a.status === "Resolved") {
+            return 1;
+          } else if (a.status === "Closed") {
+            return 0;
+          }
+        });
+      } else if (this.state.sortby === "Priority") {
+        dataArr.sort((a, b) => {
+          if (a.priority === "High") {
+            return -1;
+          }
+          if (a.priority === "Low") {
+            return 1;
+          }
+          return 0;
+        });
+      } else if (this.state.sortby === "Subject") {
+        dataArr.sort((a, b) =>
+          a.subject.toLowerCase() > b.subject.toLowerCase()
+            ? 1
+            : b.subject.toLowerCase() > a.subject.toLowerCase()
+            ? -1
+            : 0
+        );
+      } else if (this.state.sortby === "Asset") {
+        dataArr.sort((a, b) =>
+          a.asset.toLowerCase() > b.asset.toLowerCase()
+            ? 1
+            : b.asset.toLowerCase() > a.asset.toLowerCase()
+            ? -1
+            : 0
+        );
+      }
+
+      //here we filter
+      if (this.state.filterby === "Status: Open") {
+        dataArr = dataArr.filter(val => {
+          return val.status === "Open";
+        });
+      } else if (this.state.filterby === "Status: Resolved") {
+        dataArr = dataArr.filter(val => {
+          return val.status === "Resolved";
+        });
+      } else if (this.state.filterby === "Status: Closed") {
+        dataArr = dataArr.filter(val => {
+          return val.status === "Closed";
+        });
+      }
 
       //here we check if any requests has been unresolved for a week
       let checkArr = dataArr.filter(a => {
@@ -125,7 +197,8 @@ class ClientTicketList extends React.Component {
 
   handleCheckbox = event => {
     console.log("clicked checkbox");
-    const { name, value, type, checked } = event.target;
+    // const { name, value, type, checked } = event.target;
+    const { name, checked } = event.target;
 
     if (name === "checkboxAll") {
       this.setState({
@@ -170,14 +243,18 @@ class ClientTicketList extends React.Component {
         <section className="current-tickets">
           <div className="filter-text">
             <span>
-              Filters
-              <img src={arrow} className="arrow-right" alt="arrow" />
+              Filter by: {this.state.filterby}
+              {/* <img src={arrow} className="arrow-right" alt="arrow" /> */}
+              <DropdownCardFilter
+                handleFilterButton={this.handleFilterButton}
+              />
             </span>
           </div>
           <div className="sort-by-text">
             <span>
-              Sort by: Date Requested
-              <img src={arrow} className="arrow-down-datereq" alt="arrow" />
+              Sort by: {this.state.sortby}
+              {/* <img src={arrow} className="arrow-down-datereq" alt="arrow" /> */}
+              <DropdownCardSort handleSortButton={this.handleSortButton} />
             </span>
           </div>
           <div className="filter-box request-list-header">

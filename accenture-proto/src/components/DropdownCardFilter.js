@@ -3,7 +3,7 @@ import "../styles/App.css";
 
 import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
-class DropdownCardSort extends Component {
+class DropdownCardFilter extends Component {
   constructor() {
     super();
 
@@ -36,6 +36,7 @@ class DropdownCardSort extends Component {
     // console.log(pageId);
     let isClient = pageId === "c";
     // console.log(isClient);
+
     return (
       <div>
         <button
@@ -43,7 +44,7 @@ class DropdownCardSort extends Component {
           id="transparentButton"
           className="transparentButton-status"
         >
-          <img src={arrow} className="arrow-down-2" alt="arrow" />
+          <img src={arrow} className="arrow-right" alt="arrow" />
         </button>
 
         {this.state.showMenu ? (
@@ -55,49 +56,69 @@ class DropdownCardSort extends Component {
           >
             <ul className="dropdownList">
               <li className="buttonList">
-                <button
-                  value="Subject"
-                  onClick={this.props.handleSortButton}
-                  id="transparentButtonVer2"
-                >
-                  Subject
-                </button>
+                {isClient ? (
+                  <button
+                    value="Status: Open"
+                    onClick={this.props.handleFilterButton}
+                    id="transparentButtonVer2"
+                  >
+                    Status: Open
+                  </button>
+                ) : (
+                  <button
+                    value="Name: Derrick"
+                    onClick={this.props.handleFilterButton}
+                    id="transparentButtonVer2"
+                  >
+                    Name: Derrick
+                  </button>
+                )}
               </li>
               <li className="buttonList">
                 {isClient ? (
                   <button
-                    value="Status"
-                    onClick={this.props.handleSortButton}
+                    value="Status: Resolved"
+                    onClick={this.props.handleFilterButton}
                     id="transparentButtonVer2"
                   >
-                    Status
+                    Status: Resolved
                   </button>
                 ) : (
                   <button
-                    value="Name"
-                    onClick={this.props.handleSortButton}
+                    value="Name: Joseph"
+                    onClick={this.props.handleFilterButton}
                     id="transparentButtonVer2"
                   >
-                    Name
+                    Name: Joseph
+                  </button>
+                )}
+              </li>
+              <li className="buttonList">
+                {isClient ? (
+                  <button
+                    value="Status: Closed"
+                    onClick={this.props.handleFilterButton}
+                    id="transparentButtonVer2"
+                  >
+                    Status: Closed
+                  </button>
+                ) : (
+                  <button
+                    value="Priority: High"
+                    onClick={this.props.handleFilterButton}
+                    id="transparentButtonVer2"
+                  >
+                    Priority: High
                   </button>
                 )}
               </li>
               <li className="buttonList">
                 <button
-                  value="Priority"
-                  onClick={this.props.handleSortButton}
+                  value="No filter"
+                  onClick={this.props.handleFilterButton}
                   id="transparentButtonVer2"
                 >
-                  Priority
-                </button>
-              </li>
-              <li className="buttonList">
-                <button
-                  value="Asset"
-                  onClick={this.props.handleSortButton}
-                  id="transparentButtonVer2"
-                >
-                  Asset
+                  No filter
                 </button>
               </li>
             </ul>
@@ -108,4 +129,4 @@ class DropdownCardSort extends Component {
   }
 }
 
-export default DropdownCardSort;
+export default DropdownCardFilter;

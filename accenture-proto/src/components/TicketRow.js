@@ -78,21 +78,21 @@ class TicketRow extends React.Component {
           <h4 className="detail">{this.props.status}</h4>
         </div>
 
-        <div className="statusArrow">
+        {/* <div className="statusArrow">
           <DropdownCardStatus idd={this.props.id} isCLient="false" />
-        </div>
+        </div> */}
 
-        {/* {closedBool ? (
-          <div className="clientStatusArrowInvisible">
+        {closedBool ? (
+          <div className="adminStatusArrowInvisible">
             <p id="transparentButton" className="transparentButton-status">
-          <img src={arrow} className="arrow-down-2" />
+              <img src={arrow} className="arrow-down-2" />
             </p>
           </div>
-          ) : (
+        ) : (
           <div className="statusArrow">
             <DropdownCardStatus idd={this.props.id} isClient="false" />
           </div>
-        )} */}
+        )}
 
         <div className="col span-1-of-8" id="assignedTo">
           <h4 className="detail">{this.props.assigned}</h4>

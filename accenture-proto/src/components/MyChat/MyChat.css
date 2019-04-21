@@ -52,6 +52,7 @@ html {
   border-bottom: none;
   border-top: none;
   min-height: 380px;
+  background-color: #ffffff;
 }
 
 .messageplusdateclient {
@@ -60,7 +61,7 @@ html {
 .timeofmessageclient {
   display: block;
   margin-bottom: 10%;
-  margin-left: 85%;
+  margin-left: 47%;
 }
 
 .timeofmessagetext {
@@ -74,6 +75,7 @@ html {
   border-radius: 7px;
   color: #000000;
   padding: 3%;
+  word-wrap: break-word;
 }
 
 .firstclientmessage {
@@ -91,6 +93,7 @@ html {
 .timeofmessageadmin {
   display: block;
   margin-bottom: 10%;
+  margin-left: 3%;
 }
 
 .adminmessage {
@@ -100,6 +103,7 @@ html {
   padding: 3%;
   border-radius: 7px;
   color: #000000;
+  word-wrap: break-word;
 }
 
 .adminchattext {
@@ -115,6 +119,7 @@ html {
   width: 100%;
   border: 1px solid #868686;
   display: inline-block;
+  background-color: #ffffff;
 }
 
 .typemessageherebox {
@@ -138,7 +143,7 @@ html {
 .sendbutton {
   border: none;
   background: rgba(0, 0, 0, 0);
-
+  cursor: pointer;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 90%;

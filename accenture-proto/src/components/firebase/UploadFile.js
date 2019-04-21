@@ -60,9 +60,6 @@ class UploadFile extends React.Component {
           });
       }
     );
-
-    // let handleBack = this.props.click;
-    // console.log(handleBack);
   };
 
   render() {
@@ -89,16 +86,24 @@ class UploadFile extends React.Component {
             alt="uploaded image"
             height="400"
             width="250"
+            className="imageAttachment"
           />
         ) : null}
         <br />
-        {showDone ? <p>Image attached succesfully</p> : null}
+        <div className="succesfulFileAttach">
+          {showDone ? <p>Image attached succesfully!</p> : null}
+        </div>
         <br />
         {/* <progress id="uploader" value={this.state.progress} max="100" /> */}
 
         {/* <div class="btn-file-input">
           <input type="file" onChange={this.handleChange} />
         </div> */}
+        <div className="uploadAttachmentHere">
+          <p className="uploadAttachmentText">
+            Upload an image attachment here:
+          </p>
+        </div>
 
         <div className="file-input-wrapper">
           <button className="btn-file-input">Choose Image</button>

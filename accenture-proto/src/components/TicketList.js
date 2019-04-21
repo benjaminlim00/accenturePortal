@@ -13,6 +13,7 @@ import CustomizedSnackbars from "./CustomizedSnackbars";
 import CircularIndeterminate from "./CircularIndeterminate";
 import ChatButton from "./MyChat/ChatButton";
 import DropdownCardSort from "./DropdownCardSort";
+import DropdownCardFilter from "./DropdownCardFilter";
 
 import { graphql, compose } from "react-apollo";
 import {
@@ -27,7 +28,8 @@ class TicketList extends React.Component {
       checkboxAll: false,
       checkboxArr: [],
       data: null,
-      sortby: "Priority"
+      sortby: "Priority",
+      filterby: "No filter"
     };
 
     this.handleCheckbox = this.handleCheckbox.bind(this);
@@ -38,6 +40,14 @@ class TicketList extends React.Component {
     // console.log(value);
     this.setState({
       sortby: value
+    });
+  };
+
+  handleFilterButton = e => {
+    const { value } = e.target;
+    // console.log(value);
+    this.setState({
+      filterby: value
     });
   };
 
@@ -72,9 +82,9 @@ class TicketList extends React.Component {
       //here we sort.
       if (this.state.sortby === "Name") {
         dataArr.sort((a, b) =>
-          a.user.firstName > b.user.firstName
+          a.user.firstName.toLowerCase() > b.user.firstName.toLowerCase()
             ? 1
-            : b.user.firstName > a.user.firstName
+            : b.user.firstName.toLowerCase() > a.user.firstName.toLowerCase()
             ? -1
             : 0
         );
@@ -90,12 +100,35 @@ class TicketList extends React.Component {
         });
       } else if (this.state.sortby === "Subject") {
         dataArr.sort((a, b) =>
-          a.subject > b.subject ? 1 : b.subject > a.subject ? -1 : 0
+          a.subject.toLowerCase() > b.subject.toLowerCase()
+            ? 1
+            : b.subject.toLowerCase() > a.subject.toLowerCase()
+            ? -1
+            : 0
         );
       } else if (this.state.sortby === "Asset") {
         dataArr.sort((a, b) =>
-          a.asset > b.asset ? 1 : b.asset > a.asset ? -1 : 0
+          a.asset.toLowerCase() > b.asset.toLowerCase()
+            ? 1
+            : b.asset.toLowerCase() > a.asset.toLowerCase()
+            ? -1
+            : 0
         );
+      }
+
+      //here we filter
+      if (this.state.filterby === "Name: Derrick") {
+        dataArr = dataArr.filter(val => {
+          return val.user.firstName === "Derrick";
+        });
+      } else if (this.state.filterby === "Name: Joseph") {
+        dataArr = dataArr.filter(val => {
+          return val.user.firstName === "Joseph";
+        });
+      } else if (this.state.filterby === "Priority: High") {
+        dataArr = dataArr.filter(val => {
+          return val.priority === "High";
+        });
       }
 
       //here we check if any requests has been unresolved for a week
@@ -203,8 +236,11 @@ class TicketList extends React.Component {
         <section className="current-tickets">
           <div className="filter-text">
             <span>
-              Filters
-              <img src={arrow} className="arrow-right" alt="arrow" />
+              Filter by: {this.state.filterby}
+              {/* <img src={arrow} className="arrow-right" alt="arrow" /> */}
+              <DropdownCardFilter
+                handleFilterButton={this.handleFilterButton}
+              />
             </span>
           </div>
           <div className="sort-by-text">

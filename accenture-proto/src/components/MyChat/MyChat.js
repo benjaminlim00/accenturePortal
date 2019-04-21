@@ -113,7 +113,7 @@ class MyChat extends React.Component {
               </button>
               <div className="typemessageherebox">
                 <textarea
-                  rows="5"
+                  rows="4"
                   cols="35"
                   className="textarea"
                   placeholder="Type your message here..."
