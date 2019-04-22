@@ -406,3 +406,46 @@ html {
   left: 48%;
   top: 45%;
 }
+
+/*new stuff for sortby and filterby*/
+.arrow-down-sort,
+.arrow-right-sort {
+  width: 20px;
+  height: 20px;
+  vertical-align: top;
+  margin-left: 20%;
+}
+
+.arrow-right-sort {
+  transform: rotate(270deg);
+  margin-left: 20%;
+}
+
+.sortComponent,
+.filterComponent {
+  display: inline-block;
+}
+
+.dropdownListFilter {
+  border: 1px solid #acacac;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 0.5% 1%;
+  margin-left: -10.89%;
+  width: 191px;
+  margin-top: 0.5%;
+}
+
+.dropdownListSort {
+  border: 1px solid #acacac;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  background-color: #ffffff;
+  padding: 0.5% 1%;
+  margin-left: -9.9%;
+  width: 177px;
+  margin-top: 0.5%;
+}

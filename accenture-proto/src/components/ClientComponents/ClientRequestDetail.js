@@ -153,7 +153,7 @@ class ClientRequestDetail extends React.Component {
     };
 
     return (
-      <div>
+      <div className="noScroll">
         <CNavBar />
 
         <section className="ticket-enquiry-section">

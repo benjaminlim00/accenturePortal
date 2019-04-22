@@ -175,7 +175,7 @@ class RequestDetail extends React.Component {
     };
 
     return (
-      <div>
+      <div className="noScroll">
         <NavBar />
 
         <section className="ticket-enquiry-section">

@@ -37,7 +37,7 @@ class DropdownCardSort extends Component {
     let isClient = pageId === "c";
     // console.log(isClient);
     return (
-      <div>
+      <div className="sortComponent">
         <button
           onClick={this.showMenu}
           id="transparentButton"
@@ -53,7 +53,7 @@ class DropdownCardSort extends Component {
               this.dropdownMenu = element;
             }}
           >
-            <ul className="dropdownList">
+            <ul className="dropdownListSort">
               <li className="buttonList">
                 <button
                   value="Subject"

@@ -118,6 +118,13 @@ class CreateTicket extends React.Component {
     });
   }
 
+  sendEmail = () => {
+    // const { email } = this.state.email;
+    fetch("http://127.0.0.1:4000/send-email") //query string url
+      .catch(err => console.error(err));
+    console.log("success");
+  };
+
   submitForm(e) {
     e.preventDefault();
 
@@ -196,6 +203,9 @@ class CreateTicket extends React.Component {
       });
 
     // console.log("Data sent! Redirecting page");
+    //here we send an email
+    this.sendEmail();
+
     this.handleRedirect();
   }
 

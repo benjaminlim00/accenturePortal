@@ -38,7 +38,7 @@ class DropdownCardFilter extends Component {
     // console.log(isClient);
 
     return (
-      <div>
+      <div className="filterComponent">
         <button
           onClick={this.showMenu}
           id="transparentButton"
@@ -54,7 +54,7 @@ class DropdownCardFilter extends Component {
               this.dropdownMenu = element;
             }}
           >
-            <ul className="dropdownList">
+            <ul className="dropdownListFilter">
               <li className="buttonList">
                 {isClient ? (
                   <button

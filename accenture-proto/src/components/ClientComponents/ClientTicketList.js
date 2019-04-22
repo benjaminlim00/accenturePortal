@@ -230,7 +230,7 @@ class ClientTicketList extends React.Component {
     return (
       <div>
         <CNavBar />
-        <ChatButton />
+        <ChatButton author="client" />
 
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />

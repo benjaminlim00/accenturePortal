@@ -223,7 +223,7 @@ class TicketList extends React.Component {
     return (
       <div>
         <NavBar />
-        <ChatButton />
+        <ChatButton author="admin" />
 
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />

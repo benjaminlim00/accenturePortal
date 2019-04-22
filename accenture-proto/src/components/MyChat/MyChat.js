@@ -75,15 +75,36 @@ class MyChat extends React.Component {
 
   render() {
     const currentMessage = this.state.messages.map((message, i) => {
-      if (message.author !== "admin") {
-        // sent by me
-        return (
-          <MeText text={message.text} time={message.time} key={message.id} />
-        );
+      if (this.props.author === "client") {
+        if (message.author !== "admin") {
+          // sent by me
+          return (
+            <MeText text={message.text} time={message.time} key={message.id} />
+          );
+        } else {
+          return (
+            <AdminText
+              text={message.text}
+              time={message.time}
+              key={message.id}
+            />
+          );
+        }
       } else {
-        return (
-          <AdminText text={message.text} time={message.time} key={message.id} />
-        );
+        if (message.author !== "admin") {
+          // sent by me
+          return (
+            <AdminText
+              text={message.text}
+              time={message.time}
+              key={message.id}
+            />
+          );
+        } else {
+          return (
+            <MeText text={message.text} time={message.time} key={message.id} />
+          );
+        }
       }
     });
     return (

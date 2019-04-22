@@ -90,7 +90,7 @@ class UploadFile extends React.Component {
           />
         ) : null}
         <br />
-        <div className="succesfulFileAttach">
+        <div className="successfulFileAttach">
           {showDone ? <p>Image attached succesfully!</p> : null}
         </div>
         <br />
