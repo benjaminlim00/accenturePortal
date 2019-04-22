@@ -251,7 +251,14 @@
   margin-left: 2%;
 }
 
-.detail {
+/* .detail {
+  margin-top: 1%;
+  margin-left: 2%;
+  font-weight: 300;
+  font-size: 90%;
+} */
+
+.detail-req {
   margin-top: 1%;
   margin-left: 2%;
   font-weight: 300;

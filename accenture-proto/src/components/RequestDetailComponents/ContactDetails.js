@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/App.css";
 import "../../styles/grid.css";
 import "../../styles/normalize.css";
+import "../../styles/RequestDetail.css";
 // import { getRequestQuery, getUserQuery } from "../../queries/queries";
 // import { graphql } from "react-apollo";
 import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
@@ -30,7 +31,8 @@ class ContactDetails extends React.Component {
         <p className="detail-req">{this.props.contactNumber}</p>
 
         <h5 className="type-of-details">Company</h5>
-        <p className="detail-req">EDIT THIS</p>
+        <p className="detail-req">Accenture</p>
+        {/* edit this */}
 
         <h5 className="type-of-details">Account Type</h5>
         <p className="detail-req">{this.props.accountType}</p>

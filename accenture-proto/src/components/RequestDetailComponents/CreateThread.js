@@ -10,7 +10,7 @@ import { addThreadMutation } from "../../queries/queries";
 import CircularIndeterminate from "../CircularIndeterminate";
 
 import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
-import fileLogo from "../../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
+// import fileLogo from "../../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
 
 class CreateThread extends React.Component {
   constructor() {
@@ -40,13 +40,18 @@ class CreateThread extends React.Component {
 
   addThread() {
     //here we do mutation for new thread
+
     let today = new Date();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     let date =
       today.getFullYear() +
       "-" +
       (today.getMonth() + 1) +
       "-" +
-      today.getDate();
+      today.getDate() +
+      " " +
+      time;
 
     this.props.addThreadMutation({
       variables: {
@@ -113,6 +118,10 @@ class CreateThread extends React.Component {
   render() {
     // let showDone = this.state.progress == 100;
 
+    let pageId = window.location.pathname[1];
+    // console.log(pageId);
+    let isClient = pageId === "c";
+
     return (
       <div className="reply-thread">
         {this.state.loading ? (
@@ -127,8 +136,12 @@ class CreateThread extends React.Component {
 
           <div className="from-to">
             <div className="border-from-to">
-              <p className="recipient">From: John Tan</p>
-              <p>To: Jane Lim</p>
+              {isClient ? (
+                <p className="recipient">From: Joseph</p>
+              ) : (
+                <p className="recipient">From: benjamin</p>
+              )}
+              {isClient ? <p>To: Benjamin</p> : <p>To: Joseph</p>}
             </div>
           </div>
         </div>

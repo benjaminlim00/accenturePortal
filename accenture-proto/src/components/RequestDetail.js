@@ -113,7 +113,7 @@ class RequestDetail extends React.Component {
       dataArr = dataArr[0];
 
       // console.log("threads check");
-      // console.log(dataArr);
+      // console.log(dataArr.threads);
       return (
         <ThreadBlock
           id={dataArr.id}
@@ -144,6 +144,7 @@ class RequestDetail extends React.Component {
 
       return (
         <TicketProperties
+          allImgLink="true" //for now
           id={dataArr.id}
           asset={dataArr.asset}
           type={dataArr.type}

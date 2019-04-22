@@ -9,6 +9,12 @@ class TicketProperties extends React.Component {
         <h2 className="small-heading contact-property">Ticket Properties</h2>
         <img src={arrow} className="arrow-up-new" alt="arrow" />
         <div className="grid-row">
+          {this.props.allImgLink === "true" ? (
+            <a className="url-bottom-left" href="#">
+              View all attached image
+            </a>
+          ) : null}
+
           <p className="property">Ticket ID</p>
           <p className="propertyNormalWords">
             <u>{this.props.id}</u>

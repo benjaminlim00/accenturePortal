@@ -4,7 +4,7 @@ import "../../styles/grid.css";
 import "../../styles/normalize.css";
 import "../../styles/ClientTicketList.css";
 
-import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
+// import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 import ClientTicketRow from "./ClientTicketRow";
 import CNavBar from "./CNavBar";
@@ -89,6 +89,7 @@ class ClientTicketList extends React.Component {
           } else if (a.status === "Closed") {
             return 0;
           }
+          return 0;
         });
       } else if (this.state.sortby === "Priority") {
         dataArr.sort((a, b) => {
@@ -163,6 +164,8 @@ class ClientTicketList extends React.Component {
               dateResolved: date
             }
           });
+
+          return 0;
         });
 
         return 0;

@@ -12,10 +12,23 @@ import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
 // import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 class ThreadBlock extends React.Component {
-  displayAllThreads() {
+  componentDidMount() {
+    this.setState({
+      id: this.props.id
+    });
+  }
+
+  render() {
+    // let linkStr = "requestDetail/" + this.props.id;
+
+    let pageId = window.location.pathname[1];
+    // console.log(pageId);
+    let isClient = pageId === "c";
+
     return (
       <div>
         {this.props.threads.map(item => {
+          // console.log(item);
           return (
             <div key={item.id} className="thread-stream">
               <div className="text-boxes">
@@ -30,13 +43,30 @@ class ThreadBlock extends React.Component {
 
                   <div className="from-to">
                     <div className="border-from-to">
-                      <p className="recipient">From: John Tan</p>
+                      {isClient ? (
+                        <p className="recipient">From: Joseph</p>
+                      ) : (
+                        <p className="recipient">From: Benjamin</p>
+                      )}
                       {/* <p>To: Jane Lim</p> */}
+
+                      {isClient ? <p>To: Benjamin</p> : <p>To: Joseph</p>}
                     </div>
                   </div>
+
+                  <p className="timing"> {item.threadCreatedDate}</p>
                 </div>
 
-                <p className="enquiry-body">{item.threadContent}</p>
+                <div className="enquiry-body">
+                  {/* for multi-line input */}
+                  {item.threadContent.split("\n").map((i, key) => {
+                    if (i === "") {
+                      return <div key={key}>{<br />}</div>;
+                    }
+
+                    return <div key={key}>{i}</div>;
+                  })}
+                </div>
                 <div className="attachedImageAccess">
                   {item.threadImage === "" ? null : (
                     <a className="url-bottom-left" href={item.threadImage}>
@@ -50,18 +80,6 @@ class ThreadBlock extends React.Component {
         })}
       </div>
     );
-  }
-
-  componentDidMount() {
-    this.setState({
-      id: this.props.id
-    });
-  }
-
-  render() {
-    // let linkStr = "requestDetail/" + this.props.id;
-
-    return <div>{this.displayAllThreads()}</div>;
   }
 }
 
