@@ -61,24 +61,38 @@ app.get("/filter-requests", (req, res) => {
   const newType = JSON.parse(req.query.type);
   const newPriority = JSON.parse(req.query.priority);
   const newAssigned = JSON.parse(req.query.assigned);
-  console.log(newAsset);
-  console.log(newType);
-  console.log(newPriority);
-  console.log(newAssigned);
+  // console.log(newAsset.length);
+  // console.log(newType.length);
+  // console.log(newPriority);
+  // console.log(newAssigned);
 
   let obj = {};
-  // if (newAsset !== []) {
-  //   obj.asset = {}
-  // }
+  if (newAsset.length !== 0) {
+    obj.asset = { $in: newAsset };
+  }
 
-  let obj = {
-    asset: { $in: newAsset },
-    type: { $in: newType },
-    priority: { $in: newPriority },
-    assigned: { $in: newAssigned }
-    //assigned: { "$in": test },
-    //created: {$gt: new Date(time)}
-  };
+  if (newType.length !== 0) {
+    obj.type = { $in: newType };
+  }
+
+  if (newPriority.length !== 0) {
+    obj.priority = { $in: newPriority };
+  }
+
+  if (newAssigned.length !== 0) {
+    obj.assigned = { $in: newAssigned };
+  }
+
+  // let obj = {
+  //   asset: { $in: newAsset },
+  //   type: { $in: newType },
+  //   priority: { $in: newPriority },
+  //   assigned: { $in: newAssigned }
+  //   //assigned: { "$in": test },
+  //   //created: {$gt: new Date(time)}
+  // };
+
+  // console.log(obj);
 
   Request.aggregate(
     [
@@ -88,7 +102,7 @@ app.get("/filter-requests", (req, res) => {
     ],
     function(err, data) {
       if (err) throw err;
-      console.log(data);
+      // console.log(data);
       res.send(data);
     }
   );

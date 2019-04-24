@@ -261,6 +261,15 @@ const updateDateClosedMutation = gql`
   }
 `;
 
+const updatePriorityMutation = gql`
+  mutation($id: ID!, $priority: String!) {
+    updatePriority(id: $id, priority: $priority) {
+      id
+      priority
+    }
+  }
+`;
+
 export {
   getThreadQuery,
   getThreadsQuery,
@@ -273,5 +282,6 @@ export {
   getUsersQuery, //not used yet
   updateRequestStatusMutation,
   updateRequestAssignedMutation,
-  updateDateClosedMutation
+  updateDateClosedMutation,
+  updatePriorityMutation
 };

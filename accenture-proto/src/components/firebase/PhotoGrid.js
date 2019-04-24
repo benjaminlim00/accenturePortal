@@ -37,9 +37,6 @@ class PhotoGrid extends React.Component {
 
   render() {
     let IMAGES = [];
-    let array = this.state.images;
-    // console.log(array);
-    // console.log(array.length);
 
     if (this.state.images.length !== 0) {
       // console.log("true");
@@ -54,8 +51,6 @@ class PhotoGrid extends React.Component {
         };
       });
     }
-
-    // console.log(IMAGES);
 
     return <Gallery images={IMAGES} />;
   }

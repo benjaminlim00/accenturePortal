@@ -175,6 +175,8 @@
   text-transform: uppercase;
   border-radius: 7px;
   border: 1px solid #969696;
+  cursor: pointer;
+  font-weight: 400;
 }
 
 .send-req-details {
@@ -186,6 +188,7 @@
   text-transform: uppercase;
   border-radius: 7px;
   border: 1px solid #868686;
+  cursor: pointer;
 }
 /* -----------------------------------------------*/
 /* PROPERTIES */
@@ -200,10 +203,12 @@
   margin: 8% 4%;
   padding: 1%;
   font-size: 75%;
+  margin-bottom: 0;
+  font-weight: 400;
 }
 
 .propertyNormalWords {
-  margin: 4%;
+  margin: 0 4%;
   padding: 1%;
   font-size: 80%;
 }
@@ -220,7 +225,8 @@
 .special-property {
   margin: 8% 4%;
   padding: 1%;
-  font-size: 80%;
+  font-size: 75%;
+  font-weight: 400;
 }
 
 .arrow-down-new {
@@ -248,7 +254,9 @@
 
 .type-of-details {
   margin-top: 6%;
-  margin-left: 2%;
+  margin-left: 5%;
+  font-size: 75%;
+  color: #00000;
 }
 
 /* .detail {
@@ -258,12 +266,12 @@
   font-size: 90%;
 } */
 
-.detail-req {
+/* .detail-req {
   margin-top: 1%;
   margin-left: 2%;
   font-weight: 300;
   font-size: 90%;
-}
+} */
 
 /* -----------------------------------------------*/
 /* REPLY/ATTACH BOX */

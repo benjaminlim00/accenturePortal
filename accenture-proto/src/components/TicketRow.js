@@ -123,7 +123,7 @@ class TicketRow extends React.Component {
         {closedBool || this.props.hideArrow ? (
           <div className="adminStatusArrowInvisible">
             <p id="transparentButton" className="transparentButton-status">
-              <img src={arrow} className="arrow-down-2" />
+              <img src={arrow} className="arrow-down-2" alt="arrow" />
             </p>
           </div>
         ) : (
@@ -139,7 +139,7 @@ class TicketRow extends React.Component {
         {this.props.hideArrow ? (
           <div className="adminStatusArrowInvisible">
             <p id="transparentButton" className="transparentButton-status">
-              <img src={arrow} className="arrow-down-2" />
+              <img src={arrow} className="arrow-down-2" alt="arrow" />
             </p>
           </div>
         ) : (

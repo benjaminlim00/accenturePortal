@@ -83,8 +83,15 @@ class TicketRowFiltered extends Component {
   }
   render() {
     const { request } = this.props.data;
-    // console.log(request);
     let linkStr = "requestDetail/" + this.props.id;
+    var closedBool = false;
+
+    if (request) {
+      closedBool = request.status === "Closed";
+      // console.log(request.status);
+    }
+    // console.log(this.props.data);
+    // console.log(closedBool);
 
     /*
       we are first grabbing the book property from this.prop.data from the data that comes back from the query, if that book exists,
@@ -102,43 +109,63 @@ class TicketRowFiltered extends Component {
               onChange={this.handleCheckbox}
             />
           </div>
-          <div className="col span-1-of-9">
-            <h4 className="detail" onClick={this.props.callbackFromParentAdd}>
-              {request.user.firstName}
-            </h4>{" "}
-            {/*John Tan*/}
+          <div className="col span-1-of-10">
+            <h4 className="detail">{request.user.firstName}</h4> {/*John Tan*/}
           </div>
           <div className="col span-1-of-9">
             <h4 className="detail">{request.asset}</h4> {/*Login API*/}
           </div>
-          <div className="col span-1-of-9">
-            <h4 className="detail">{request.type}</h4> {/*Purchase Enquiry*/}
-          </div>
-          <div className="col span-1-of-9">
+          <div className="col span-1-of-5">
             <Link to={linkStr} className="subjectLink" id="subject">
-              <h4 className="detail subjectLinkHover">{request.subject}</h4>
+              <h4 className="detail subjectLinkHover">
+                {request.type}: {request.subject}
+              </h4>
             </Link>
             {/*Enquiry about API => we make this one a link*/}
           </div>
-          <div className="col span-1-of-7" id="dateRequestedDetails">
+
+          <div className="col span-1-of-6">
             <h4 className="detail">{request.dateRequested}</h4>
             {/*12 January 2019 12:00:00*/}
           </div>
-          <div className="col span-1-of-9">
+          <div className="col span-1-of-6">
+            <h4 className="detail">{request.dateResolved}</h4>
+          </div>
+
+          <div className="col span-1-of-10">
             <h4 className="detail">{request.priority}</h4> {/*High*/}
           </div>
           <div className="col span-1-of-9" id="status">
             <h4 className="detail">{request.status}</h4>
           </div>
-          <div className="statusArrow">
-            <DropdownCardStatus idd={request.id} isCLient="false" />
-          </div>
-          <div className="col span-1-of-9" id="assignedTo">
+
+          {closedBool || this.props.hideArrow ? (
+            <div className="adminStatusArrowInvisible">
+              <p id="transparentButton" className="transparentButton-status">
+                <img src={arrow} className="arrow-down-2" alt="arrow" />
+              </p>
+            </div>
+          ) : (
+            <div className="statusArrow">
+              <DropdownCardStatus idd={request.id} isClient="false" />
+            </div>
+          )}
+
+          <div className="col span-1-of-8" id="assignedTo">
             <h4 className="detail">{request.assigned}</h4>
           </div>
-          <div className="assignedToArrow">
-            <DropdownCardAssigned idd={request.id} />
-          </div>
+
+          {this.props.hideArrow ? (
+            <div className="adminStatusArrowInvisible">
+              <p id="transparentButton" className="transparentButton-status">
+                <img src={arrow} className="arrow-down-2" alt="arrow" />
+              </p>
+            </div>
+          ) : (
+            <div className="assignedToArrow">
+              <DropdownCardAssigned idd={request.id} />
+            </div>
+          )}
         </div>
       );
     } else {

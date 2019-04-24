@@ -18,7 +18,9 @@ import DropdownCardFilter from "../DropdownCardFilter";
 import { graphql, compose } from "react-apollo";
 import {
   getRequestsQuery,
-  updateRequestStatusMutation
+  updateRequestStatusMutation,
+  updateDateClosedMutation,
+  updatePriorityMutation
 } from "../../queries/queries";
 
 class ClientTicketList extends React.Component {
@@ -66,6 +68,24 @@ class ClientTicketList extends React.Component {
     let timeDiff = todayDate.getTime() - oldDate.getTime();
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     return diffDays >= 7;
+  };
+
+  checkIfMore4Days = a => {
+    let todayDate = new Date();
+
+    let temp = a.split("-"); // 0 returns year, 1 returns month
+    let temp2 = temp[2].split(" "); //0 returns date
+
+    // console.log(today.getFullYear() >= temp[0]);
+    // console.log(today.getMonth() + 1 >= temp[1]);
+    // console.log(today.getDate() - 7 >= temp2[0]);
+    let dateStr = (temp[1] + "/" + temp2[0] + "/" + temp[0]).toString();
+    let oldDate = new Date(dateStr);
+    // console.log(oldDate);
+
+    let timeDiff = todayDate.getTime() - oldDate.getTime();
+    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return diffDays >= 4;
   };
 
   displayRequests() {
@@ -134,9 +154,15 @@ class ClientTicketList extends React.Component {
         });
       }
 
-      //here we check if any requests has been unresolved for a week
+      //here we check if any requests has been resolved but unclosed for a week
       let checkArr = dataArr.filter(a => {
-        return this.checkIfMore7Days(a.dateRequested) && a.status === "Open";
+        if (a.dateResolved !== "") {
+          return (
+            this.checkIfMore7Days(a.dateResolved) && a.status === "Resolved"
+          );
+        }
+
+        return 0;
       });
 
       // console.log("old unresolved requests are");
@@ -157,19 +183,75 @@ class ClientTicketList extends React.Component {
 
       if (checkArr.length !== 0) {
         checkArr.map(a => {
-          this.props.updateRequestStatusMutation({
+          this.props.updateDateClosedMutation({
             variables: {
               id: a.id,
-              status: "Resolved",
-              dateResolved: date
+              dateClosed: date,
+              status: "Closed"
             }
           });
 
           return 0;
         });
-
-        return 0;
       }
+
+      //here we check if any requests has been opened for more than 7 days, then we change their priority
+      let checkArr2 = dataArr.filter(a => {
+        return (
+          this.checkIfMore7Days(a.dateRequested) &&
+          a.status === "Open" &&
+          a.priority !== "High"
+        );
+      });
+
+      // console.log(
+      //   "old unresolved requests that should become high priority are"
+      // );
+      // console.log(checkArr2);
+      // console.log(checkArr2.length);
+
+      if (checkArr2.length !== 0) {
+        checkArr2.map(a => {
+          this.props.updatePriorityMutation({
+            variables: {
+              id: a.id,
+              priority: "High"
+            }
+          });
+
+          return 0;
+        });
+      }
+
+      //here we check if any requests has been opened for more than 4 days, then we change their priority to MEDIUM
+      let checkArr3 = dataArr.filter(a => {
+        return (
+          this.checkIfMore4Days(a.dateRequested) &&
+          a.status === "Open" &&
+          a.priority === "Low"
+        );
+      });
+
+      // console.log(
+      //   "old unresolved requests that should become high priority are"
+      // );
+      // console.log(checkArr2);
+      // console.log(checkArr2.length);
+
+      if (checkArr3.length !== 0) {
+        checkArr3.map(a => {
+          this.props.updatePriorityMutation({
+            variables: {
+              id: a.id,
+              priority: "Medium"
+            }
+          });
+
+          return 0;
+        });
+      }
+
+      //end of update priority
 
       return dataArr.map(request => {
         return (
@@ -322,5 +404,7 @@ class ClientTicketList extends React.Component {
 
 export default compose(
   graphql(getRequestsQuery, { name: "getRequestsQuery" }),
-  graphql(updateRequestStatusMutation, { name: "updateRequestStatusMutation" })
+  graphql(updateRequestStatusMutation, { name: "updateRequestStatusMutation" }),
+  graphql(updateDateClosedMutation, { name: "updateDateClosedMutation" }),
+  graphql(updatePriorityMutation, { name: "updatePriorityMutation" })
 )(ClientTicketList);

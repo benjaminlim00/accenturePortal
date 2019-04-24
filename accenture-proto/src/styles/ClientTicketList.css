@@ -47,6 +47,7 @@
   font-weight: 300;
   border: none;
   background: rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
 
 .yes-button-text {

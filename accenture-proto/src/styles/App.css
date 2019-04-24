@@ -275,6 +275,13 @@ html {
   padding-top: 2%;
 }
 
+.detail-req {
+  font-size: 80%;
+  color: #000000;
+  margin: 1% 4%;
+  padding: 1%;
+}
+
 #detailHeading {
   font-size: 85%;
 }

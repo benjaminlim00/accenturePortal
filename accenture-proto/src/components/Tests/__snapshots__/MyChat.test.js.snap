@@ -4,18 +4,15 @@ exports[`renders correctly 1`] = `
 <div
   style={
     Object {
-      "bottom": 70,
+      "bottom": 80,
       "left": "auto",
       "margin": 0,
       "position": "fixed",
-      "right": 40,
+      "right": 20,
       "top": "auto",
     }
   }
 >
-  <h3>
-    Joseph
-  </h3>
   <div
     className="chatbox"
   >
@@ -55,7 +52,7 @@ exports[`renders correctly 1`] = `
             cols="35"
             onChange={[Function]}
             placeholder="Type your message here..."
-            rows="5"
+            rows="4"
             value=""
           />
         </div>

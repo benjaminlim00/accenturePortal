@@ -17,24 +17,34 @@ class ContactDetails extends React.Component {
     return (
       <div className="contact-details">
         <h2 className="small-heading contact-property">Contact Details</h2>
-        <img src={arrow} className="arrow-up-new" alt="arrow" />
+        {/* <img src={arrow} className="arrow-up-new" alt="arrow" /> */}
 
-        <h5 className="type-of-details">Requester</h5>
+        <h5 className="type-of-details">
+          <b>Requester</b>
+        </h5>
         <p className="detail-req">
           {this.props.firstName} {this.props.lastName}
         </p>
 
-        <h5 className="type-of-details">Email</h5>
+        <h5 className="type-of-details">
+          <b>Email</b>
+        </h5>
         <p className="detail-req">{this.props.email}</p>
 
-        <h5 className="type-of-details">Mobile Number</h5>
+        <h5 className="type-of-details">
+          <b>Mobile Number</b>
+        </h5>
         <p className="detail-req">{this.props.contactNumber}</p>
 
-        <h5 className="type-of-details">Company</h5>
-        <p className="detail-req">Accenture</p>
+        <h5 className="type-of-details">
+          <b>Company</b>
+        </h5>
+        <p className="detail-req">JP Morgan</p>
         {/* edit this */}
 
-        <h5 className="type-of-details">Account Type</h5>
+        <h5 className="type-of-details">
+          <b>Account Type</b>
+        </h5>
         <p className="detail-req">{this.props.accountType}</p>
       </div>
     );

@@ -13,10 +13,10 @@ import CustomizedSnackbars from "./CustomizedSnackbars";
 import CircularIndeterminate from "./CircularIndeterminate";
 import ChatButton from "./MyChat/ChatButton";
 import DropdownCardSort from "./DropdownCardSort";
-import DropdownCardFilter from "./DropdownCardFilter";
+// import DropdownCardFilter from "./DropdownCardFilter";
 import TicketRowFiltered from "./TicketRowFiltered";
 
-import { OffCanvas, OffCanvasMenu, OffCanvasBody } from "react-offcanvas";
+import { OffCanvas, OffCanvasMenu } from "react-offcanvas";
 import Select from "react-select";
 
 import { graphql, compose } from "react-apollo";
@@ -24,7 +24,9 @@ import {
   getRequestQuery,
   getRequestsQuery,
   updateRequestStatusMutation,
-  updateRequestAssignedMutation
+  updateRequestAssignedMutation,
+  updateDateClosedMutation,
+  updatePriorityMutation
 } from "../queries/queries";
 import { Redirect } from "react-router-dom";
 
@@ -198,14 +200,14 @@ class TicketList extends React.Component {
     });
   };
 
-  handleFilterButton = e => {
-    const { value } = e.target;
-
-    //we remove this to change to sidebar
-    // this.setState({
-    //   filterby: value
-    // });
-  };
+  // handleFilterButton = e => {
+  //   const { value } = e.target;
+  //
+  //   //we remove this to change to sidebar
+  //   // this.setState({
+  //   //   filterby: value
+  //   // });
+  // };
 
   //add to test
   checkIfMore7Days = a => {
@@ -224,6 +226,24 @@ class TicketList extends React.Component {
     let timeDiff = todayDate.getTime() - oldDate.getTime();
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     return diffDays >= 7;
+  };
+
+  checkIfMore4Days = a => {
+    let todayDate = new Date();
+
+    let temp = a.split("-"); // 0 returns year, 1 returns month
+    let temp2 = temp[2].split(" "); //0 returns date
+
+    // console.log(today.getFullYear() >= temp[0]);
+    // console.log(today.getMonth() + 1 >= temp[1]);
+    // console.log(today.getDate() - 7 >= temp2[0]);
+    let dateStr = (temp[1] + "/" + temp2[0] + "/" + temp[0]).toString();
+    let oldDate = new Date(dateStr);
+    // console.log(oldDate);
+
+    let timeDiff = todayDate.getTime() - oldDate.getTime();
+    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return diffDays >= 4;
   };
   // console.log("testing");
   // console.log(checkIfMore7Days("2019-4-10 12:49:26"));
@@ -290,9 +310,15 @@ class TicketList extends React.Component {
 
 */
 
-      //here we check if any requests has been unresolved for a week
+      //here we check if any requests has been resolved but unclosed for a week
       let checkArr = dataArr.filter(a => {
-        return this.checkIfMore7Days(a.dateRequested) && a.status === "Open";
+        if (a.dateResolved !== "") {
+          return (
+            this.checkIfMore7Days(a.dateResolved) && a.status === "Resolved"
+          );
+        }
+
+        return 0;
       });
 
       // console.log("old unresolved requests are");
@@ -313,17 +339,75 @@ class TicketList extends React.Component {
 
       if (checkArr.length !== 0) {
         checkArr.map(a => {
-          this.props.updateRequestStatusMutation({
+          this.props.updateDateClosedMutation({
             variables: {
               id: a.id,
-              status: "Resolved",
-              dateResolved: date
+              dateClosed: date,
+              status: "Closed"
             }
           });
 
           return 0;
         });
       }
+
+      //here we check if any requests has been opened for more than 7 days, then we change their priority
+      let checkArr2 = dataArr.filter(a => {
+        return (
+          this.checkIfMore7Days(a.dateRequested) &&
+          a.status === "Open" &&
+          a.priority !== "High"
+        );
+      });
+
+      // console.log(
+      //   "old unresolved requests that should become high priority are"
+      // );
+      // console.log(checkArr2);
+      // console.log(checkArr2.length);
+
+      if (checkArr2.length !== 0) {
+        checkArr2.map(a => {
+          this.props.updatePriorityMutation({
+            variables: {
+              id: a.id,
+              priority: "High"
+            }
+          });
+
+          return 0;
+        });
+      }
+
+      //here we check if any requests has been opened for more than 4 days, then we change their priority to MEDIUM
+      let checkArr3 = dataArr.filter(a => {
+        return (
+          this.checkIfMore4Days(a.dateRequested) &&
+          a.status === "Open" &&
+          a.priority === "Low"
+        );
+      });
+
+      // console.log(
+      //   "old unresolved requests that should become high priority are"
+      // );
+      // console.log(checkArr2);
+      // console.log(checkArr2.length);
+
+      if (checkArr3.length !== 0) {
+        checkArr3.map(a => {
+          this.props.updatePriorityMutation({
+            variables: {
+              id: a.id,
+              priority: "Medium"
+            }
+          });
+
+          return 0;
+        });
+      }
+
+      //end of update priority
 
       return dataArr.map(request => {
         return (
@@ -412,11 +496,11 @@ class TicketList extends React.Component {
     if (this.state.newStatus === "" && this.state.newAssigned === "") {
       //doNothing
     } else if (this.state.newStatus === "" && this.state.newAssigned !== "") {
-      for (var i = 0; i < this.state.checkboxtoAdd.length; i++) {
+      for (let i = 0; i < this.state.checkboxtoAdd.length; i++) {
         this.updateNewAssigned(i);
       }
     } else if (this.state.newStatus !== "" && this.state.newAssigned === "") {
-      for (var i = 0; i < this.state.checkboxtoAdd.length; i++) {
+      for (let i = 0; i < this.state.checkboxtoAdd.length; i++) {
         if (this.state.newStatus === "Resolved") {
           this.updateStatusOtoR(i, newDate);
         } else {
@@ -424,7 +508,7 @@ class TicketList extends React.Component {
         }
       }
     } else {
-      for (var i = 0; i < this.state.checkboxtoAdd.length; i++) {
+      for (let i = 0; i < this.state.checkboxtoAdd.length; i++) {
         this.updateNewAssigned(i);
         if (this.state.newStatus === "Resolved") {
           this.updateStatusOtoR(i, newDate);
@@ -442,23 +526,37 @@ class TicketList extends React.Component {
   filterRequests() {
     const { filter } = this.state;
 
-    fetch(`http://127.0.0.1:4000/filter-requests?asset=${JSON.stringify(
-      filter.asset
-    )}
-    &type=${JSON.stringify(filter.type)}&priority=${JSON.stringify(
-      filter.priority
-    )}
-    &assigned=${JSON.stringify(filter.assigned)}`)
-      .then(response => response.json())
-      .then(data => {
-        var filterReqIdArr = [];
-        for (var i = 0; i < data.length; i++) {
-          filterReqIdArr.push(data[i]._id);
-        }
-        this.setState({ filterReqId: filterReqIdArr });
-      });
+    let arrls = [];
+    for (var key in filter) {
+      if (filter.hasOwnProperty(key)) {
+        // console.log(filter[key]);
+        arrls.push(...filter[key]);
+      }
+    }
 
-    this.setState({ filtered: true });
+    // console.log(arrls.length);
+
+    if (arrls.length !== 0) {
+      fetch(`http://127.0.0.1:4000/filter-requests?asset=${JSON.stringify(
+        filter.asset
+      )}
+          &type=${JSON.stringify(filter.type)}&priority=${JSON.stringify(
+        filter.priority
+      )}
+          &assigned=${JSON.stringify(filter.assigned)}`)
+        .then(response => response.json())
+        .then(data => {
+          var filterReqIdArr = [];
+          for (var i = 0; i < data.length; i++) {
+            filterReqIdArr.push(data[i]._id);
+          }
+          this.setState({ filterReqId: filterReqIdArr });
+        });
+
+      this.setState({ filtered: true });
+    } else {
+      this.setState({ filtered: false });
+    }
   }
 
   displayFilteredRequests() {
@@ -467,7 +565,13 @@ class TicketList extends React.Component {
       return <div />;
     } else {
       return dataArr.map(request => {
-        return <TicketRowFiltered id={request} key={request} />;
+        return (
+          <TicketRowFiltered
+            id={request}
+            key={request}
+            hideArrow={this.state.checkboxtoAdd.length !== 0}
+          />
+        );
       });
     }
   }
@@ -746,5 +850,7 @@ export default compose(
   graphql(updateRequestAssignedMutation, {
     name: "updateRequestAssignedMutation"
   }),
-  graphql(getRequestQuery, { name: "getRequestQuery" })
+  graphql(getRequestQuery, { name: "getRequestQuery" }),
+  graphql(updateDateClosedMutation, { name: "updateDateClosedMutation" }),
+  graphql(updatePriorityMutation, { name: "updatePriorityMutation" })
 )(TicketList);

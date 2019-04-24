@@ -275,6 +275,22 @@ const Mutation = new GraphQLObjectType({
       }
     },
 
+    //Update priority
+    updatePriority: {
+      type: RequestType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        priority: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve(parent, args) {
+        return Request.findByIdAndUpdate(
+          args.id,
+          { priority: args.priority },
+          { new: true }
+        );
+      }
+    },
+
     updateDateClosed: {
       type: RequestType,
       args: {
