@@ -225,6 +225,11 @@ html {
 /* TICKET REQUEST LIST */
 /* -----------------------------------------------*/
 
+.canvasMenu {
+  background: #ffffff;
+  z-index: 1; /* Sit on top */
+}
+
 .subjectLink {
   text-decoration: none;
 }
@@ -448,4 +453,42 @@ html {
   margin-left: -9.9%;
   width: 177px;
   margin-top: 0.5%;
+}
+
+/* new things for mutli-checkbox actions */
+.status-filter,
+.assigned-filter {
+  background-color: #969696;
+  display: inline-block;
+  margin: 2% 0;
+  margin-left: 2%;
+  padding: 0.5%;
+  margin-bottom: 0;
+}
+
+.status-filter-text,
+.assigned-filter-text {
+  font-size: 85%;
+  color: #ffffff;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.selectOptionsCheckbox {
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.popup {
+}
+
+.updateButtonForm {
+  background-color: #e5e5e5;
+  border: 1px solid #909090;
+  padding: 5px;
+  cursor: pointer;
+  margin-left: 2%;
 }

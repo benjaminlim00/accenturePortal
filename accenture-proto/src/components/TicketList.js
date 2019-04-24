@@ -14,26 +14,181 @@ import CircularIndeterminate from "./CircularIndeterminate";
 import ChatButton from "./MyChat/ChatButton";
 import DropdownCardSort from "./DropdownCardSort";
 import DropdownCardFilter from "./DropdownCardFilter";
+import TicketRowFiltered from "./TicketRowFiltered";
+
+import { OffCanvas, OffCanvasMenu, OffCanvasBody } from "react-offcanvas";
+import Select from "react-select";
 
 import { graphql, compose } from "react-apollo";
 import {
+  getRequestQuery,
   getRequestsQuery,
-  updateRequestStatusMutation
+  updateRequestStatusMutation,
+  updateRequestAssignedMutation
 } from "../queries/queries";
+import { Redirect } from "react-router-dom";
+
+const assetOptions = [
+  { value: "Ticketing", label: "Ticketing" },
+  { value: "Aesop", label: "Aesop" },
+  { value: "Travel Marketplace", label: "Travel Marketplace" }
+];
+
+const typeOptions = [
+  { value: "Purchase", label: "Purchase" },
+  { value: "Complaint", label: "Complaint" },
+  { value: "Tech Support", label: "Tech Support" }
+];
+
+const priorityOptions = [
+  { value: "High", label: "High" },
+  { value: "Medium", label: "Medium" },
+  { value: "Low", label: "Low" }
+];
+
+const assignedOptions = [
+  { value: "Ben", label: "Ben" },
+  { value: "Bertha", label: "Bertha" },
+  { value: "Hangwee", label: "Hangwee" }
+];
 
 class TicketList extends React.Component {
   constructor() {
     super();
     this.state = {
-      checkboxAll: false,
-      checkboxArr: [],
-      data: null,
       sortby: "Priority",
-      filterby: "No filter"
+      redirect: false,
+      // filterby: "No filter"
+
+      //this is for sidebar
+      isMenuOpened: false,
+      selectedOption1: null,
+      selectedOption2: null,
+      selectedOption3: null,
+      selectedOption4: null,
+      // selectedOptionArr1: null,
+      // selectedOptionArr2: null,
+      // selectedOptionArr3: null,
+      // selectedOptionArr4: null,
+
+      //for checkboxes
+      checkboxtoAdd: [],
+      newAssigned: "",
+      newStatus: "",
+
+      filter: {
+        asset: [],
+        type: [],
+        priority: [],
+        assigned: []
+      },
+
+      filterReqId: [],
+
+      filtered: false
     };
 
-    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.myCallbackAddCheckbox = this.myCallbackAddCheckbox.bind(this); // checkbox
+    this.updateMultiple = this.updateMultiple.bind(this); // checkbox
+    this.myCallbackRemoveCheckbox = this.myCallbackRemoveCheckbox.bind(this); //checkbox
+    this.filterRequests = this.filterRequests.bind(this); // filter
   }
+
+  componentWillMount() {
+    this.setState({
+      isMenuOpened: false
+    });
+  }
+
+  //start of sidebar
+
+  handleClick = () => {
+    this.setState({ isMenuOpened: !this.state.isMenuOpened });
+  };
+
+  handleDropdown1 = selectedOption1 => {
+    let selectedOptionArr1 = [];
+    this.setState({ selectedOption1 });
+    // console.log(selectedOption);
+
+    for (var i = 0; i < selectedOption1.length; i++) {
+      let item = selectedOption1[i].value;
+      selectedOptionArr1.push(item);
+    }
+
+    // console.log(selectedOptionArr);
+    // this.setState({
+    //   filter[asset]: selectedOptionArr1
+    // });
+
+    this.setState(prevState => ({
+      filter: {
+        ...prevState.filter,
+        asset: selectedOptionArr1
+      }
+    }));
+  };
+
+  handleDropdown2 = selectedOption2 => {
+    let selectedOptionArr2 = [];
+    this.setState({ selectedOption2 });
+    // console.log(selectedOption);
+
+    for (var i = 0; i < selectedOption2.length; i++) {
+      let item = selectedOption2[i].value;
+      selectedOptionArr2.push(item);
+    }
+
+    // console.log(selectedOptionArr);
+    // this.setState({ selectedOptionArr2 });
+    this.setState(prevState => ({
+      filter: {
+        ...prevState.filter,
+        type: selectedOptionArr2
+      }
+    }));
+  };
+
+  handleDropdown3 = selectedOption3 => {
+    let selectedOptionArr3 = [];
+    this.setState({ selectedOption3 });
+    // console.log(selectedOption);
+
+    for (var i = 0; i < selectedOption3.length; i++) {
+      let item = selectedOption3[i].value;
+      selectedOptionArr3.push(item);
+    }
+
+    // console.log(selectedOptionArr);
+    // this.setState({ selectedOptionArr3 });
+    this.setState(prevState => ({
+      filter: {
+        ...prevState.filter,
+        priority: selectedOptionArr3
+      }
+    }));
+  };
+
+  handleDropdown4 = selectedOption4 => {
+    let selectedOptionArr4 = [];
+    this.setState({ selectedOption4 });
+    // console.log(selectedOption);
+
+    for (var i = 0; i < selectedOption4.length; i++) {
+      let item = selectedOption4[i].value;
+      selectedOptionArr4.push(item);
+    }
+
+    // console.log(selectedOptionArr);
+    // this.setState({ selectedOptionArr4 });
+    this.setState(prevState => ({
+      filter: {
+        ...prevState.filter,
+        assigned: selectedOptionArr4
+      }
+    }));
+  };
+  //end of sidebar
 
   handleSortButton = e => {
     const { value } = e.target;
@@ -45,10 +200,11 @@ class TicketList extends React.Component {
 
   handleFilterButton = e => {
     const { value } = e.target;
-    // console.log(value);
-    this.setState({
-      filterby: value
-    });
+
+    //we remove this to change to sidebar
+    // this.setState({
+    //   filterby: value
+    // });
   };
 
   //add to test
@@ -116,7 +272,8 @@ class TicketList extends React.Component {
         );
       }
 
-      //here we filter
+      /*
+      //here we filter - removed
       if (this.state.filterby === "Name: Derrick") {
         dataArr = dataArr.filter(val => {
           return val.user.firstName === "Derrick";
@@ -130,6 +287,8 @@ class TicketList extends React.Component {
           return val.priority === "High";
         });
       }
+
+*/
 
       //here we check if any requests has been unresolved for a week
       let checkArr = dataArr.filter(a => {
@@ -181,6 +340,10 @@ class TicketList extends React.Component {
             assigned={request.assigned}
             //mainThread={request.mainThread} //dont need this on ticketList page
             key={request.id}
+            //here onwards for multicheckbox
+            callbackFromParentAdd={this.myCallbackAddCheckbox}
+            callbackFromParentRemove={this.myCallbackRemoveCheckbox}
+            hideArrow={this.state.checkboxtoAdd.length !== 0}
           />
         );
       });
@@ -189,18 +352,135 @@ class TicketList extends React.Component {
     }
   }
 
-  handleCheckbox = event => {
-    console.log("clicked checkbox");
-    const { name, value, type, checked } = event.target;
-
-    if (name === "checkboxAll") {
-      this.setState({
-        [name]: checked
-      });
-    }
+  myCallbackAddCheckbox = checkboxtoAddFromChild => {
+    // console.log(this.state.checkboxtoAdd);
+    var newArray = [...this.state.checkboxtoAdd, checkboxtoAddFromChild]; // make a separate copy of the array
+    this.setState({ checkboxtoAdd: newArray });
+    // console.log(this.state.checkboxtoAdd);
   };
 
+  myCallbackRemoveCheckbox = item => {
+    var newArray = [...this.state.checkboxtoAdd]; // make a separate copy of the array
+    // console.log(newArray);
+    const index = newArray.indexOf(item); // Method to get item in list through comparison (IE: find some item with item.id), it has to return ITEM and INDEX in array
+    // console.log(index);
+    if (index !== -1) {
+      newArray.splice(index, 1);
+      this.setState({ checkboxtoAdd: newArray });
+    }
+    // console.log(this.state.checkboxtoAdd);
+  };
+
+  updateNewAssigned(i) {
+    this.props.updateRequestAssignedMutation({
+      variables: {
+        id: this.state.checkboxtoAdd[i],
+        assigned: this.state.newAssigned
+      }
+    });
+  }
+
+  updateStatusOtoR(i, date) {
+    this.props.updateRequestStatusMutation({
+      variables: {
+        id: this.state.checkboxtoAdd[i],
+        status: this.state.newStatus,
+        dateResolved: date
+      }
+    });
+  }
+
+  updateMultiple = e => {
+    // console.log("entering");
+    // console.log(this.state.checkboxtoAdd);
+    e.preventDefault();
+
+    let today = new Date();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let newDate =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate() +
+      " " +
+      time;
+
+    var emptyDate = "";
+
+    if (this.state.newStatus === "" && this.state.newAssigned === "") {
+      //doNothing
+    } else if (this.state.newStatus === "" && this.state.newAssigned !== "") {
+      for (var i = 0; i < this.state.checkboxtoAdd.length; i++) {
+        this.updateNewAssigned(i);
+      }
+    } else if (this.state.newStatus !== "" && this.state.newAssigned === "") {
+      for (var i = 0; i < this.state.checkboxtoAdd.length; i++) {
+        if (this.state.newStatus === "Resolved") {
+          this.updateStatusOtoR(i, newDate);
+        } else {
+          this.updateStatusOtoR(i, emptyDate);
+        }
+      }
+    } else {
+      for (var i = 0; i < this.state.checkboxtoAdd.length; i++) {
+        this.updateNewAssigned(i);
+        if (this.state.newStatus === "Resolved") {
+          this.updateStatusOtoR(i, newDate);
+        } else {
+          this.updateStatusOtoR(i, emptyDate);
+        }
+      }
+    }
+
+    this.setState({
+      redirect: true
+    });
+  };
+
+  filterRequests() {
+    const { filter } = this.state;
+
+    fetch(`http://127.0.0.1:4000/filter-requests?asset=${JSON.stringify(
+      filter.asset
+    )}
+    &type=${JSON.stringify(filter.type)}&priority=${JSON.stringify(
+      filter.priority
+    )}
+    &assigned=${JSON.stringify(filter.assigned)}`)
+      .then(response => response.json())
+      .then(data => {
+        var filterReqIdArr = [];
+        for (var i = 0; i < data.length; i++) {
+          filterReqIdArr.push(data[i]._id);
+        }
+        this.setState({ filterReqId: filterReqIdArr });
+      });
+
+    this.setState({ filtered: true });
+  }
+
+  displayFilteredRequests() {
+    var dataArr = this.state.filterReqId;
+    if (dataArr.toString() === "") {
+      return <div />;
+    } else {
+      return dataArr.map(request => {
+        return <TicketRowFiltered id={request} key={request} />;
+      });
+    }
+  }
+
   render() {
+    // console.log(this.state.filter);
+    let showFilterSortButtons = this.state.checkboxtoAdd.length === 0;
+    // console.log(showFilterSortButtons);
+    const { selectedOption1 } = this.state;
+    const { selectedOption2 } = this.state;
+    const { selectedOption3 } = this.state;
+    const { selectedOption4 } = this.state;
+
     var showSnackbarCreate = false;
     if (typeof this.props.location.state !== "undefined") {
       if (this.props.location.state.createdTicket) {
@@ -215,9 +495,30 @@ class TicketList extends React.Component {
       }
     }
 
+    var showSnackbarMult = false;
+    if (typeof this.props.location.state !== "undefined") {
+      if (this.props.location.state.multUpdate) {
+        showSnackbarMult = true;
+      }
+    }
+
     let loading = true;
     if (!this.props.getRequestsQuery.loading) {
       loading = false;
+    }
+
+    if (this.state.redirect) {
+      setTimeout(function() {
+        window.location.reload();
+      }, 500);
+      return (
+        <Redirect
+          to={{
+            pathname: "/requests",
+            state: { multUpdate: true }
+          }}
+        />
+      );
     }
 
     return (
@@ -233,23 +534,145 @@ class TicketList extends React.Component {
           <CustomizedSnackbars message="Request successfully created" />
         ) : null}
 
+        {showSnackbarMult ? (
+          <CustomizedSnackbars message="Multiple requests updated" />
+        ) : null}
+
+        <OffCanvas
+          width={300}
+          transitionDuration={300}
+          effect={"push"}
+          isMenuOpened={this.state.isMenuOpened}
+          position={"left"}
+        >
+          <OffCanvasMenu className="canvasMenu">
+            <button
+              onClick={this.handleClick.bind(this)}
+              id="transparentButton"
+              className=""
+            >
+              {/* <img src={arrow} className="arrow-right" alt="arrow" /> */}X
+            </button>
+            <br />
+            <br />
+            <br />
+            Asset:
+            <Select
+              value={selectedOption1}
+              onChange={this.handleDropdown1}
+              options={assetOptions}
+              isMulti={true}
+            />
+            <br />
+            <br />
+            Type:
+            <Select
+              value={selectedOption2}
+              onChange={this.handleDropdown2}
+              options={typeOptions}
+              isMulti={true}
+            />
+            <br />
+            <br />
+            Priority:
+            <Select
+              value={selectedOption3}
+              onChange={this.handleDropdown3}
+              options={priorityOptions}
+              isMulti={true}
+            />
+            <br />
+            <br />
+            Assigned:
+            <Select
+              value={selectedOption4}
+              onChange={this.handleDropdown4}
+              options={assignedOptions}
+              isMulti={true}
+            />
+            <br />
+            <br />
+            <br />
+            <br />
+            <button onClick={this.filterRequests}>Filter</button>
+          </OffCanvasMenu>
+        </OffCanvas>
+
         <section className="current-tickets">
-          <div className="filter-text">
-            <span>
-              Filter by: {this.state.filterby}
-              {/* <img src={arrow} className="arrow-right" alt="arrow" /> */}
-              <DropdownCardFilter
-                handleFilterButton={this.handleFilterButton}
-              />
-            </span>
-          </div>
-          <div className="sort-by-text">
-            <span>
-              Sort by: {this.state.sortby}
-              {/* <img src={arrow} className="arrow-down-datereq" alt="arrow" /> */}
-              <DropdownCardSort handleSortButton={this.handleSortButton} />
-            </span>
-          </div>
+          {showFilterSortButtons ? (
+            <div className="filter-text">
+              <span>
+                Filter by: {this.state.filterby}
+                {/* <img src={arrow} className="arrow-right" alt="arrow" /> */}
+                {/* <DropdownCardFilter
+                    handleFilterButton={this.handleFilterButton}
+                /> */}
+                <button
+                  onClick={this.handleClick.bind(this)}
+                  id="transparentButton"
+                  className="transparentButton-status"
+                  //hide button
+                >
+                  <img src={arrow} className="arrow-right" alt="arrow" />
+                </button>
+              </span>
+            </div>
+          ) : null}
+          {showFilterSortButtons ? (
+            <div className="sort-by-text">
+              <span>
+                Sort by: {this.state.sortby}
+                {/* <img src={arrow} className="arrow-down-datereq" alt="arrow" /> */}
+                <DropdownCardSort handleSortButton={this.handleSortButton} />
+              </span>
+            </div>
+          ) : null}
+
+          {/* CHECKBOX COMPONENT STARTS FROM HERE */}
+          {this.state.checkboxtoAdd.length !== 0 ? (
+            <div className="popup">
+              <form>
+                <div className="status-filter">
+                  <div className="status-filter-text">
+                    <label>Status</label>
+                  </div>
+                </div>
+                <select
+                  className="selectOptionCheckbox"
+                  onChange={e => this.setState({ newStatus: e.target.value })}
+                >
+                  <option>-No Change-</option>
+                  <option>Open</option>
+                  <option>Resolved</option>
+                </select>
+
+                <div className="assigned-filter">
+                  <div className="assigned-filter-text">
+                    <label>Assigned</label>
+                  </div>
+                </div>
+                <select
+                  className="selectOptionCheckbox"
+                  onChange={e => this.setState({ newAssigned: e.target.value })}
+                >
+                  <option>-No Change-</option>
+                  <option>Benjamin</option>
+                  <option>Kenneth</option>
+                  <option>Hang Wee</option>
+                  <option>Bertha</option>
+                </select>
+
+                <button
+                  className="updateButtonForm"
+                  onClick={this.updateMultiple}
+                >
+                  UPDATE
+                </button>
+              </form>
+            </div>
+          ) : null}
+          {/* HTML ENDS  HERE */}
+
           <div className="filter-box request-list-header">
             <div className="col span-1-of-12">
               <input
@@ -307,13 +730,21 @@ class TicketList extends React.Component {
               <CircularIndeterminate />
             </div>
           ) : null}
-          {this.displayRequests()}
+
+          {this.state.filtered
+            ? this.displayFilteredRequests()
+            : this.displayRequests()}
         </section>
       </div>
     );
   }
 }
+
 export default compose(
   graphql(getRequestsQuery, { name: "getRequestsQuery" }),
-  graphql(updateRequestStatusMutation, { name: "updateRequestStatusMutation" })
+  graphql(updateRequestStatusMutation, { name: "updateRequestStatusMutation" }),
+  graphql(updateRequestAssignedMutation, {
+    name: "updateRequestAssignedMutation"
+  }),
+  graphql(getRequestQuery, { name: "getRequestQuery" })
 )(TicketList);

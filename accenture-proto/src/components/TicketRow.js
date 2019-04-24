@@ -26,13 +26,51 @@ class TicketRow extends React.Component {
     });
   }
 
+  //4. CHECKBOX START
   handleCheckbox = event => {
-    const { name, checked } = event.target;
-    console.log("clicked checkbox");
-    this.setState({
-      [name]: checked
-    });
+    // console.log("clicked checkbox");
+    if (this.state.checkbox === true) {
+      // console.log("checkbox2 before");
+      // console.log(this.state.checkbox);
+
+      this.setState({ checkbox: false });
+      // console.log("checkbox2 after");
+
+      this.props.callbackFromParentRemove(this.props.id);
+    } else {
+      // console.log("checkbox1 before");
+      // console.log(this.state.checkbox);
+
+      this.setState({ checkbox: true });
+      // console.log("checkbox1 after");
+      // console.log(this.state.checkbox);
+
+      this.props.callbackFromParentAdd(this.props.id);
+    }
   };
+
+  uncheckAllCheckboxes() {
+    // console.log("testinggggg");
+    // console.log(this.state.checkbox);
+    // console.log(this.props.asset);
+
+    if (this.state.checkbox === true) {
+      // console.log(this.props.asset);
+
+      this.setState({ checkbox: false });
+    }
+    // console.log(this.state.checkbox);
+  }
+
+  //4. END
+
+  // handleCheckbox = event => {
+  //   const { name, checked } = event.target;
+  //   console.log("clicked checkbox");
+  //   this.setState({
+  //     [name]: checked
+  //   });
+  // };
 
   render() {
     let linkStr = "requestDetail/" + this.props.id;
@@ -82,7 +120,7 @@ class TicketRow extends React.Component {
           <DropdownCardStatus idd={this.props.id} isCLient="false" />
         </div> */}
 
-        {closedBool ? (
+        {closedBool || this.props.hideArrow ? (
           <div className="adminStatusArrowInvisible">
             <p id="transparentButton" className="transparentButton-status">
               <img src={arrow} className="arrow-down-2" />
@@ -97,9 +135,22 @@ class TicketRow extends React.Component {
         <div className="col span-1-of-8" id="assignedTo">
           <h4 className="detail">{this.props.assigned}</h4>
         </div>
-        <div className="assignedToArrow">
+
+        {this.props.hideArrow ? (
+          <div className="adminStatusArrowInvisible">
+            <p id="transparentButton" className="transparentButton-status">
+              <img src={arrow} className="arrow-down-2" />
+            </p>
+          </div>
+        ) : (
+          <div className="assignedToArrow">
+            <DropdownCardAssigned idd={this.props.id} />
+          </div>
+        )}
+
+        {/* <div className="assignedToArrow">
           <DropdownCardAssigned idd={this.props.id} />
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -131,8 +131,10 @@ class TicketRow extends React.Component {
     let closedBool = this.props.status === "Closed";
     //or look at status instead.
 
+    let headerCss = closedBool ? "filter-box-2 grayscale" : "filter-box-2";
+
     return (
-      <div className="filter-box-2">
+      <div className={headerCss}>
         <div className="col span-1-of-12">
           <input
             className="indiv-checkbox rows-checkboxNeed"

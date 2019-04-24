@@ -65,21 +65,8 @@ class App extends Component {
               path="/crequestDetail/:id"
               component={ClientRequestDetail}
             />
-            {/* <Route exact path="/test" component={PhotoGrid} /> */}
 
             <Route exact path="/allImages/:id/:id" component={PhotoGrid} />
-
-            {/* <Route
-              exact
-              path="/test"
-              render={props => (
-                <PhotoGrid
-              {...props}
-              userID="5ca6d2311c9d4400004044b2"
-              subject="BEN TEST"
-                />
-              )}
-            /> */}
           </Switch>
         </Router>
       </ApolloProvider>

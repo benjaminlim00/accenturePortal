@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
+const Request = require("./models/requests");
 
 //allow corss-origin requests
 app.use(cors());
@@ -49,6 +50,48 @@ app.get("/send-email", (req, res) => {
 
     console.log(body);
   });
+});
+
+//this is for filtering requests
+app.get("/filter-requests", (req, res) => {
+  // var test = ["Benjamin", "Hang Wee"];
+  //const { asset, type, priority, assigned } = req.query;
+
+  const newAsset = JSON.parse(req.query.asset);
+  const newType = JSON.parse(req.query.type);
+  const newPriority = JSON.parse(req.query.priority);
+  const newAssigned = JSON.parse(req.query.assigned);
+  console.log(newAsset);
+  console.log(newType);
+  console.log(newPriority);
+  console.log(newAssigned);
+
+  let obj = {};
+  // if (newAsset !== []) {
+  //   obj.asset = {}
+  // }
+
+  let obj = {
+    asset: { $in: newAsset },
+    type: { $in: newType },
+    priority: { $in: newPriority },
+    assigned: { $in: newAssigned }
+    //assigned: { "$in": test },
+    //created: {$gt: new Date(time)}
+  };
+
+  Request.aggregate(
+    [
+      {
+        $match: obj
+      }
+    ],
+    function(err, data) {
+      if (err) throw err;
+      console.log(data);
+      res.send(data);
+    }
+  );
 });
 
 mongoose.connect(
