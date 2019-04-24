@@ -3,14 +3,18 @@ import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg
 
 class TicketProperties extends React.Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
+
+    let allImgLinkUrl =
+      "/allImages/" + this.props.userID + "/" + this.props.subject;
+    // console.log(allImgLinkUrl);
     return (
       <div className="properties">
         <h2 className="small-heading contact-property">Ticket Properties</h2>
         <img src={arrow} className="arrow-up-new" alt="arrow" />
         <div className="grid-row">
-          {this.props.allImgLink === "true" ? (
-            <a className="url-bottom-left" href="#">
+          {this.props.allImgLink ? (
+            <a className="url-bottom-left" href={allImgLinkUrl}>
               View all attached image
             </a>
           ) : null}

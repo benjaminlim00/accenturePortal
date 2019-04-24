@@ -8,7 +8,7 @@ import ClientTicketList from "./components/ClientComponents/ClientTicketList";
 import ClientCreateTicket from "./components/ClientComponents/ClientCreateTicket";
 import ClientRequestDetail from "./components/ClientComponents/ClientRequestDetail";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import MyChat from "./components/MyChat/MyChat";
+import PhotoGrid from "./components/firebase/PhotoGrid";
 
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
@@ -65,17 +65,21 @@ class App extends Component {
               path="/crequestDetail/:id"
               component={ClientRequestDetail}
             />
-            <Route
-              exact
-              path="/MyChat1"
-              render={props => <MyChat {...props} author="joseph" />}
-            />
+            {/* <Route exact path="/test" component={PhotoGrid} /> */}
 
-            <Route
+            <Route exact path="/allImages/:id/:id" component={PhotoGrid} />
+
+            {/* <Route
               exact
-              path="/MyChat2"
-              render={props => <MyChat {...props} author="admin" />}
-            />
+              path="/test"
+              render={props => (
+                <PhotoGrid
+              {...props}
+              userID="5ca6d2311c9d4400004044b2"
+              subject="BEN TEST"
+                />
+              )}
+            /> */}
           </Switch>
         </Router>
       </ApolloProvider>

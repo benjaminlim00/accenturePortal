@@ -5,8 +5,34 @@ import "../../styles/normalize.css";
 // import { getRequestQuery } from "../../queries/queries";
 // import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
 
+import firebase from "firebase/app";
+
 class MainThread extends React.Component {
-  displayMainThread() {
+  constructor() {
+    super();
+    this.state = {
+      url: ""
+    };
+  }
+  componentDidMount() {
+    let creatorID = this.props.creatorID;
+    let subject = this.props.subject;
+    let pathname = creatorID + "/" + subject + "/" + "main";
+    firebase
+      .database()
+      .ref(pathname)
+      .on("value", snapshot => {
+        snapshot.val() !== null
+          ? this.setState({ url: snapshot.val() })
+          : this.setState({ url: "" });
+      });
+  }
+
+  render() {
+    // let linkStr = "requestDetail/" + this.props.id;
+
+    // console.log(this.state.url);
+
     return (
       <div className="text-boxes">
         <div className="enquiry-head">
@@ -19,20 +45,17 @@ class MainThread extends React.Component {
           </p>
         </div>
         <div className="enquiry-body">{this.props.mainThread}</div>
+
+        {/* this is for the url */}
+        <div className="attachedImageAccess">
+          {this.state.url === "" ? null : (
+            <a className="url-bottom-left" href={this.state.url}>
+              View attached image
+            </a>
+          )}
+        </div>
       </div>
     );
-  }
-
-  componentDidMount() {
-    this.setState({
-      id: this.props.id
-    });
-  }
-
-  render() {
-    // let linkStr = "requestDetail/" + this.props.id;
-
-    return <div>{this.displayMainThread()}</div>;
   }
 }
 

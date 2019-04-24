@@ -19,11 +19,15 @@ import MainThread from "./RequestDetailComponents/MainThread";
 import ContactDetails from "./RequestDetailComponents/ContactDetails";
 import CreateThread from "./RequestDetailComponents/CreateThread";
 
+import { storage } from "./firebase/firebaseExport";
+import firebase from "firebase/app";
+
 class RequestDetail extends React.Component {
   constructor() {
     super();
     this.state = {
-      show: false
+      show: false,
+      allImgLinkBool: false
     };
   }
 
@@ -59,7 +63,7 @@ class RequestDetail extends React.Component {
       });
 
       dataArr = dataArr[0];
-      console.log(dataArr); // here is data of the request.
+      // console.log(dataArr); // here is data of the request.
 
       return (
         <ContactDetails
@@ -88,6 +92,8 @@ class RequestDetail extends React.Component {
 
       return (
         <MainThread
+          //so that we can show in main thread the url
+          creatorID={dataArr.user.id}
           mainThread={dataArr.mainThread}
           subject={dataArr.subject}
           dateRequested={dataArr.dateRequested}
@@ -140,11 +146,36 @@ class RequestDetail extends React.Component {
       });
 
       dataArr = dataArr[0];
-      console.log(dataArr); // here is data of the request.
+      // console.log(dataArr); // here is data of the request.
 
+      // console.log(dataArr.user.id);
+      // console.log(dataArr.subject);
+      //logic for allImgLink
+      var fb = firebase.database().ref(`${dataArr.user.id}/${dataArr.subject}`);
+      // var images = [];
+      fb.once("value").then(snapshot => {
+        const images = [];
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          // console.log(childData);
+          images.push(childData);
+        });
+
+        // console.log(images.length);
+        if (images.length !== 0 && this.state.allImgLinkBool !== true) {
+          this.setState({
+            allImgLinkBool: true
+          });
+        }
+      });
+
+      // console.log(dataArr);
       return (
         <TicketProperties
-          allImgLink="true" //for now
+          allImgLink={this.state.allImgLinkBool} //for now
+          userID={dataArr.user.id}
+          subject={dataArr.subject}
+          //needed the top 3 for all allImgLink
           id={dataArr.id}
           asset={dataArr.asset}
           type={dataArr.type}

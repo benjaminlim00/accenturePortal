@@ -8,6 +8,7 @@ import { storage } from "../firebase/firebaseExport";
 import { graphql, compose } from "react-apollo";
 import { addThreadMutation } from "../../queries/queries";
 import CircularIndeterminate from "../CircularIndeterminate";
+import firebase from "firebase/app";
 
 import replyArrow from "../../Resources/Icons/iconfinder_reply_226602.svg";
 // import fileLogo from "../../Resources/Icons/iconfinder_ic_attach_file_48px_352032.svg";
@@ -91,7 +92,6 @@ class CreateThread extends React.Component {
           console.log(error);
         },
         () => {
-          //complete fnc
           storage
             .ref(`${this.props.userID}/${this.props.subject}`)
             .child(image.name)
@@ -100,7 +100,39 @@ class CreateThread extends React.Component {
               console.log(url);
               this.setState({ url });
 
-              //dump all
+              //we use uuid here
+
+              var generate_uuid = (function() {
+                var s4 = function() {
+                  return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1);
+                };
+
+                return function() {
+                  return (
+                    s4() +
+                    s4() +
+                    "-" +
+                    s4() +
+                    "-" +
+                    s4() +
+                    "-" +
+                    s4() +
+                    "-" +
+                    s4() +
+                    s4() +
+                    s4()
+                  );
+                };
+              })();
+
+              let UUID = generate_uuid();
+              //here we add the url to database
+              firebase
+                .database()
+                .ref(`${this.props.userID}/${this.props.subject}/${UUID}`)
+                .set(url);
 
               this.addThread();
             });

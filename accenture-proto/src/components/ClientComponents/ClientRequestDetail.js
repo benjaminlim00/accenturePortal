@@ -22,11 +22,15 @@ import ThreadBlock from "../RequestDetailComponents/ThreadBlock";
 import MainThread from "../RequestDetailComponents/MainThread";
 import CreateThread from "../RequestDetailComponents/CreateThread";
 
+import { storage } from "../firebase/firebaseExport";
+import firebase from "firebase/app";
+
 class ClientRequestDetail extends React.Component {
   constructor() {
     super();
     this.state = {
-      show: false
+      show: false,
+      allImgLinkBool: false
     };
   }
 
@@ -120,8 +124,30 @@ class ClientRequestDetail extends React.Component {
       dataArr = dataArr[0];
       // console.log(dataArr); // here is data of the request.
 
+      var fb = firebase.database().ref(`${dataArr.user.id}/${dataArr.subject}`);
+      // var images = [];
+      fb.once("value").then(snapshot => {
+        const images = [];
+        snapshot.forEach(function(childSnapshot) {
+          var childData = childSnapshot.val();
+          // console.log(childData);
+          images.push(childData);
+        });
+
+        // console.log(images.length);
+        if (images.length !== 0 && this.state.allImgLinkBool !== true) {
+          this.setState({
+            allImgLinkBool: true
+          });
+        }
+      });
+
       return (
         <TicketProperties
+          allImgLink={this.state.allImgLinkBool} //for now
+          userID={dataArr.user.id}
+          subject={dataArr.subject}
+          //needed top 3 for allImgLink
           id={dataArr.id}
           asset={dataArr.asset}
           type={dataArr.type}

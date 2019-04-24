@@ -1,6 +1,8 @@
 import React from "react";
 // import axios from "axios"
 import { storage } from "./firebaseExport";
+import firebase from "firebase/app";
+
 import LinearDeterminate from "../LinearDeterminate";
 
 import "./UploadFile.css";
@@ -46,6 +48,7 @@ class UploadFile extends React.Component {
       },
       error => {
         //error fnc
+        console.log("ERROR!!");
         console.log(error);
       },
       () => {
@@ -55,8 +58,15 @@ class UploadFile extends React.Component {
           .child(image.name)
           .getDownloadURL()
           .then(url => {
-            console.log(url);
+            // console.log(url);
             this.setState({ url });
+
+            //lets add this url to database also
+
+            firebase
+              .database()
+              .ref(`${this.props.userID}/${this.props.subject}/main`)
+              .set(url);
           });
       }
     );
