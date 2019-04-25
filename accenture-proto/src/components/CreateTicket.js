@@ -71,6 +71,25 @@ class CreateTicket extends React.Component {
     }
   }
 
+  displayAssets() {
+    let datals = [
+      { name: "Aeseop", id: 0 },
+      { name: "Ticketing", id: 1 },
+      { name: "Travel Marketplace", id: 2 },
+      { name: "Smart Lock", id: 3 },
+      { name: "Video Analytics", id: 4 },
+      { name: "AR Gamification", id: 5 }
+    ];
+
+    return datals.map(data => {
+      return (
+        <option key={data.id} value={data.name}>
+          {data.name}
+        </option>
+      );
+    });
+  }
+
   displayType() {
     // let datals = [
     //   { name: "Request", id: 0 },
@@ -120,7 +139,9 @@ class CreateTicket extends React.Component {
 
   sendEmail = () => {
     // const { email } = this.state.email;
-    fetch("http://127.0.0.1:4000/send-email") //query string url
+    fetch(
+      `http://127.0.0.1:4000/send-email?content=${"A new request has been created"}`
+    ) //query string url
       .catch(err => console.error(err));
     console.log("success");
   };
@@ -286,11 +307,19 @@ class CreateTicket extends React.Component {
               <br />
 
               <label>
-                <input
+                {/* <input
                   type="text"
                   onChange={e => this.setState({ asset: e.target.value })}
                   className="small-input-field"
-                />
+                /> */}
+
+                <select
+                  onChange={e => this.setState({ requesterId: e.target.value })}
+                  className="small-input-field"
+                >
+                  <option>Select asset</option>
+                  {this.displayAssets()}
+                </select>
               </label>
 
               <br />

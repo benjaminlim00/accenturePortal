@@ -31,9 +31,12 @@ import {
 import { Redirect } from "react-router-dom";
 
 const assetOptions = [
-  { value: "Ticketing", label: "Ticketing" },
   { value: "Aesop", label: "Aesop" },
-  { value: "Travel Marketplace", label: "Travel Marketplace" }
+  { value: "Ticketing", label: "Ticketing" },
+  { value: "Travel Marketplace", label: "Travel Marketplace" },
+  { value: "Smart Lock", label: "Smart Lock" },
+  { value: "Video Analytics", label: "Video Analytics" },
+  { value: "AR Gamification", label: "AR Gamification" }
 ];
 
 const typeOptions = [

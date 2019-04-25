@@ -23,7 +23,9 @@ var request = require("request");
 
 app.get("/send-email", (req, res) => {
   //Get Variables from query string in the search bar
-  const { recipient, sender, topic, text } = req.query;
+  const { recipient, sender, topic, text, content } = req.query;
+
+  console.log(content);
 
   //Sendgrid Data Requirements
   var options = {
@@ -37,7 +39,7 @@ app.get("/send-email", (req, res) => {
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IlF6Y3hRVEl5UkRVeU1qYzNSakEzTnpKQ01qVTROVVJFUlVZelF6VTRPRUV6T0RreE1UVTVPQSJ9.eyJpc3MiOiJodHRwczovL2FjbmFwaS1wcm9kLmF1dGgwLmNvbS8iLCJzdWIiOiJQMVA0TDRyQmlWNzlPNGVzTFBhMWNFWk0yMmlWekJoSEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9wbGFjZWhvbGRlci5jb20vcGxhY2UiLCJpYXQiOjE1NDk5NTI5NzEsImV4cCI6MTU1MjU0NDk3MSwiYXpwIjoiUDFQNEw0ckJpVjc5TzRlc0xQYTFjRVpNMjJpVnpCaEgiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.VaMxJR7U7qMYl-x8fHRG4kbEjAJmOtACGUT3bsHVuk9PNrnhQ6JkhJWy1NwxwdDjH9HZ5WjK1-jW_y4o5bUQu9ekViRQX0GmpxkXKSvHuRGQKmaG9obbm7qyedZ93RCRtPXXS-Fu2ZoXuwAxb_EYB4Xt34dpXIt-AlU-62_WgOWhhajdJ66UKmBt--sZR7v9AHDZmDWTVosgs8aiUlFw3R4XvRwItEeOfEtyZJbsmnKEyzV9BznAUyyuUlsliZkTbYMz_qqcED8_5sLQvCTZArNJaRbMpB8nfNAaVgw-UUZeF6GkcTzl1Y-0vFiYYY6YOmFcx2zuYCZrfu46kTLhuA"
     },
     body: {
-      subject: "New Request is created",
+      subject: "Alert - ",
       sender: "ticketing@accenture.com",
       recipient: "benjaminlpa1996@gmail.com",
       html: "A new Request has been created"

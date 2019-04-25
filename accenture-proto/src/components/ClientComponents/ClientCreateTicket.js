@@ -54,6 +54,25 @@ class ClientCreateTicket extends React.Component {
     });
   }
 
+  displayAssets() {
+    let datals = [
+      { name: "Aeseop", id: 0 },
+      { name: "Ticketing", id: 1 },
+      { name: "Travel Marketplace", id: 2 },
+      { name: "Smart Lock", id: 3 },
+      { name: "Video Analytics", id: 4 },
+      { name: "AR Gamification", id: 5 }
+    ];
+
+    return datals.map(data => {
+      return (
+        <option key={data.id} value={data.name}>
+          {data.name}
+        </option>
+      );
+    });
+  }
+
   displayType() {
     // let datals = [
     //   { name: "Request", id: 0 },
@@ -210,11 +229,19 @@ class ClientCreateTicket extends React.Component {
               <br />
 
               <label>
-                <input
+                {/* <input
                   type="text"
                   onChange={e => this.setState({ asset: e.target.value })}
                   className="client-small-input-field"
-                />
+                /> */}
+
+                <select
+                  onChange={e => this.setState({ requesterId: e.target.value })}
+                  className="small-input-field"
+                >
+                  <option>Select asset</option>
+                  {this.displayAssets()}
+                </select>
               </label>
 
               <br />
