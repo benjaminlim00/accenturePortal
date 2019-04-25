@@ -24,7 +24,7 @@ app.post("/api/messages", (req, res) => {
     .create({
       // from: "+1 810 250 7730",
       from: "+17073171246",
-      to: "+6591684317", //rmb to hide, dont upload to github
+      to: "-", //rmb to hide, dont upload to github
       body: content
     })
     .then(() => {
