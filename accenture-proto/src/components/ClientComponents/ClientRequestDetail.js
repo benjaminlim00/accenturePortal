@@ -68,10 +68,11 @@ class ClientRequestDetail extends React.Component {
         return request.id === pageId;
       });
       dataArr = dataArr[0];
-      // console.log(dataArr);
+      // console.log(dataArr.subject);
 
       return (
         <MainThread
+          creatorID={dataArr.user.id}
           mainThread={dataArr.mainThread}
           subject={dataArr.subject}
           dateRequested={dataArr.dateRequested}

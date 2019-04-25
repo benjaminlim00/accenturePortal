@@ -18,6 +18,7 @@ class MainThread extends React.Component {
     let creatorID = this.props.creatorID;
     let subject = this.props.subject;
     let pathname = creatorID + "/" + subject + "/" + "main";
+    console.log(pathname);
     firebase
       .database()
       .ref(pathname)
@@ -26,6 +27,8 @@ class MainThread extends React.Component {
           ? this.setState({ url: snapshot.val() })
           : this.setState({ url: "" });
       });
+
+    console.log(this.state);
   }
 
   render() {

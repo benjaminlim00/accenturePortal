@@ -104,7 +104,7 @@ class UpdateButton extends React.Component {
           }
         });
 
-        if (this.props.isClient) {
+        if (this.props.isClient === "true") {
           //make modal pop
           this.showModal();
         }

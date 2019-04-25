@@ -140,6 +140,8 @@ class TicketRow extends React.Component {
       ? "clientDetail grey clientNotSubject"
       : "clientDetail clientNotSubject";
 
+    // console.log(name);
+
     let name2 = closedBool
       ? "clientDetail clientSubjectLinkHover grey"
       : "clientDetail clientSubjectLinkHover";

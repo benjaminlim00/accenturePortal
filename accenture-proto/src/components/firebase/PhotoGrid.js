@@ -32,7 +32,7 @@ class PhotoGrid extends React.Component {
       this.setState({ images });
     });
 
-    // console.log(arrls);
+    // console.log(this.state.images);
   }
 
   render() {
