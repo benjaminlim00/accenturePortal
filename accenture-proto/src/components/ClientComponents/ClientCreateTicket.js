@@ -22,7 +22,7 @@ class ClientCreateTicket extends React.Component {
       type: "",
       subject: "",
       priority: "Medium",
-      assigned: "Ben",
+      assigned: "",
       requesterId: "5ca6d2311c9d4400004044b2", //this is the id of joseph
       mainThread: "",
       redirect: false,

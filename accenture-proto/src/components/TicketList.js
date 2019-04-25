@@ -11,7 +11,7 @@ import TicketRow from "./TicketRow";
 import NavBar from "./NavBar";
 import CustomizedSnackbars from "./CustomizedSnackbars";
 import CircularIndeterminate from "./CircularIndeterminate";
-import ChatButton from "./MyChat/ChatButton";
+// import ChatButton from "./MyChat/ChatButton";
 import DropdownCardSort from "./DropdownCardSort";
 // import DropdownCardFilter from "./DropdownCardFilter";
 import TicketRowFiltered from "./TicketRowFiltered";
@@ -321,18 +321,6 @@ class TicketList extends React.Component {
           );
         }
 
-        //these are for sms fnc
-        fetch(
-          `/api/messages?content=${"Resolved requests older than 7 days have been closed"}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state.message)
-          }
-        ).then(res => res.json());
-
         return 0;
       });
 
@@ -361,6 +349,18 @@ class TicketList extends React.Component {
               status: "Closed"
             }
           });
+
+          //these are for sms fnc
+          fetch(
+            `/api/messages?content=${"Resolved requests older than 7 days have been closed"}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(this.state.message)
+            }
+          ).then(res => res.json());
 
           return 0;
         });
@@ -667,7 +667,7 @@ class TicketList extends React.Component {
     return (
       <div>
         <NavBar />
-        <ChatButton author="admin" />
+        {/* <ChatButton author="admin" /> */}
 
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />

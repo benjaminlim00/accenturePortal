@@ -30,7 +30,14 @@ class ChatButton extends Component {
   render() {
     return (
       <div>
-        <div>{this.state.show && <MyChat author={this.props.author} />}</div>
+        <div>
+          {this.state.show && (
+            <MyChat
+              author={this.props.author}
+              requestID={this.props.requestID}
+            />
+          )}
+        </div>
         <Fab style={style} onClick={this.toggleDiv}>
           <img src={chatIcon} alt="chatIcon" />
           <i className="fas fa-comment" />

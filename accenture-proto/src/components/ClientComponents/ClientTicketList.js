@@ -10,7 +10,7 @@ import ClientTicketRow from "./ClientTicketRow";
 import CNavBar from "./CNavBar";
 import CustomizedSnackbars from "../CustomizedSnackbars";
 import CircularIndeterminate from "../CircularIndeterminate";
-import ChatButton from "../MyChat/ChatButton";
+// import ChatButton from "../MyChat/ChatButton";
 
 import DropdownCardSort from "../DropdownCardSort";
 import DropdownCardFilter from "../DropdownCardFilter";
@@ -351,8 +351,8 @@ class ClientTicketList extends React.Component {
     return (
       <div>
         <CNavBar />
-        <ChatButton author="client" />
-
+        {/* <ChatButton author="client" /> */}
+        
         {showSnackbarDelete ? (
           <CustomizedSnackbars message="Request successfully deleted" />
         ) : null}

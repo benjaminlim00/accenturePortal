@@ -18,6 +18,7 @@ import ThreadBlock from "./RequestDetailComponents/ThreadBlock";
 import MainThread from "./RequestDetailComponents/MainThread";
 import ContactDetails from "./RequestDetailComponents/ContactDetails";
 import CreateThread from "./RequestDetailComponents/CreateThread";
+import ChatButton from "./MyChat/ChatButton";
 
 import { storage } from "./firebase/firebaseExport";
 import firebase from "firebase/app";
@@ -206,9 +207,12 @@ class RequestDetail extends React.Component {
       marginLeft: "20px"
     };
 
+    let pageId = window.location.pathname.substring(15);
+
     return (
       <div className="noScroll">
         <NavBar />
+        <ChatButton author="admin" requestID={pageId} />
 
         <section className="ticket-enquiry-section">
           <div className="back-to-tickets-section">

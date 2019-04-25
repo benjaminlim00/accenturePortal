@@ -7,6 +7,7 @@ import "../../styles/RequestDetail.css";
 import TicketProperties from "../TicketProperties";
 import TrashModal from "../TrashModal";
 import CNavBar from "./CNavBar";
+import ChatButton from "../MyChat/ChatButton";
 
 // import profileIcon from "../../Resources/Icons/iconfinder_00-ELASTOFONT-STORE-READY_user-circle_2703062.svg";
 import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
@@ -179,9 +180,12 @@ class ClientRequestDetail extends React.Component {
       marginLeft: "20px"
     };
 
+    let pageId = window.location.pathname.substring(16);
+
     return (
       <div className="noScroll">
         <CNavBar />
+        <ChatButton author="client" requestID={pageId} />
 
         <section className="ticket-enquiry-section">
           <div className="back-to-tickets-section">

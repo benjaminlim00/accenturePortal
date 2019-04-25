@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const pino = require("express-pino-logger")();
 const client = require("twilio")(
-  "ACa2ca31f005a220338a079b9df6d9f067",
-  "a72a525ce86807da14b3dcfb2271992d"
+  // "ACa2ca31f005a220338a079b9df6d9f067",
+  // "a72a525ce86807da14b3dcfb2271992d"
+
+  "AC65bcccbeb26dfe9876a523562b318b60",
+  "3a98ba07ddcb29da23ad2eed2c4c3e30"
 );
 
 const app = express();
@@ -19,7 +22,8 @@ app.post("/api/messages", (req, res) => {
 
   client.messages
     .create({
-      from: "+1 810 250 7730",
+      // from: "+1 810 250 7730",
+      from: "+17073171246",
       to: "+6591684317", //rmb to hide, dont upload to github
       body: content
     })

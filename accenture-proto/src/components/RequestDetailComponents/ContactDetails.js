@@ -5,7 +5,7 @@ import "../../styles/normalize.css";
 import "../../styles/RequestDetail.css";
 // import { getRequestQuery, getUserQuery } from "../../queries/queries";
 // import { graphql } from "react-apollo";
-import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
+// import arrow from "../../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 // import { Link } from "react-router-dom";
 

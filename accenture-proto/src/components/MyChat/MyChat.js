@@ -27,7 +27,7 @@ class MyChat extends React.Component {
   componentDidMount() {
     firebase
       .database()
-      .ref("messages/")
+      .ref(`messages/${this.props.requestID}/`)
       .on("value", snapshot => {
         const currentMessages = snapshot.val();
         if (currentMessages != null) {
@@ -69,7 +69,7 @@ class MyChat extends React.Component {
 
     firebase
       .database()
-      .ref("messages/" + nextMessage.id)
+      .ref(`messages/${this.props.requestID}/` + nextMessage.id)
       .set(nextMessage);
   }
 
