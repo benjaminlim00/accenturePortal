@@ -191,6 +191,18 @@ class ClientTicketList extends React.Component {
             }
           });
 
+          //these are for sms fnc
+          fetch(
+            `/api/messages?content=${"Resolved requests older than 7 days have been closed"}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(this.state.message)
+            }
+          ).then(res => res.json());
+
           return 0;
         });
       }
@@ -219,6 +231,18 @@ class ClientTicketList extends React.Component {
             }
           });
 
+          //these are for sms fnc
+          fetch(
+            `/api/messages?content=${"Open requests older than 7 days have been changed to high priority"}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(this.state.message)
+            }
+          ).then(res => res.json());
+
           return 0;
         });
       }
@@ -246,6 +270,18 @@ class ClientTicketList extends React.Component {
               priority: "Medium"
             }
           });
+
+          //these are for sms fnc
+          fetch(
+            `/api/messages?content=${"Requests with low priority older than 4 days have been changed to medium priority"}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(this.state.message)
+            }
+          ).then(res => res.json());
 
           return 0;
         });

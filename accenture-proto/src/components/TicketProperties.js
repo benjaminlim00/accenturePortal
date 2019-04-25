@@ -1,5 +1,5 @@
 import React from "react";
-// import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
+import arrow from "../Resources/Icons/iconfinder_icon-ios7-arrow-down_211687.svg";
 
 class TicketProperties extends React.Component {
   render() {
@@ -8,6 +8,11 @@ class TicketProperties extends React.Component {
     let allImgLinkUrl =
       "/allImages/" + this.props.userID + "/" + this.props.subject;
     // console.log(allImgLinkUrl);
+
+    let pageId = window.location.pathname[1];
+    // console.log(pageId);
+    let isClient = pageId === "c";
+
     return (
       <div className="properties">
         <h2 className="small-heading contact-property">Ticket Properties</h2>
@@ -15,7 +20,7 @@ class TicketProperties extends React.Component {
         <div className="grid-row">
           {this.props.allImgLink ? (
             <a className="url-bottom-left" href={allImgLinkUrl}>
-              View all attached image
+              View All Attached Image
             </a>
           ) : null}
 
@@ -31,33 +36,39 @@ class TicketProperties extends React.Component {
             <b>Type</b>
           </p>
           <p className="propertyNormalWords">{this.props.type}</p>
-          <p className="property">
-            <b>Priority</b>
-          </p>
-          <p className="propertyNormalWords">{this.props.priority}</p>
 
-          <div className="special-property">
-            <p>
-              <b>Assigned</b>
-            </p>
-            <p className="propertyArrowWords">
-              {/* <img src={arrow} className="arrow-down" alt="arrow" /> */}
-              {this.props.assigned}
-            </p>
-          </div>
+          {isClient ? null : (
+            <div>
+              <p className="property">
+                <b>Priority</b>
+              </p>
+              <p className="propertyNormalWords">{this.props.priority}</p>
+
+              <div className="special-property">
+                <p>
+                  <b>Assigned</b>
+                </p>
+                <p className="propertyArrowWords">
+                  <img src={arrow} className="arrow-down" alt="arrow" />
+                  {this.props.assigned}
+                </p>
+              </div>
+            </div>
+          )}
+
           <div className="special-property">
             <p>
               <b>Status</b>
             </p>
             <p className="propertyArrowWords">
-              {/* <img src={arrow} className="arrow-down" alt="arrow" /> */}
+              <img src={arrow} className="arrow-down" alt="arrow" />
               {this.props.status}
             </p>
           </div>
           <p className="property">
             <b>Date/Time Requested</b>
           </p>
-          <p className="propertyNormalWords">{this.props.dateRequested}></p>
+          <p className="propertyNormalWords">{this.props.dateRequested}</p>
           <p className="property">
             <b>Date/Time Resolved</b>
           </p>

@@ -76,6 +76,8 @@ class TicketRow extends React.Component {
     let linkStr = "requestDetail/" + this.props.id;
     let closedBool = this.props.status === "Closed";
 
+    let name = closedBool ? "detail grey" : "detail";
+
     return (
       <div className="filter-box-2">
         <div className="col span-1-of-12">
@@ -88,32 +90,32 @@ class TicketRow extends React.Component {
           />
         </div>
         <div className="col span-1-of-10">
-          <h4 className="detail">{this.props.userFirstName}</h4> {/*John Tan*/}
+          <h4 className={name}>{this.props.userFirstName}</h4> {/*John Tan*/}
         </div>
         <div className="col span-1-of-9">
-          <h4 className="detail">{this.props.asset}</h4> {/*Login API*/}
+          <h4 className={name}>{this.props.asset}</h4> {/*Login API*/}
         </div>
         <div className="col span-1-of-5">
           <Link to={linkStr} className="subjectLink" id="subject">
-            <h4 className="detail subjectLinkHover">
+            <h4 id="subjectLinkHover" className={name}>
               {this.props.type}: {this.props.subject}
             </h4>
           </Link>
           {/*Enquiry about API => we make this one a link*/}
         </div>
         <div className="col span-1-of-6">
-          <h4 className="detail">{this.props.dateRequested}</h4>
+          <h4 className={name}>{this.props.dateRequested}</h4>
           {/*12 January 2019 12:00:00*/}
         </div>
         <div className="col span-1-of-6">
-          <h4 className="detail">{this.props.dateResolved}</h4>
+          <h4 className={name}>{this.props.dateResolved}</h4>
         </div>
 
         <div className="col span-1-of-10">
-          <h4 className="detail">{this.props.priority}</h4> {/*High*/}
+          <h4 className={name}>{this.props.priority}</h4> {/*High*/}
         </div>
         <div className="col span-1-of-9" id="status">
-          <h4 className="detail">{this.props.status}</h4>
+          <h4 className={name}>{this.props.status}</h4>
         </div>
 
         {/* <div className="statusArrow">
@@ -133,7 +135,7 @@ class TicketRow extends React.Component {
         )}
 
         <div className="col span-1-of-8" id="assignedTo">
-          <h4 className="detail">{this.props.assigned}</h4>
+          <h4 className={name}>{this.props.assigned}</h4>
         </div>
 
         {this.props.hideArrow ? (

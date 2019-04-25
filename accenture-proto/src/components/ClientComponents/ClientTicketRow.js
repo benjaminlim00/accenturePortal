@@ -122,6 +122,13 @@ class TicketRow extends React.Component {
         status: "Closed"
       }
     });
+
+    //now we send a email to admin
+    fetch(
+      `http://127.0.0.1:4000/send-email?content=${"A client has closed a request"}`
+    ) //query string url
+      .catch(err => console.error(err));
+    console.log("success");
   }
 
   render() {
@@ -129,12 +136,16 @@ class TicketRow extends React.Component {
     let linkStr = "crequestDetail/" + this.props.id;
     let closedBool = this.props.status === "Closed";
     let resolvedBool = this.props.status === "Resolved";
-    // let resolvedBool = this.props.dateResolved !== "";
+    let name = closedBool
+      ? "clientDetail grey clientNotSubject"
+      : "clientDetail clientNotSubject";
 
-    let headerCss = closedBool ? "filter-box-2 grayscale" : "filter-box-2";
+    let name2 = closedBool
+      ? "clientDetail clientSubjectLinkHover grey"
+      : "clientDetail clientSubjectLinkHover";
 
     return (
-      <div className={headerCss}>
+      <div className="filter-box-2">
         <div className="col span-1-of-12">
           <input
             className="indiv-checkbox rows-checkboxNeed"
@@ -145,33 +156,26 @@ class TicketRow extends React.Component {
           />
         </div>
         <div className="col span-1-of-9">
-          <h4 className="clientDetail clientNotSubject">{this.props.asset}</h4>{" "}
-          {/*John Tan*/}
+          <h4 className={name}>{this.props.asset}</h4> {/*John Tan*/}
         </div>
         <div className="col span-1-of-5">
           <Link to={linkStr} className="clientSubjectLink">
-            <h4 className="clientDetail clientSubjectLinkHover">
+            <h4 className={name2}>
               {this.props.type}: {this.props.subject}
             </h4>
           </Link>
         </div>
         <div className="col span-1-of-7">
-          <h4 className="clientDetail clientNotSubject">
-            {this.props.dateRequested}
-          </h4>
+          <h4 className={name}>{this.props.dateRequested}</h4>
         </div>
         <div className="col span-1-of-7">
-          <h4 className="clientDetail clientNotSubject">
-            {this.props.dateResolved}
-          </h4>
+          <h4 className={name}>{this.props.dateResolved}</h4>
         </div>
         <div className="col span-1-of-7">
-          <h4 className="clientDetail clientNotSubject">
-            {this.props.dateClosed}
-          </h4>
+          <h4 className={name}>{this.props.dateClosed}</h4>
         </div>
         <div className="col span-1-of-8" id="client-status">
-          <h4 className="clientDetail clientNotSubject">{this.props.status}</h4>
+          <h4 className={name}>{this.props.status}</h4>
         </div>
 
         {closedBool ? (

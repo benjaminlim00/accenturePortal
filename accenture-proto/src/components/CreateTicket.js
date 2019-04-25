@@ -196,8 +196,10 @@ class CreateTicket extends React.Component {
     }
 
     //these are for sms fnc
+    //`http://127.0.0.1:4000/send-email?content=${"A new request has been created"}`
+
     this.setState({ submitting: true });
-    fetch("/api/messages", {
+    fetch(`/api/messages?content=${"A new request has been created"}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -314,7 +316,7 @@ class CreateTicket extends React.Component {
                 /> */}
 
                 <select
-                  onChange={e => this.setState({ requesterId: e.target.value })}
+                  onChange={e => this.setState({ asset: e.target.value })}
                   className="small-input-field"
                 >
                   <option>Select asset</option>

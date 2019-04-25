@@ -224,31 +224,44 @@ html {
 /* -----------------------------------------------*/
 /* TICKET REQUEST LIST */
 /* -----------------------------------------------*/
-
 .canvasMenu {
   background: #ffffff;
   z-index: 1; /* Sit on top */
+  padding: 2%;
+  font-weight: 400;
+  border: 1px solid #414141;
+}
+.sidebarFilterButton {
+  padding: 3% 5%;
+  /*border: 1px solid #000000;*/
+  cursor: pointer;
+  background-color: #3188ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .subjectLink {
   text-decoration: none;
 }
 
-.subjectLinkHover:link,
-.subjectLinkHover:visited {
+#subjectLinkHover:link,
+#subjectLinkHover:visited {
   padding: 8px 0;
   color: #414141;
   text-decoration: none;
   font-size: 100%;
 }
 
-.subjectLinkHover:hover,
-.subjectLinkHover:active {
+#subjectLinkHover:hover,
+#subjectLinkHover:active {
   font-weight: bold;
   color: #000000;
 }
 
-.subjectLinkHover {
+#subjectLinkHover {
   border: 1px solid #e5e5e5;
   border-radius: 3px;
   box-shadow: 1px 1px 1px #e5e5e5;
@@ -273,6 +286,10 @@ html {
   font-weight: 300;
   text-align: left;
   padding-top: 2%;
+}
+
+.grey {
+  color: #909090;
 }
 
 .detail-req {
@@ -411,6 +428,10 @@ html {
   margin-top: 4px;
 }
 
+.transparentButton-sortby {
+  margin-left: 15%;
+}
+
 /* take note of the % */
 .CircularIndeterminate {
   display: inline-block;
@@ -461,16 +482,17 @@ html {
   width: 177px;
   margin-top: 0.5%;
 }
-
 /* new things for mutli-checkbox actions */
 .status-filter,
 .assigned-filter {
-  background-color: #969696;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   display: inline-block;
   margin: 2% 0;
   margin-left: 2%;
   padding: 0.5%;
   margin-bottom: 0;
+  background-color: #1461c9;
 }
 
 .status-filter-text,
@@ -482,20 +504,24 @@ html {
   text-transform: uppercase;
 }
 
-.selectOptionsCheckbox {
-  border: none;
-  padding: 6px;
+.selectOptionCheckbox {
+  border-radius: none;
+  -webkit-appearance: none;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-top-left-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
   cursor: pointer;
-  z-index: 1000;
-}
-
-.popup {
+  padding: 6.5px;
 }
 
 .updateButtonForm {
-  background-color: #e5e5e5;
-  border: 1px solid #909090;
-  padding: 5px;
+  background-color: #1461c9;
+  border: none;
+  padding: 7px 1%;
   cursor: pointer;
   margin-left: 2%;
+  color: #ffffff;
+  border-radius: 3px;
+  font-weight: 300;
 }

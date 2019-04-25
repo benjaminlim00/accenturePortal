@@ -24,10 +24,12 @@ class DropdownCardSort extends Component {
   }
 
   closeMenu(event) {
-    if (!this.dropdownMenu.contains(event.target)) {
-      this.setState({ showMenu: false }, () => {
-        document.removeEventListener("click", this.closeMenu);
-      });
+    if (event.target !== null) {
+      if (!this.dropdownMenu.contains(event.target)) {
+        this.setState({ showMenu: false }, () => {
+          document.removeEventListener("click", this.closeMenu);
+        });
+      }
     }
   }
 
@@ -41,7 +43,7 @@ class DropdownCardSort extends Component {
         <button
           onClick={this.showMenu}
           id="transparentButton"
-          className="transparentButton-status"
+          className="transparentButton-sortby"
         >
           <img src={arrow} className="arrow-down-2" alt="arrow" />
         </button>

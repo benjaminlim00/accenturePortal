@@ -95,6 +95,15 @@ class ClientCreateTicket extends React.Component {
     });
   }
 
+  sendEmail = () => {
+    // const { email } = this.state.email;
+    fetch(
+      `http://127.0.0.1:4000/send-email?content=${"A new request has been created"}`
+    ) //query string url
+      .catch(err => console.error(err));
+    console.log("success");
+  };
+
   submitForm(e) {
     e.preventDefault();
 
@@ -146,7 +155,7 @@ class ClientCreateTicket extends React.Component {
 
     //these are for sms fnc
     this.setState({ submitting: true });
-    fetch("/api/messages", {
+    fetch(`/api/messages?content=${"A new request has been created"}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -173,6 +182,9 @@ class ClientCreateTicket extends React.Component {
       });
 
     // console.log("Data sent! Redirecting page");
+
+    this.sendEmail();
+
     this.handleRedirect();
   }
 
@@ -236,8 +248,8 @@ class ClientCreateTicket extends React.Component {
                 /> */}
 
                 <select
-                  onChange={e => this.setState({ requesterId: e.target.value })}
-                  className="small-input-field"
+                  onChange={e => this.setState({ asset: e.target.value })}
+                  className="client-small-input-field"
                 >
                   <option>Select asset</option>
                   {this.displayAssets()}

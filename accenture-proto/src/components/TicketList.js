@@ -321,6 +321,18 @@ class TicketList extends React.Component {
           );
         }
 
+        //these are for sms fnc
+        fetch(
+          `/api/messages?content=${"Resolved requests older than 7 days have been closed"}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state.message)
+          }
+        ).then(res => res.json());
+
         return 0;
       });
 
@@ -378,6 +390,18 @@ class TicketList extends React.Component {
             }
           });
 
+          //these are for sms fnc
+          fetch(
+            `/api/messages?content=${"Open requests older than 7 days have been changed to high priority"}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(this.state.message)
+            }
+          ).then(res => res.json());
+
           return 0;
         });
       }
@@ -405,6 +429,18 @@ class TicketList extends React.Component {
               priority: "Medium"
             }
           });
+
+          //these are for sms fnc
+          fetch(
+            `/api/messages?content=${"Requests with low priority older than 4 days have been changed to medium priority"}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(this.state.message)
+            }
+          ).then(res => res.json());
 
           return 0;
         });
@@ -644,9 +680,8 @@ class TicketList extends React.Component {
         {showSnackbarMult ? (
           <CustomizedSnackbars message="Multiple requests updated" />
         ) : null}
-
         <OffCanvas
-          width={300}
+          width={350}
           transitionDuration={300}
           effect={"push"}
           isMenuOpened={this.state.isMenuOpened}
@@ -656,7 +691,6 @@ class TicketList extends React.Component {
             <button
               onClick={this.handleClick.bind(this)}
               id="transparentButton"
-              className=""
             >
               {/* <img src={arrow} className="arrow-right" alt="arrow" /> */}X
             </button>
@@ -701,7 +735,13 @@ class TicketList extends React.Component {
             <br />
             <br />
             <br />
-            <button onClick={this.filterRequests}>Filter</button>
+            <br />
+            <button
+              className="sidebarFilterButton"
+              onClick={this.filterRequests}
+            >
+              Filter
+            </button>
           </OffCanvasMenu>
         </OffCanvas>
 
@@ -758,6 +798,7 @@ class TicketList extends React.Component {
                     <label>Assigned</label>
                   </div>
                 </div>
+
                 <select
                   className="selectOptionCheckbox"
                   onChange={e => this.setState({ newAssigned: e.target.value })}

@@ -13,11 +13,15 @@ app.use(pino);
 
 app.post("/api/messages", (req, res) => {
   res.header("Content-Type", "application/json");
+
+  const { content } = req.query;
+  // console.log(content);
+
   client.messages
     .create({
       from: "+1 810 250 7730",
       to: "+6591684317", //rmb to hide, dont upload to github
-      body: "A new request has been created"
+      body: content
     })
     .then(() => {
       res.send(JSON.stringify({ success: true }));

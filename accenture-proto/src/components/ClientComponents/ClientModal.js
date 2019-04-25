@@ -51,6 +51,14 @@ class ClientModal extends React.Component {
       }
     });
 
+    //now we send an email to admin:
+
+    fetch(
+      `http://127.0.0.1:4000/send-email?content=${"A client has closed a request"}`
+    ) //query string url
+      .catch(err => console.error(err));
+    console.log("success");
+
     this.props.handleBack();
   }
   render() {
