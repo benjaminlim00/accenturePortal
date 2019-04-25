@@ -73,7 +73,7 @@ class CreateTicket extends React.Component {
 
   displayAssets() {
     let datals = [
-      { name: "Aeseop", id: 0 },
+      { name: "Aesop", id: 0 },
       { name: "Ticketing", id: 1 },
       { name: "Travel Marketplace", id: 2 },
       { name: "Smart Lock", id: 3 },
