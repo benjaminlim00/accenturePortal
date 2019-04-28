@@ -15,4 +15,4 @@ To run backend tests:
 3. To run unit and robust testing:
   npm run test-server
 
-NOTE: SMS alert functionality is disabled as twilo trail account has expired. Please replace with suitable replacement.
+NOTE: SMS alert functionality is disabled as Twilo trial account has expired. Please replace with suitable replacement.
