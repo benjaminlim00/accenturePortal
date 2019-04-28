@@ -9,59 +9,76 @@ exports[`renders correctly 1`] = `
   >
     Ticket Properties
   </h2>
-  <img
-    alt="arrow"
-    className="arrow-up-new"
-    src="iconfinder_icon-ios7-arrow-down_211687.svg"
-  />
   <div
     className="grid-row"
   >
     <p
       className="property"
     >
-      Ticket ID
+      <b>
+        Ticket ID
+      </b>
     </p>
     <p
       className="propertyNormalWords"
-    >
-      <u />
-    </p>
+    />
     <p
       className="property"
     >
-      Asset(s)
+      <b>
+        Asset(s)
+      </b>
     </p>
     <p
       className="propertyNormalWords"
-    >
-      <u />
-    </p>
+    />
     <p
       className="property"
     >
-      Type
+      <b>
+        Type
+      </b>
     </p>
     <p
       className="propertyNormalWords"
-    >
-      <u />
-    </p>
-    <p
-      className="property"
-    >
-      Priority
-    </p>
-    <p
-      className="propertyNormalWords"
-    >
-      <u />
-    </p>
+    />
+    <div>
+      <p
+        className="property"
+      >
+        <b>
+          Priority
+        </b>
+      </p>
+      <p
+        className="propertyNormalWords"
+      />
+      <div
+        className="special-property"
+      >
+        <p>
+          <b>
+            Assigned
+          </b>
+        </p>
+        <p
+          className="propertyArrowWords"
+        >
+          <img
+            alt="arrow"
+            className="arrow-down"
+            src="iconfinder_icon-ios7-arrow-down_211687.svg"
+          />
+        </p>
+      </div>
+    </div>
     <div
       className="special-property"
     >
       <p>
-        Assigned
+        <b>
+          Status
+        </b>
       </p>
       <p
         className="propertyArrowWords"
@@ -73,52 +90,36 @@ exports[`renders correctly 1`] = `
         />
       </p>
     </div>
-    <div
-      className="special-property"
-    >
-      <p>
-        Status
-      </p>
-      <p
-        className="propertyArrowWords"
-      >
-        <img
-          alt="arrow"
-          className="arrow-down"
-          src="iconfinder_icon-ios7-arrow-down_211687.svg"
-        />
-      </p>
-    </div>
     <p
       className="property"
     >
-      Date/Time Requested
+      <b>
+        Date/Time Requested
+      </b>
     </p>
     <p
       className="propertyNormalWords"
-    >
-      <u />
-    </p>
+    />
     <p
       className="property"
     >
-      Date/Time Resolved
+      <b>
+        Date/Time Resolved
+      </b>
     </p>
     <p
       className="propertyNormalWords"
-    >
-      <u />
-    </p>
+    />
     <p
       className="property"
     >
-      Date/Time Closed
+      <b>
+        Date/Time Closed
+      </b>
     </p>
     <p
       className="propertyNormalWords"
-    >
-      <u />
-    </p>
+    />
   </div>
 </div>
 `;
