@@ -3,13 +3,13 @@ Project for SUTD term 5
 Worked with accenture team to create a ticket requests handling web application.
 
 To run web app:
-cd into accenture-proto and run npm start
+cd into accenture-proto and run npm start (if first time, run npm install)
 
 To run jest tests:
 cd into accenture-proto and run npm test
 
 To run backend tests: 
-1. cd into accenture-proto/backend 
+1. cd into accenture-proto/backend (if first time, run npm install)
 2. To run integration testing:
   npm run test  
 3. To run unit and robust testing:
