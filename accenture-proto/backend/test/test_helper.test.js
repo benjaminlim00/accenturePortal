@@ -34,14 +34,14 @@ Deleting users take time, so we need to hold mocha before the operation complete
 The done() function call notifies that the operation is complete now you can resume the execution.
 */
 
-/*
+
 beforeEach((done) => {
     mongoose.connection.collections.requests.drop(() => {
-        console.log("Database cleared")
-        console.log("Start tests now...\n")
+        //console.log("Database cleared")
+        //console.log("Start tests now...\n")
          //this function runs after the drop is completed
         done(); //go ahead everything is done now.
     }); 
 });
-*/
+
 

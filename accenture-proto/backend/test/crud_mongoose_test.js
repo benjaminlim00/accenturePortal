@@ -25,6 +25,8 @@ describe('Creating documents', () => {
                 assert(!requestExample.isNew); //asserting if document just created is actually new
                 console.log("Create Request: SUCCESS");
                 done();
+                console.log("Database cleared\n")
+                console.log("Start next test now...")
             });
     });
 });
@@ -57,6 +59,8 @@ describe('Reading request details', () => {
                 assert(request.asset === "asset2"); 
                 console.log("Read Request: SUCCESS");
                 done();
+                console.log("Database cleared\n")
+                console.log("Start next test now...")
             });
     })
 })
@@ -90,6 +94,8 @@ describe('Updating a status and dateResolved', () => {
         assert(requests[0].dateResolved === 'dateResolved4');
         console.log("Update Request: SUCCESS");
         done();
+        console.log("Database cleared\n")
+        console.log("Start next test now...")
       });
     }
     
@@ -126,6 +132,8 @@ describe('Updating dateClosed', () => {
         assert(requests[0].dateClosed === 'dateClosed4');
         console.log("Update Request: SUCCESS");
         done();
+        console.log("Database cleared\n")
+        console.log("Start next test now...")
       });
     }
     
@@ -162,7 +170,10 @@ describe('Deleting a request', () => {
           assert(request === null);
           console.log("Delete Request: SUCCESS");
           done();
+          console.log("Database cleared\n")
+          console.log("Start next test now...")
         });
     })
   });
+
   

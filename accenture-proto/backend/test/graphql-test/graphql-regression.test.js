@@ -112,7 +112,7 @@ describe('Testing ThreadType properties', () => {
 
   it("Should have an 'threadImage' field of String type", () => {
     expect(threadType.getFields()).to.have.property('threadImage');
-    expect(threadType.getFields().threadImage.type).to.deep.equals(graphql.GraphQLInteger);
+    expect(threadType.getFields().threadImage.type).to.deep.equals(graphql.GraphQLString);
     //console.log("DataType - threadImage: Checked")
   });
 });

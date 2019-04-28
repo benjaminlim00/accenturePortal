@@ -210,15 +210,19 @@ describe('Testing Mutations', () => {
           $threadContent: String!
           $threadCreatedDate: String!
           $requestId: ID!
+          $threadImage: String!
         ) {
           addThread(
             threadContent: $threadContent
             threadCreatedDate: $threadCreatedDate
             requestId: $requestId
+            threadImage: $threadImage
+
           ) {
             id
             threadContent
             threadCreatedDate
+            threadImage
             
           }
         }
