@@ -1,5 +1,6 @@
-# accenturePortal
+# Accenture Ticket Requests Portal
 Project for SUTD term 5
+Worked with accenture team to create a ticket requests handling web application.
 
 To run web app:
 cd into accenture-proto and run npm start
