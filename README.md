@@ -2,10 +2,10 @@
 Project for SUTD term 5
 
 To run web app:
-cd into accenture-proto and run: npm start
+cd into accenture-proto and run npm start
 
 To run jest tests:
-cd into accenture-proto and run: npm test
+cd into accenture-proto and run npm test
 
 To run backend tests: 
 1. cd into accenture-proto/backend 
